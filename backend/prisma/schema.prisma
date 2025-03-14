@@ -1,0 +1,287 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 사용자 모델
+model User {
+  id               String           @id @default(uuid())
+  email            String           @unique
+  password         String
+  name             String
+  role             UserRole         @default(USER)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  lastLogin        DateTime?
+  profileImage     String?
+  projects         ProjectMember[]
+  riskAssessments  RiskAssessment[]
+  documents        SafetyDocument[]
+  documentAccesses DocumentAccess[]
+  chatMessages     ChatMessage[]
+  notifications    Notification[]
+  communityPosts   CommunityPost[]
+  comments         Comment[]
+  passwordReset    PasswordReset?
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+// 프로젝트 모델
+model Project {
+  id              String           @id @default(uuid())
+  name            String
+  description     String?
+  startDate       DateTime
+  endDate         DateTime?
+  status          ProjectStatus    @default(ACTIVE)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  members         ProjectMember[]
+  riskAssessments RiskAssessment[]
+  documents       SafetyDocument[]
+  workers         Worker[]
+  communityPosts  CommunityPost[]
+}
+
+enum ProjectStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+// 프로젝트 멤버 모델
+model ProjectMember {
+  id        String      @id @default(uuid())
+  role      ProjectRole @default(MEMBER)
+  user      User        @relation(fields: [userId], references: [id])
+  userId    String
+  project   Project     @relation(fields: [projectId], references: [id])
+  projectId String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@unique([userId, projectId])
+}
+
+enum ProjectRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+// 위험성 평가 모델
+model RiskAssessment {
+  id          String           @id @default(uuid())
+  title       String
+  description String?
+  status      AssessmentStatus @default(DRAFT)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  user        User             @relation(fields: [userId], references: [id])
+  userId      String
+  project     Project          @relation(fields: [projectId], references: [id])
+  projectId   String
+  riskFactors RiskFactor[]
+}
+
+enum AssessmentStatus {
+  DRAFT
+  COMPLETED
+  APPROVED
+  REJECTED
+}
+
+// 위험 요소 모델
+model RiskFactor {
+  id              String         @id @default(uuid())
+  title           String
+  description     String
+  likelihood      Int // 1-5 scale
+  severity        Int // 1-5 scale
+  riskLevel       RiskLevel
+  controlMeasures String
+  assessment      RiskAssessment @relation(fields: [assessmentId], references: [id])
+  assessmentId    String
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+// 안전 문서 모델
+model SafetyDocument {
+  id               String           @id @default(uuid())
+  title            String
+  description      String?
+  filePath         String // 파일 경로
+  documentType     DocumentType     @default(OTHER)
+  validFrom        DateTime
+  validUntil       DateTime?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  user             User             @relation(fields: [userId], references: [id])
+  userId           String
+  project          Project?         @relation(fields: [projectId], references: [id])
+  projectId        String?
+  documentAccesses DocumentAccess[]
+}
+
+// 문서 접근 권한 모델
+model DocumentAccess {
+  id          String         @id @default(uuid())
+  accessLevel AccessLevel    @default(READ)
+  user        User           @relation(fields: [userId], references: [id])
+  userId      String
+  document    SafetyDocument @relation(fields: [documentId], references: [id])
+  documentId  String
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@unique([userId, documentId])
+}
+
+enum AccessLevel {
+  READ
+  WRITE
+  ADMIN
+}
+
+enum DocumentType {
+  MANUAL // 매뉴얼
+  SAFETY_PLAN // 안전 계획서
+  INSPECTION // 검사 보고서
+  CERTIFICATE // 인증서
+  TRAINING // 교육 자료
+  REGULATION // 규정
+  REPORT // 보고서
+  TEMPLATE // 템플릿
+  OTHER // 기타
+}
+
+// 근로자 모델
+model Worker {
+  id            String            @id @default(uuid())
+  name          String
+  contactNumber String?
+  position      String?
+  project       Project           @relation(fields: [projectId], references: [id])
+  projectId     String
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  educations    WorkerEducation[]
+  checkins      WorkerCheckin[]
+}
+
+// 근로자 교육 모델
+model WorkerEducation {
+  id             String    @id @default(uuid())
+  title          String
+  description    String?
+  completionDate DateTime
+  expiryDate     DateTime?
+  worker         Worker    @relation(fields: [workerId], references: [id])
+  workerId       String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+// 근로자 출입 기록 모델
+model WorkerCheckin {
+  id           String    @id @default(uuid())
+  checkinTime  DateTime  @default(now())
+  checkoutTime DateTime?
+  location     String?
+  worker       Worker    @relation(fields: [workerId], references: [id])
+  workerId     String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+// AI 챗봇 메시지 모델
+model ChatMessage {
+  id            String   @id @default(uuid())
+  content       String
+  isUserMessage Boolean  @default(true)
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  createdAt     DateTime @default(now())
+}
+
+// 알림 모델
+model Notification {
+  id        String           @id @default(uuid())
+  title     String
+  content   String
+  type      NotificationType
+  isRead    Boolean          @default(false)
+  link      String? // 알림 관련 링크 (선택적)
+  entityId  String? // 관련 엔티티 ID (선택적)
+  user      User             @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime         @default(now())
+}
+
+enum NotificationType {
+  PROJECT_INVITATION
+  RISK_ASSESSMENT
+  DOCUMENT_SHARED
+  WORKER_EDUCATION
+  SYSTEM
+  COMMENT
+  MENTION
+}
+
+// 커뮤니티 게시글 모델
+model CommunityPost {
+  id        String    @id @default(uuid())
+  title     String
+  content   String
+  projectId String? // 관련 프로젝트 ID (선택적)
+  project   Project?  @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  comments  Comment[]
+}
+
+// 댓글 모델
+model Comment {
+  id        String        @id @default(uuid())
+  content   String
+  user      User          @relation(fields: [userId], references: [id])
+  userId    String
+  post      CommunityPost @relation(fields: [postId], references: [id])
+  postId    String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model PasswordReset {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  expires   DateTime
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
