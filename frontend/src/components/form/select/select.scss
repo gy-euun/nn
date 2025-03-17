@@ -1,0 +1,465 @@
+@import '../../../tokens/colors.scss';
+@import '../../../tokens/typography.scss';
+@import '../../../tokens/spacing.scss';
+@import '../../../tokens/borders.scss';
+@import '../../../tokens/elevation.scss';
+
+// 폼 그룹 스타일
+.form-group {
+  margin-bottom: $spacing-md;
+  
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+  
+  .required-mark {
+    color: $color-state-error;
+    margin-left: $spacing-xxs;
+  }
+}
+
+// 기본 네이티브 셀렉트 스타일
+.select-native {
+  appearance: none;
+  background-color: $color-background-base;
+  border: 1px solid $color-border-default;
+  border-radius: $border-radius-md;
+  box-shadow: $elevation-1;
+  color: $color-text-primary;
+  display: block;
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  line-height: $line-height-base;
+  padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
+  width: 100%;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23555555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $spacing-sm center;
+  background-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    border-color: $color-border-hover;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: $color-border-focus;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.25);
+  }
+  
+  &:disabled {
+    background-color: $color-background-disabled;
+    color: $color-text-disabled;
+    border-color: $color-border-disabled;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  option {
+    font-weight: normal;
+    color: $color-text-primary;
+    
+    &:disabled {
+      color: $color-text-disabled;
+    }
+  }
+}
+
+// 유효성 검사 메시지 스타일
+.validation-message {
+  font-size: $font-size-sm;
+  color: $color-state-error;
+  margin-top: $spacing-xs;
+  min-height: 20px;
+}
+
+// 커스텀 셀렉트 스타일
+.select-custom {
+  position: relative;
+  width: 100%;
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  cursor: pointer;
+  
+  // 선택된 값 표시 영역
+  &__selected {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
+    background-color: $color-background-base;
+    border: 1px solid $color-border-default;
+    border-radius: $border-radius-md;
+    box-shadow: $elevation-1;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      border-color: $color-border-hover;
+    }
+  }
+  
+  // 아이콘
+  &__icon {
+    position: absolute;
+    right: $spacing-sm;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    
+    svg {
+      color: $color-text-muted;
+    }
+  }
+  
+  // 옵션 목록
+  &__options {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    background-color: $color-background-base;
+    border: 1px solid $color-border-default;
+    border-radius: $border-radius-md;
+    box-shadow: $elevation-3;
+    z-index: 100;
+    margin: 0;
+    padding: $spacing-xs 0;
+    list-style: none;
+    display: none;
+    
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: $color-background-subtle;
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: $color-border-default;
+      border-radius: 4px;
+      
+      &:hover {
+        background: darken($color-border-default, 10%);
+      }
+    }
+  }
+  
+  // 개별 옵션
+  &__option {
+    padding: $spacing-sm $spacing-md;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    
+    &:hover, &:focus {
+      background-color: $color-background-hover;
+    }
+    
+    &--selected {
+      background-color: rgba($color-primary, 0.1);
+      color: $color-primary;
+      font-weight: $font-weight-medium;
+      
+      &:hover, &:focus {
+        background-color: rgba($color-primary, 0.15);
+      }
+    }
+    
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  
+  // 열린 상태
+  &[aria-expanded="true"] {
+    .select-custom__options {
+      display: block;
+      animation: selectDropdown 0.2s ease forwards;
+    }
+    
+    .select-custom__icon {
+      transform: translateY(-50%) rotate(180deg);
+    }
+    
+    .select-custom__selected {
+      border-color: $color-border-focus;
+    }
+  }
+  
+  // 포커스 상태
+  &:focus {
+    outline: none;
+    
+    .select-custom__selected {
+      border-color: $color-border-focus;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.25);
+    }
+  }
+  
+  // 비활성화 상태
+  &--disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    
+    .select-custom__selected {
+      background-color: $color-background-disabled;
+      border-color: $color-border-disabled;
+      color: $color-text-disabled;
+    }
+    
+    .select-custom__icon svg {
+      color: $color-text-disabled;
+    }
+  }
+  
+  // 검색 가능한 셀렉트
+  &--searchable {
+    .select-custom__search {
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 0;
+      font-size: inherit;
+      color: inherit;
+      font-family: inherit;
+      
+      &:focus {
+        outline: none;
+      }
+      
+      &::placeholder {
+        color: $color-text-placeholder;
+      }
+    }
+  }
+  
+  // 다중 선택 셀렉트
+  &--multiple {
+    .select-custom__selected {
+      flex-wrap: wrap;
+      padding: $spacing-xs $spacing-md;
+      min-height: 44px;
+    }
+    
+    .select-custom__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-xs;
+      margin-right: $spacing-xs;
+    }
+    
+    .select-custom__tag {
+      display: flex;
+      align-items: center;
+      background-color: rgba($color-primary, 0.1);
+      color: $color-primary;
+      padding: $spacing-xxs $spacing-xs;
+      border-radius: $border-radius-sm;
+      font-size: $font-size-sm;
+      
+      .tag-remove {
+        margin-left: $spacing-xs;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    
+    .select-custom__search {
+      flex: 1;
+      min-width: 60px;
+      border: none;
+      background: transparent;
+      padding: $spacing-xxs 0;
+      font-size: $font-size-sm;
+      
+      &:focus {
+        outline: none;
+      }
+    }
+    
+    .select-custom__checkbox {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 1px solid $color-border-default;
+      border-radius: $border-radius-sm;
+      margin-right: $spacing-sm;
+      position: relative;
+      vertical-align: middle;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 2px;
+        width: 4px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        display: none;
+      }
+    }
+    
+    .select-custom__option--selected {
+      .select-custom__checkbox {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+  
+  // 크기 변형 - 작은 크기
+  &--small {
+    font-size: $font-size-sm;
+    
+    .select-custom__selected {
+      min-height: 32px;
+      padding: $spacing-xs $spacing-lg $spacing-xs $spacing-sm;
+    }
+    
+    .select-custom__option {
+      padding: $spacing-xs $spacing-sm;
+    }
+  }
+  
+  // 크기 변형 - 큰 크기
+  &--large {
+    font-size: $font-size-lg;
+    
+    .select-custom__selected {
+      min-height: 48px;
+      padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
+    }
+    
+    .select-custom__option {
+      padding: $spacing-sm $spacing-md;
+    }
+  }
+}
+
+// 애니메이션
+@keyframes selectDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .select-native {
+    background-color: $color-background-dark;
+    border-color: $color-border-dark;
+    color: $color-text-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23cccccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    
+    &:hover {
+      border-color: lighten($color-border-dark, 10%);
+    }
+    
+    &:focus {
+      border-color: $color-primary;
+    }
+    
+    &:disabled {
+      background-color: darken($color-background-dark, 5%);
+      border-color: $color-border-dark;
+    }
+    
+    option {
+      background-color: $color-background-dark;
+      color: $color-text-light;
+    }
+  }
+  
+  .select-custom {
+    color: $color-text-light;
+    
+    &__selected {
+      background-color: $color-background-dark;
+      border-color: $color-border-dark;
+    }
+    
+    &__icon svg {
+      color: $color-text-light-muted;
+    }
+    
+    &__options {
+      background-color: $color-background-dark;
+      border-color: $color-border-dark;
+      
+      &::-webkit-scrollbar-track {
+        background: darken($color-background-dark, 3%);
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: $color-border-dark;
+        
+        &:hover {
+          background: lighten($color-border-dark, 10%);
+        }
+      }
+    }
+    
+    &__option {
+      &:hover, &:focus {
+        background-color: lighten($color-background-dark, 5%);
+      }
+      
+      &--selected {
+        background-color: rgba($color-primary, 0.3);
+      }
+    }
+    
+    &--disabled {
+      .select-custom__selected {
+        background-color: darken($color-background-dark, 5%);
+        border-color: $color-border-dark;
+      }
+    }
+    
+    &--multiple {
+      .select-custom__tag {
+        background-color: rgba($color-primary, 0.3);
+      }
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 768px) {
+  .select-custom {
+    &__options {
+      max-height: 200px;
+    }
+  }
+} 

@@ -1,0 +1,441 @@
+@import '../../../tokens/colors';
+@import '../../../tokens/typography';
+@import '../../../tokens/spacing';
+@import '../../../tokens/borders';
+@import '../../../tokens/elevation';
+@import '../../../tokens/animation';
+
+// 알림 컴포넌트 스타일
+.krds-notification {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: $spacing-md;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  background-color: $color-white;
+  box-shadow: $elevation-3;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  // 알림 바 (왼쪽 색상 바)
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: $color-primary;
+  }
+  
+  // 아이콘 영역
+  .notification-icon {
+    margin-right: $spacing-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+      color: inherit;
+    }
+  }
+  
+  // 컨텐츠 영역
+  .notification-content {
+    flex: 1;
+    min-width: 0;
+    
+    .notification-title {
+      margin: 0 0 $spacing-xs;
+      font-size: $font-size-md;
+      font-weight: $font-weight-bold;
+      color: $color-text-primary;
+    }
+    
+    .notification-message {
+      margin: 0;
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+      line-height: $line-height-md;
+    }
+    
+    .notification-actions {
+      display: flex;
+      gap: $spacing-sm;
+      margin-top: $spacing-md;
+    }
+    
+    .notification-action-btn {
+      padding: $spacing-xs $spacing-md;
+      border: none;
+      border-radius: $border-radius-sm;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      background-color: $color-background-subtle;
+      color: $color-text-primary;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: darken($color-background-subtle, 5%);
+      }
+      
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba($color-primary, 0.3);
+      }
+      
+      &.primary {
+        background-color: $color-primary;
+        color: $color-white;
+        
+        &:hover {
+          background-color: darken($color-primary, 5%);
+        }
+      }
+    }
+  }
+  
+  // 닫기 버튼
+  .notification-close {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: $spacing-sm;
+    cursor: pointer;
+    color: $color-text-muted;
+    line-height: 0;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: $color-text-primary;
+    }
+    
+    &:focus {
+      outline: none;
+      color: $color-text-primary;
+    }
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  
+  // 상태별 스타일
+  &.info {
+    .notification-icon {
+      color: $color-info;
+    }
+    
+    &::before {
+      background-color: $color-info;
+    }
+  }
+  
+  &.success {
+    .notification-icon {
+      color: $color-success;
+    }
+    
+    &::before {
+      background-color: $color-success;
+    }
+  }
+  
+  &.warning {
+    .notification-icon {
+      color: $color-warning;
+    }
+    
+    &::before {
+      background-color: $color-warning;
+    }
+  }
+  
+  &.error {
+    .notification-icon {
+      color: $color-danger;
+    }
+    
+    &::before {
+      background-color: $color-danger;
+    }
+  }
+  
+  // 액션이 있는 알림
+  &.with-action {
+    .notification-content {
+      .notification-message {
+        margin-bottom: $spacing-xs;
+      }
+    }
+  }
+  
+  // 토스트 알림 스타일
+  &.toast {
+    padding: $spacing-sm $spacing-md;
+    max-width: 300px;
+    
+    .notification-content {
+      display: flex;
+      align-items: center;
+      
+      .notification-message {
+        margin: 0;
+      }
+    }
+    
+    .notification-close {
+      margin-left: $spacing-sm;
+      
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+  
+  // 알림 컨테이너에 있을 때 추가 스타일 (애니메이션)
+  .krds-notification-container & {
+    animation: notification-slide-in 0.3s $ease-out-back forwards;
+    box-shadow: $elevation-4;
+    margin-bottom: $spacing-sm;
+    
+    &.removing {
+      animation: notification-slide-out 0.3s $ease-in forwards;
+    }
+  }
+}
+
+// 알림 컨테이너 스타일
+.krds-notification-container {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+  pointer-events: none;
+  
+  // 알림 자체는 포인터 이벤트 활성화
+  .krds-notification {
+    pointer-events: auto;
+  }
+  
+  // 위치 변형
+  &.top-right {
+    top: $spacing-md;
+    right: $spacing-md;
+    align-items: flex-end;
+  }
+  
+  &.top-left {
+    top: $spacing-md;
+    left: $spacing-md;
+    align-items: flex-start;
+  }
+  
+  &.bottom-right {
+    bottom: $spacing-md;
+    right: $spacing-md;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+  }
+  
+  &.bottom-left {
+    bottom: $spacing-md;
+    left: $spacing-md;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
+  
+  &.top-center {
+    top: $spacing-md;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+  
+  &.bottom-center {
+    bottom: $spacing-md;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+}
+
+// 알림 슬라이드 인/아웃 애니메이션
+@keyframes notification-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes notification-slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+// 예제 스타일
+.example-section {
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    margin-bottom: $spacing-md;
+    color: $color-text-primary;
+  }
+}
+
+.example-container {
+  margin-bottom: $spacing-lg;
+  
+  // 예제에서는 position: fixed를 오버라이드하여 스크롤 방지
+  .krds-notification-container {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  
+  .btn {
+    padding: $spacing-sm $spacing-md;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: $border-radius-md;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: darken($color-primary, 5%);
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+    }
+  }
+}
+
+// 다크 모드
+@media (prefers-color-scheme: dark) {
+  .krds-notification {
+    background-color: $color-background-dark;
+    box-shadow: $elevation-3-dark;
+    
+    .notification-content {
+      .notification-title {
+        color: $color-text-light;
+      }
+      
+      .notification-message {
+        color: $color-text-light-muted;
+      }
+      
+      .notification-action-btn {
+        background-color: darken($color-background-dark, 3%);
+        color: $color-text-light;
+        
+        &:hover {
+          background-color: darken($color-background-dark, 5%);
+        }
+        
+        &.primary {
+          background-color: $color-primary;
+          color: $color-white;
+          
+          &:hover {
+            background-color: lighten($color-primary, 5%);
+          }
+        }
+      }
+    }
+    
+    .notification-close {
+      color: $color-text-light-muted;
+      
+      &:hover {
+        color: $color-text-light;
+      }
+    }
+    
+    // 상태별 스타일 (다크 모드)
+    &.info .notification-icon {
+      color: lighten($color-info, 10%);
+    }
+    
+    &.success .notification-icon {
+      color: lighten($color-success, 10%);
+    }
+    
+    &.warning .notification-icon {
+      color: lighten($color-warning, 10%);
+    }
+    
+    &.error .notification-icon {
+      color: lighten($color-danger, 10%);
+    }
+    
+    // 컨테이너에 있을 때
+    .krds-notification-container & {
+      box-shadow: $elevation-4-dark;
+    }
+  }
+  
+  .controls .btn {
+    background-color: $color-primary;
+    
+    &:hover {
+      background-color: lighten($color-primary, 5%);
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 576px) {
+  .krds-notification {
+    max-width: 100%;
+    margin-left: $spacing-sm;
+    margin-right: $spacing-sm;
+  }
+  
+  .krds-notification-container {
+    max-width: calc(100% - #{$spacing-md * 2});
+    
+    &.top-center,
+    &.bottom-center {
+      width: calc(100% - #{$spacing-md * 2});
+    }
+  }
+} 

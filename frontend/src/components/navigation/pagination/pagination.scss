@@ -1,0 +1,163 @@
+@import "../../../styles/tokens/colors.scss";
+@import "../../../styles/tokens/typography.scss";
+@import "../../../styles/tokens/layout.scss";
+@import "../../../styles/tokens/shape.scss";
+@import "../../../styles/tokens/elevation.scss";
+
+// 페이지네이션 컴포넌트 스타일
+.krds-pagination {
+  display: block;
+  width: 100%;
+  margin: $spacing-lg 0;
+
+  // 페이지네이션 컨테이너
+  .krds-pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // 페이지네이션 버튼 (이전, 다음, 처음, 마지막)
+  .krds-pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: $spacing-xs;
+    margin: 0 $spacing-xs;
+    border: 1px solid $color-border-default;
+    border-radius: $border-radius-md;
+    background-color: $color-background-paper;
+    color: $color-text-primary;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $color-background-hover;
+      border-color: $color-border-hover;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-border-focus;
+    }
+
+    &:active {
+      background-color: $color-background-active;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: $color-background-disabled;
+      border-color: $color-border-disabled;
+      color: $color-text-disabled;
+    }
+
+    // 아이콘 스타일
+    .krds-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // 페이지 목록
+  .krds-pagination-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // 페이지 항목
+  .krds-pagination-item {
+    margin: 0 $spacing-xs;
+  }
+
+  // 페이지 링크
+  .krds-pagination-link {
+    @include body-text-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: $border-radius-md;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: $color-text-primary;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $color-background-hover;
+      border-color: $color-border-hover;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-border-focus;
+    }
+
+    &[aria-current="page"] {
+      background-color: $color-brand-primary;
+      color: $color-text-inverse;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  // 생략 부분
+  .krds-pagination-ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: $color-text-secondary;
+  }
+}
+
+// 간소화된 페이지네이션 (모바일용)
+.krds-pagination-simple {
+  .krds-pagination-info {
+    @include body-text-md;
+    display: flex;
+    align-items: center;
+    margin: 0 $spacing-md;
+    font-weight: $font-weight-medium;
+  }
+
+  .krds-pagination-current {
+    color: $color-brand-primary;
+    font-weight: $font-weight-bold;
+  }
+
+  .krds-pagination-divider {
+    margin: 0 $spacing-xs;
+    color: $color-text-secondary;
+  }
+
+  .krds-pagination-total {
+    color: $color-text-secondary;
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 768px) {
+  .krds-pagination:not(.krds-pagination-simple) {
+    display: none;
+  }
+
+  .krds-pagination-simple {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .krds-pagination-simple {
+    display: none;
+  }
+} 

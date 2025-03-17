@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>텍스트 입력 필드 컴포넌트 - KRDS</title>
+  <link rel="stylesheet" href="text-input.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>텍스트 입력 필드 컴포넌트</h1>
+      <p>사용자로부터 텍스트 데이터를 수집하는 입력 요소입니다.</p>
+    </header>
+
+    <section class="example-section">
+      <h2>기본 텍스트 입력 필드</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label for="basic-input" class="krds-label">기본 입력 필드</label>
+          <input type="text" id="basic-input" class="krds-input" placeholder="텍스트를 입력하세요">
+          <div class="krds-input-description">기본적인 텍스트 입력 필드입니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>입력 필드 크기</h2>
+      <div class="example-container sizes">
+        <div class="krds-form-group">
+          <label for="small-input" class="krds-label">작은 크기</label>
+          <input type="text" id="small-input" class="krds-input krds-input-sm" placeholder="작은 입력 필드">
+        </div>
+        <div class="krds-form-group">
+          <label for="default-input" class="krds-label">기본 크기</label>
+          <input type="text" id="default-input" class="krds-input" placeholder="기본 입력 필드">
+        </div>
+        <div class="krds-form-group">
+          <label for="large-input" class="krds-label">큰 크기</label>
+          <input type="text" id="large-input" class="krds-input krds-input-lg" placeholder="큰 입력 필드">
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>상태별 입력 필드</h2>
+      <div class="example-container states">
+        <div class="krds-form-group">
+          <label for="default-state" class="krds-label">기본 상태</label>
+          <input type="text" id="default-state" class="krds-input" placeholder="기본 상태">
+        </div>
+        <div class="krds-form-group">
+          <label for="focus-state" class="krds-label">포커스 상태 (클릭해보세요)</label>
+          <input type="text" id="focus-state" class="krds-input" placeholder="포커스 상태">
+        </div>
+        <div class="krds-form-group">
+          <label for="disabled-state" class="krds-label">비활성화 상태</label>
+          <input type="text" id="disabled-state" class="krds-input" placeholder="비활성화 상태" disabled>
+          <div class="krds-input-description">이 필드는 비활성화되어 있습니다.</div>
+        </div>
+        <div class="krds-form-group">
+          <label for="readonly-state" class="krds-label">읽기 전용 상태</label>
+          <input type="text" id="readonly-state" class="krds-input" value="읽기 전용 내용" readonly>
+          <div class="krds-input-description">이 필드는 읽기 전용입니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>유효성 검사 상태</h2>
+      <div class="example-container validation">
+        <div class="krds-form-group">
+          <label for="valid-input" class="krds-label">유효한 입력</label>
+          <input type="text" id="valid-input" class="krds-input is-valid" value="올바른 값">
+          <div class="krds-input-feedback valid">올바른 형식입니다.</div>
+        </div>
+        <div class="krds-form-group">
+          <label for="invalid-input" class="krds-label">유효하지 않은 입력</label>
+          <input type="text" id="invalid-input" class="krds-input is-invalid" value="잘못된 값">
+          <div class="krds-input-feedback invalid">유효하지 않은 형식입니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>아이콘이 있는 입력 필드</h2>
+      <div class="example-container icons">
+        <div class="krds-form-group">
+          <label for="left-icon-input" class="krds-label">왼쪽 아이콘</label>
+          <div class="krds-input-wrapper left-icon">
+            <span class="krds-input-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input type="text" id="left-icon-input" class="krds-input" placeholder="검색어를 입력하세요">
+          </div>
+        </div>
+        <div class="krds-form-group">
+          <label for="right-icon-input" class="krds-label">오른쪽 아이콘</label>
+          <div class="krds-input-wrapper right-icon">
+            <input type="text" id="right-icon-input" class="krds-input" placeholder="이메일 주소를 입력하세요">
+            <span class="krds-input-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="krds-form-group">
+          <label for="both-icon-input" class="krds-label">양쪽 아이콘</label>
+          <div class="krds-input-wrapper both-icon">
+            <span class="krds-input-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <input type="text" id="both-icon-input" class="krds-input" placeholder="사용자 이름을 입력하세요">
+            <span class="krds-input-icon clickable" title="입력 지우기">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>입력 필드 유형</h2>
+      <div class="example-container types">
+        <div class="krds-form-group">
+          <label for="password-input" class="krds-label">비밀번호 입력</label>
+          <div class="krds-input-wrapper right-icon">
+            <input type="password" id="password-input" class="krds-input" placeholder="비밀번호를 입력하세요">
+            <span class="krds-input-icon toggle-password clickable" title="비밀번호 표시">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="show-password">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hide-password" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </span>
+          </div>
+          <div class="krds-input-description">비밀번호는 8자 이상이어야 합니다.</div>
+        </div>
+        <div class="krds-form-group">
+          <label for="number-input" class="krds-label">숫자 입력</label>
+          <input type="number" id="number-input" class="krds-input" placeholder="숫자를 입력하세요" min="0" max="100">
+          <div class="krds-input-description">0에서 100 사이의 숫자를 입력하세요.</div>
+        </div>
+        <div class="krds-form-group">
+          <label for="email-input" class="krds-label">이메일 입력</label>
+          <input type="email" id="email-input" class="krds-input" placeholder="이메일 주소를 입력하세요">
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>필수 입력 필드</h2>
+      <div class="example-container required">
+        <div class="krds-form-group">
+          <label for="required-input" class="krds-label required">필수 입력 필드</label>
+          <input type="text" id="required-input" class="krds-input" placeholder="필수 입력 항목입니다" required>
+          <div class="krds-input-description">이 필드는 필수 입력 항목입니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>접근성 지원</h2>
+      <div class="example-container accessibility">
+        <div class="krds-form-group">
+          <label for="accessible-input" class="krds-label">접근성 지원 입력 필드</label>
+          <input type="text" id="accessible-input" class="krds-input" placeholder="텍스트를 입력하세요" aria-describedby="input-help">
+          <div id="input-help" class="krds-input-description">이 설명은 스크린 리더에서 읽힙니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>JavaScript API 예제</h2>
+      <div class="example-container api">
+        <div class="krds-form-group">
+          <label for="api-input" class="krds-label">API 예제</label>
+          <input type="text" id="api-input" class="krds-input" placeholder="여기에 입력하세요">
+        </div>
+        <div class="api-buttons">
+          <button class="btn" id="validate-btn">유효성 검사</button>
+          <button class="btn" id="clear-btn">내용 지우기</button>
+          <button class="btn" id="disable-btn">비활성화/활성화</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="text-input.js"></script>
+</body>
+</html> 

@@ -1,0 +1,168 @@
+@import "../../../styles/tokens/colors.scss";
+@import "../../../styles/tokens/typography.scss";
+@import "../../../styles/tokens/layout.scss";
+@import "../../../styles/tokens/shape.scss";
+@import "../../../styles/tokens/elevation.scss";
+
+// 아코디언 컴포넌트 스타일
+.krds-accordion {
+  width: 100%;
+  margin: $spacing-md 0;
+  
+  // 아코디언 아이템
+  &-item {
+    margin-bottom: $spacing-sm;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  // 아코디언 버튼
+  &-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: $spacing-md;
+    border: none;
+    background-color: $color-background-subtle;
+    text-align: left;
+    cursor: pointer;
+    border-radius: $border-radius-md;
+    transition: all 0.2s ease;
+    
+    @include body-text-lg;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    
+    &:hover {
+      background-color: $color-background-hover;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-border-focus;
+    }
+    
+    // 확장된 상태
+    &[aria-expanded="true"] {
+      background-color: $color-background-hover;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      
+      .krds-accordion-icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  
+  // 아코디언 제목
+  &-title {
+    flex: 1;
+    margin-right: $spacing-sm;
+  }
+  
+  // 아코디언 아이콘
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-secondary;
+    transition: transform 0.3s ease;
+  }
+  
+  // 아코디언 패널
+  &-panel {
+    overflow: hidden;
+    transition: all 0.3s ease;
+    
+    &[hidden] {
+      display: none;
+    }
+    
+    &:not([hidden]) {
+      border-bottom-left-radius: $border-radius-md;
+      border-bottom-right-radius: $border-radius-md;
+      background-color: $color-background-paper;
+    }
+  }
+  
+  // 아코디언 콘텐츠
+  &-content {
+    padding: $spacing-md;
+    @include body-text-md;
+    color: $color-text-primary;
+  }
+}
+
+// 테두리 스타일 아코디언
+.krds-accordion-bordered {
+  .krds-accordion {
+    &-item {
+      border: 1px solid $color-border-default;
+      border-radius: $border-radius-md;
+      margin-bottom: $spacing-md;
+      overflow: hidden;
+    }
+    
+    &-button {
+      background-color: $color-background-paper;
+      border-radius: 0;
+      border-bottom: 1px solid transparent;
+      
+      &[aria-expanded="true"] {
+        border-bottom-color: $color-border-default;
+      }
+      
+      &:hover {
+        background-color: $color-background-hover;
+      }
+    }
+    
+    &-panel {
+      border-radius: 0;
+      
+      &:not([hidden]) {
+        background-color: $color-background-paper;
+      }
+    }
+  }
+}
+
+// 단일 확장 아코디언 (스타일 관련 속성만)
+.krds-accordion-single {
+  // 자바스크립트로 기능 구현
+}
+
+// 아이콘 왼쪽 아코디언
+.krds-accordion-icon-left {
+  .krds-accordion {
+    &-button {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    
+    &-icon {
+      margin-right: $spacing-sm;
+    }
+    
+    &-title {
+      margin-right: 0;
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 768px) {
+  .krds-accordion {
+    &-button {
+      padding: $spacing-sm;
+      @include body-text-md;
+    }
+    
+    &-content {
+      padding: $spacing-sm;
+    }
+  }
+} 

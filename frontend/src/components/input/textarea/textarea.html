@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>텍스트 영역 컴포넌트 - KRDS</title>
+  <link rel="stylesheet" href="textarea.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>텍스트 영역 컴포넌트</h1>
+      <p>사용자로부터 여러 줄의 텍스트 데이터를 수집하는 입력 요소입니다.</p>
+    </header>
+
+    <section class="example-section">
+      <h2>기본 텍스트 영역</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label for="basic-textarea" class="krds-label">기본 텍스트 영역</label>
+          <textarea id="basic-textarea" class="krds-textarea" placeholder="여러 줄의 텍스트를 입력하세요." rows="4"></textarea>
+          <div class="krds-textarea-description">기본적인 텍스트 영역입니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>텍스트 영역 크기</h2>
+      <div class="example-container sizes">
+        <div class="krds-form-group">
+          <label for="small-textarea" class="krds-label">작은 크기</label>
+          <textarea id="small-textarea" class="krds-textarea krds-textarea-sm" placeholder="작은 텍스트 영역" rows="3"></textarea>
+        </div>
+        <div class="krds-form-group">
+          <label for="default-textarea" class="krds-label">기본 크기</label>
+          <textarea id="default-textarea" class="krds-textarea" placeholder="기본 텍스트 영역" rows="4"></textarea>
+        </div>
+        <div class="krds-form-group">
+          <label for="large-textarea" class="krds-label">큰 크기</label>
+          <textarea id="large-textarea" class="krds-textarea krds-textarea-lg" placeholder="큰 텍스트 영역" rows="5"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>상태별 텍스트 영역</h2>
+      <div class="example-container states">
+        <div class="krds-form-group">
+          <label for="default-state-textarea" class="krds-label">기본 상태</label>
+          <textarea id="default-state-textarea" class="krds-textarea" placeholder="기본 상태" rows="4"></textarea>
+        </div>
+        <div class="krds-form-group">
+          <label for="focus-state-textarea" class="krds-label">포커스 상태 (클릭해보세요)</label>
+          <textarea id="focus-state-textarea" class="krds-textarea" placeholder="포커스 상태" rows="4"></textarea>
+        </div>
+        <div class="krds-form-group">
+          <label for="disabled-state-textarea" class="krds-label">비활성화 상태</label>
+          <textarea id="disabled-state-textarea" class="krds-textarea" placeholder="비활성화 상태" rows="4" disabled></textarea>
+          <div class="krds-textarea-description">이 필드는 비활성화되어 있습니다.</div>
+        </div>
+        <div class="krds-form-group">
+          <label for="readonly-state-textarea" class="krds-label">읽기 전용 상태</label>
+          <textarea id="readonly-state-textarea" class="krds-textarea" rows="4" readonly>이 텍스트 영역은 읽기 전용입니다. 내용을 수정할 수 없습니다.</textarea>
+          <div class="krds-textarea-description">이 필드는 읽기 전용입니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>유효성 검사 상태</h2>
+      <div class="example-container validation">
+        <div class="krds-form-group">
+          <label for="valid-textarea" class="krds-label">유효한 입력</label>
+          <textarea id="valid-textarea" class="krds-textarea is-valid" rows="4">올바른 형식의 내용이 포함된 텍스트 영역입니다.</textarea>
+          <div class="krds-textarea-feedback valid">올바른 형식입니다.</div>
+        </div>
+        <div class="krds-form-group">
+          <label for="invalid-textarea" class="krds-label">유효하지 않은 입력</label>
+          <textarea id="invalid-textarea" class="krds-textarea is-invalid" rows="4">유효하지 않은 내용이 포함된 텍스트 영역입니다.</textarea>
+          <div class="krds-textarea-feedback invalid">유효하지 않은 형식입니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>자동 확장 텍스트 영역</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label for="auto-resize-textarea" class="krds-label">자동 확장 텍스트 영역</label>
+          <textarea id="auto-resize-textarea" class="krds-textarea auto-resize" placeholder="내용을 입력하면 자동으로 높이가 늘어납니다." rows="2" data-min-rows="2" data-max-rows="10"></textarea>
+          <div class="krds-textarea-description">내용을 계속 입력하면 텍스트 영역의 높이가 자동으로 조정됩니다. (최소 2줄, 최대 10줄)</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="example-section">
+      <h2>글자 수 제한 및 카운터</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label for="counter-textarea" class="krds-label">글자 수 제한 및 카운터</label>
+          <div class="krds-textarea-wrapper">
+            <textarea id="counter-textarea" class="krds-textarea with-counter" placeholder="최대 200자까지 입력 가능합니다." rows="4" maxlength="200"></textarea>
+            <div class="krds-textarea-counter"><span id="current-counter">0</span> / 200</div>
+          </div>
+          <div class="krds-textarea-description">입력한 글자 수가 표시됩니다.</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="example-section">
+      <h2>크기 조절 가능 설정</h2>
+      <div class="example-container resize-options">
+        <div class="krds-form-group">
+          <label for="resize-both-textarea" class="krds-label">가로 세로 모두 조절 가능</label>
+          <textarea id="resize-both-textarea" class="krds-textarea resize-both" placeholder="가로 세로 모두 조절 가능한 텍스트 영역" rows="3"></textarea>
+        </div>
+        <div class="krds-form-group">
+          <label for="resize-vertical-textarea" class="krds-label">세로만 조절 가능</label>
+          <textarea id="resize-vertical-textarea" class="krds-textarea resize-vertical" placeholder="세로 방향으로만 조절 가능한 텍스트 영역" rows="3"></textarea>
+        </div>
+        <div class="krds-form-group">
+          <label for="resize-horizontal-textarea" class="krds-label">가로만 조절 가능</label>
+          <textarea id="resize-horizontal-textarea" class="krds-textarea resize-horizontal" placeholder="가로 방향으로만 조절 가능한 텍스트 영역" rows="3"></textarea>
+        </div>
+        <div class="krds-form-group">
+          <label for="resize-none-textarea" class="krds-label">조절 불가능</label>
+          <textarea id="resize-none-textarea" class="krds-textarea resize-none" placeholder="크기 조절이 불가능한 텍스트 영역" rows="3"></textarea>
+        </div>
+      </div>
+    </section>
+    
+    <section class="example-section">
+      <h2>필수 텍스트 영역</h2>
+      <div class="example-container required">
+        <div class="krds-form-group">
+          <label for="required-textarea" class="krds-label required">필수 텍스트 영역</label>
+          <textarea id="required-textarea" class="krds-textarea" placeholder="필수 입력 항목입니다" rows="4" required></textarea>
+          <div class="krds-textarea-description">이 필드는 필수 입력 항목입니다.</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="example-section">
+      <h2>접근성 지원</h2>
+      <div class="example-container accessibility">
+        <div class="krds-form-group">
+          <label for="accessible-textarea" class="krds-label">접근성 지원 텍스트 영역</label>
+          <textarea id="accessible-textarea" class="krds-textarea" placeholder="텍스트를 입력하세요" rows="4" aria-describedby="textarea-help"></textarea>
+          <div id="textarea-help" class="krds-textarea-description">이 설명은 스크린 리더에서 읽힙니다.</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="example-section">
+      <h2>JavaScript API 예제</h2>
+      <div class="example-container api">
+        <div class="krds-form-group">
+          <label for="api-textarea" class="krds-label">API 예제</label>
+          <textarea id="api-textarea" class="krds-textarea" placeholder="여기에 입력하세요" rows="4"></textarea>
+        </div>
+        <div class="api-buttons">
+          <button class="btn" id="validate-textarea-btn">유효성 검사</button>
+          <button class="btn" id="clear-textarea-btn">내용 지우기</button>
+          <button class="btn" id="disable-textarea-btn">비활성화/활성화</button>
+          <button class="btn" id="insert-textarea-btn">내용 삽입</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="textarea.js"></script>
+</body>
+</html> 

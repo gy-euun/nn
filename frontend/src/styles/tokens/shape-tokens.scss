@@ -1,0 +1,120 @@
+// KRDS 모양 토큰
+// KRDS 디자인 시스템의 공식 모양 토큰입니다.
+
+// 테두리 반경 (Border Radius)
+$radius-none: 0;
+$radius-xs: 2px;
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 8px;
+$radius-xl: 12px;
+$radius-2xl: 16px;
+$radius-3xl: 24px;
+$radius-full: 9999px;
+
+// 테두리 두께 (Border Width)
+$border-width-none: 0;
+$border-width-thin: 1px;
+$border-width-medium: 2px;
+$border-width-thick: 4px;
+
+// 테두리 스타일 (Border Style)
+$border-style-solid: solid;
+$border-style-dashed: dashed;
+$border-style-dotted: dotted;
+
+// 그림자 (Shadows)
+$shadow-none: none;
+$shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+$shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+// 불투명도 (Opacity)
+$opacity-0: 0;
+$opacity-5: 0.05;
+$opacity-10: 0.1;
+$opacity-20: 0.2;
+$opacity-25: 0.25;
+$opacity-30: 0.3;
+$opacity-40: 0.4;
+$opacity-50: 0.5;
+$opacity-60: 0.6;
+$opacity-70: 0.7;
+$opacity-75: 0.75;
+$opacity-80: 0.8;
+$opacity-90: 0.9;
+$opacity-100: 1;
+
+// 요소 높이 (Elevation)
+// 요소의 z-축 높이를 나타내는 그림자 값
+$elevation-0: $shadow-none;
+$elevation-1: $shadow-xs;
+$elevation-2: $shadow-sm;
+$elevation-3: $shadow-md;
+$elevation-4: $shadow-lg;
+$elevation-5: $shadow-xl;
+$elevation-6: $shadow-2xl;
+
+// 모양 믹스인
+@mixin rounded($size: $radius-md) {
+  border-radius: $size;
+}
+
+@mixin rounded-t($size: $radius-md) {
+  border-top-left-radius: $size;
+  border-top-right-radius: $size;
+}
+
+@mixin rounded-r($size: $radius-md) {
+  border-top-right-radius: $size;
+  border-bottom-right-radius: $size;
+}
+
+@mixin rounded-b($size: $radius-md) {
+  border-bottom-right-radius: $size;
+  border-bottom-left-radius: $size;
+}
+
+@mixin rounded-l($size: $radius-md) {
+  border-top-left-radius: $size;
+  border-bottom-left-radius: $size;
+}
+
+@mixin rounded-tl($size: $radius-md) {
+  border-top-left-radius: $size;
+}
+
+@mixin rounded-tr($size: $radius-md) {
+  border-top-right-radius: $size;
+}
+
+@mixin rounded-br($size: $radius-md) {
+  border-bottom-right-radius: $size;
+}
+
+@mixin rounded-bl($size: $radius-md) {
+  border-bottom-left-radius: $size;
+}
+
+// 그림자 믹스인
+@mixin shadow($elevation: 3) {
+  @if $elevation == 0 {
+    box-shadow: $elevation-0;
+  } @else if $elevation == 1 {
+    box-shadow: $elevation-1;
+  } @else if $elevation == 2 {
+    box-shadow: $elevation-2;
+  } @else if $elevation == 3 {
+    box-shadow: $elevation-3;
+  } @else if $elevation == 4 {
+    box-shadow: $elevation-4;
+  } @else if $elevation == 5 {
+    box-shadow: $elevation-5;
+  } @else if $elevation == 6 {
+    box-shadow: $elevation-6;
+  }
+} 

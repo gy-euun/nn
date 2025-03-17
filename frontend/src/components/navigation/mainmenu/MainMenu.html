@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRDS 메인 메뉴 컴포넌트</title>
+  <link rel="stylesheet" href="mainmenu.css">
+</head>
+<body>
+  <!-- 기본 메인 메뉴 -->
+  <section class="example-section">
+    <h2>기본 메인 메뉴</h2>
+    <nav class="krds-mainmenu">
+      <div class="krds-mainmenu-container">
+        <div class="krds-mainmenu-brand">
+          <a href="#">
+            <img src="https://via.placeholder.com/120x40" alt="회사 로고">
+          </a>
+        </div>
+        <button class="krds-mainmenu-toggle" aria-expanded="false" aria-label="메뉴 열기">
+          <span class="krds-mainmenu-toggle-icon"></span>
+        </button>
+        <div class="krds-mainmenu-collapse">
+          <ul class="krds-mainmenu-nav">
+            <li class="krds-mainmenu-item active">
+              <a href="#" class="krds-mainmenu-link">홈</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">서비스</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">제품</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">회사 소개</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">연락처</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- 드롭다운이 있는 메인 메뉴 -->
+  <section class="example-section">
+    <h2>드롭다운이 있는 메인 메뉴</h2>
+    <nav class="krds-mainmenu">
+      <div class="krds-mainmenu-container">
+        <div class="krds-mainmenu-brand">
+          <a href="#">
+            <img src="https://via.placeholder.com/120x40" alt="회사 로고">
+          </a>
+        </div>
+        <button class="krds-mainmenu-toggle" aria-expanded="false" aria-label="메뉴 열기">
+          <span class="krds-mainmenu-toggle-icon"></span>
+        </button>
+        <div class="krds-mainmenu-collapse">
+          <ul class="krds-mainmenu-nav">
+            <li class="krds-mainmenu-item active">
+              <a href="#" class="krds-mainmenu-link">홈</a>
+            </li>
+            <li class="krds-mainmenu-item krds-mainmenu-dropdown">
+              <a href="#" class="krds-mainmenu-link krds-mainmenu-dropdown-toggle" aria-expanded="false">
+                서비스
+                <svg class="krds-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <ul class="krds-mainmenu-dropdown-menu">
+                <li><a href="#" class="krds-mainmenu-dropdown-item">컨설팅</a></li>
+                <li><a href="#" class="krds-mainmenu-dropdown-item">개발</a></li>
+                <li><a href="#" class="krds-mainmenu-dropdown-item">디자인</a></li>
+                <li><a href="#" class="krds-mainmenu-dropdown-item">유지보수</a></li>
+              </ul>
+            </li>
+            <li class="krds-mainmenu-item krds-mainmenu-dropdown">
+              <a href="#" class="krds-mainmenu-link krds-mainmenu-dropdown-toggle" aria-expanded="false">
+                제품
+                <svg class="krds-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <ul class="krds-mainmenu-dropdown-menu">
+                <li><a href="#" class="krds-mainmenu-dropdown-item">소프트웨어</a></li>
+                <li><a href="#" class="krds-mainmenu-dropdown-item">하드웨어</a></li>
+                <li><a href="#" class="krds-mainmenu-dropdown-item">서비스</a></li>
+              </ul>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">회사 소개</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">연락처</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- 메가 메뉴 -->
+  <section class="example-section">
+    <h2>메가 메뉴</h2>
+    <nav class="krds-mainmenu">
+      <div class="krds-mainmenu-container">
+        <div class="krds-mainmenu-brand">
+          <a href="#">
+            <img src="https://via.placeholder.com/120x40" alt="회사 로고">
+          </a>
+        </div>
+        <button class="krds-mainmenu-toggle" aria-expanded="false" aria-label="메뉴 열기">
+          <span class="krds-mainmenu-toggle-icon"></span>
+        </button>
+        <div class="krds-mainmenu-collapse">
+          <ul class="krds-mainmenu-nav">
+            <li class="krds-mainmenu-item active">
+              <a href="#" class="krds-mainmenu-link">홈</a>
+            </li>
+            <li class="krds-mainmenu-item krds-mainmenu-megamenu">
+              <a href="#" class="krds-mainmenu-link krds-mainmenu-dropdown-toggle" aria-expanded="false">
+                서비스
+                <svg class="krds-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <div class="krds-mainmenu-megamenu-panel">
+                <div class="krds-mainmenu-megamenu-row">
+                  <div class="krds-mainmenu-megamenu-col">
+                    <h3 class="krds-mainmenu-megamenu-title">컨설팅</h3>
+                    <ul class="krds-mainmenu-megamenu-list">
+                      <li><a href="#">비즈니스 분석</a></li>
+                      <li><a href="#">프로세스 개선</a></li>
+                      <li><a href="#">디지털 전환</a></li>
+                      <li><a href="#">시장 조사</a></li>
+                    </ul>
+                  </div>
+                  <div class="krds-mainmenu-megamenu-col">
+                    <h3 class="krds-mainmenu-megamenu-title">개발</h3>
+                    <ul class="krds-mainmenu-megamenu-list">
+                      <li><a href="#">웹 개발</a></li>
+                      <li><a href="#">모바일 앱</a></li>
+                      <li><a href="#">소프트웨어</a></li>
+                      <li><a href="#">클라우드 서비스</a></li>
+                    </ul>
+                  </div>
+                  <div class="krds-mainmenu-megamenu-col">
+                    <h3 class="krds-mainmenu-megamenu-title">디자인</h3>
+                    <ul class="krds-mainmenu-megamenu-list">
+                      <li><a href="#">UI/UX 디자인</a></li>
+                      <li><a href="#">그래픽 디자인</a></li>
+                      <li><a href="#">브랜드 아이덴티티</a></li>
+                      <li><a href="#">프로토타이핑</a></li>
+                    </ul>
+                  </div>
+                  <div class="krds-mainmenu-megamenu-col">
+                    <h3 class="krds-mainmenu-megamenu-title">지원</h3>
+                    <ul class="krds-mainmenu-megamenu-list">
+                      <li><a href="#">기술 지원</a></li>
+                      <li><a href="#">유지보수</a></li>
+                      <li><a href="#">교육 및 훈련</a></li>
+                      <li><a href="#">문서화</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">제품</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">회사 소개</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">연락처</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- 검색 기능이 있는 메인 메뉴 -->
+  <section class="example-section">
+    <h2>검색 기능이 있는 메인 메뉴</h2>
+    <nav class="krds-mainmenu">
+      <div class="krds-mainmenu-container">
+        <div class="krds-mainmenu-brand">
+          <a href="#">
+            <img src="https://via.placeholder.com/120x40" alt="회사 로고">
+          </a>
+        </div>
+        <button class="krds-mainmenu-toggle" aria-expanded="false" aria-label="메뉴 열기">
+          <span class="krds-mainmenu-toggle-icon"></span>
+        </button>
+        <div class="krds-mainmenu-collapse">
+          <ul class="krds-mainmenu-nav">
+            <li class="krds-mainmenu-item active">
+              <a href="#" class="krds-mainmenu-link">홈</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">서비스</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">제품</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">회사 소개</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">연락처</a>
+            </li>
+          </ul>
+          <form class="krds-mainmenu-search">
+            <div class="krds-mainmenu-search-container">
+              <input type="text" class="krds-mainmenu-search-input" placeholder="검색어를 입력하세요...">
+              <button type="submit" class="krds-mainmenu-search-button" aria-label="검색">
+                <svg class="krds-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- 우측 정렬 메뉴가 있는 메인 메뉴 -->
+  <section class="example-section">
+    <h2>우측 정렬 메뉴가 있는 메인 메뉴</h2>
+    <nav class="krds-mainmenu">
+      <div class="krds-mainmenu-container">
+        <div class="krds-mainmenu-brand">
+          <a href="#">
+            <img src="https://via.placeholder.com/120x40" alt="회사 로고">
+          </a>
+        </div>
+        <button class="krds-mainmenu-toggle" aria-expanded="false" aria-label="메뉴 열기">
+          <span class="krds-mainmenu-toggle-icon"></span>
+        </button>
+        <div class="krds-mainmenu-collapse">
+          <ul class="krds-mainmenu-nav">
+            <li class="krds-mainmenu-item active">
+              <a href="#" class="krds-mainmenu-link">홈</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">서비스</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">제품</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">회사 소개</a>
+            </li>
+          </ul>
+          <ul class="krds-mainmenu-nav krds-mainmenu-nav-right">
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">로그인</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link krds-btn krds-btn-primary krds-btn-sm">회원가입</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- 다크모드 메인 메뉴 -->
+  <section class="example-section">
+    <h2>다크모드 메인 메뉴</h2>
+    <nav class="krds-mainmenu krds-mainmenu-dark">
+      <div class="krds-mainmenu-container">
+        <div class="krds-mainmenu-brand">
+          <a href="#">
+            <img src="https://via.placeholder.com/120x40" alt="회사 로고">
+          </a>
+        </div>
+        <button class="krds-mainmenu-toggle" aria-expanded="false" aria-label="메뉴 열기">
+          <span class="krds-mainmenu-toggle-icon"></span>
+        </button>
+        <div class="krds-mainmenu-collapse">
+          <ul class="krds-mainmenu-nav">
+            <li class="krds-mainmenu-item active">
+              <a href="#" class="krds-mainmenu-link">홈</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">서비스</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">제품</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">회사 소개</a>
+            </li>
+            <li class="krds-mainmenu-item">
+              <a href="#" class="krds-mainmenu-link">연락처</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <script src="mainmenu.js"></script>
+</body>
+</html> 

@@ -6,7 +6,7 @@
 
 ```
 industrial-safety-app/
-├── frontend/           # Next.js 프론트엔드
+├── frontend/           # HTML/CSS/JS (KRDS 컴포넌트 기반) 프론트엔드
 ├── backend/            # NestJS 백엔드
 └── docs/               # 프로젝트 문서
 ```
@@ -14,11 +14,11 @@ industrial-safety-app/
 ## 기술 스택
 
 ### 프론트엔드
-- **프레임워크**: Next.js
-- **상태 관리**: Zustand
-- **스타일링**: Tailwind CSS
-- **UI 라이브러리**: Chakra UI
-- **데이터 페칭**: React Query
+* **기반 기술**: HTML/CSS/JavaScript (바닐라)
+* **UI 라이브러리**: KRDS HTML Component Kit
+* **빌드 도구**: Vite
+* **스타일링**: SCSS
+* **HTTP 클라이언트**: Axios
 
 ### 백엔드
 - **프레임워크**: NestJS

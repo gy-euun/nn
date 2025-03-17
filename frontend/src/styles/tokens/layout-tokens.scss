@@ -1,0 +1,154 @@
+// KRDS 레이아웃 토큰
+// KRDS 디자인 시스템의 공식 레이아웃 토큰입니다.
+
+// 간격 (Spacing)
+$spacing-none: 0;
+$spacing-xxs: 0.25rem;  // 4px
+$spacing-xs: 0.5rem;    // 8px
+$spacing-sm: 0.75rem;   // 12px
+$spacing-md: 1rem;      // 16px
+$spacing-lg: 1.5rem;    // 24px
+$spacing-xl: 2rem;      // 32px
+$spacing-2xl: 2.5rem;   // 40px
+$spacing-3xl: 3rem;     // 48px
+$spacing-4xl: 4rem;     // 64px
+$spacing-5xl: 5rem;     // 80px
+$spacing-6xl: 6rem;     // 96px
+
+// 컨테이너 너비
+$container-sm: 640px;
+$container-md: 768px;
+$container-lg: 1024px;
+$container-xl: 1280px;
+$container-2xl: 1536px;
+
+// 그리드 레이아웃
+$grid-columns: 12;
+$grid-gutter: $spacing-md;
+
+// 레이아웃 구성요소 사이즈
+$header-height: 64px;
+$sidebar-width: 256px;
+$sidebar-collapsed-width: 64px;
+$footer-height: 80px;
+$tabs-height: 48px;
+$toolbar-height: 56px;
+
+// 브레이크포인트
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+// z-index 계층
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 1080;
+
+// 반응형 미디어 쿼리 믹스인
+@mixin media-breakpoint-up($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  } @else if $breakpoint == 2xl {
+    @media (min-width: $breakpoint-2xl) { @content; }
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $breakpoint-sm - 1) { @content; }
+  } @else if $breakpoint == sm {
+    @media (max-width: $breakpoint-md - 1) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-lg - 1) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-xl - 1) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: $breakpoint-2xl - 1) { @content; }
+  }
+}
+
+// 브레이크포인트 맵 정의
+$breakpoints-up: (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  2xl: $breakpoint-2xl
+);
+
+$breakpoints-down: (
+  xs: $breakpoint-sm - 1,
+  sm: $breakpoint-md - 1,
+  md: $breakpoint-lg - 1,
+  lg: $breakpoint-xl - 1,
+  xl: $breakpoint-2xl - 1
+);
+
+@mixin media-breakpoint-between($min, $max) {
+  $min-width: if($min == xs, 0, map-get($breakpoints-up, $min));
+  $max-width: map-get($breakpoints-down, $max);
+  
+  @media (min-width: $min-width) and (max-width: $max-width) { @content; }
+}
+
+// 그리드 믹스인
+@mixin make-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -($grid-gutter / 2);
+  margin-left: -($grid-gutter / 2);
+}
+
+@mixin make-col($size) {
+  flex: 0 0 percentage($size / $grid-columns);
+  max-width: percentage($size / $grid-columns);
+  padding-right: $grid-gutter / 2;
+  padding-left: $grid-gutter / 2;
+}
+
+// 컨테이너 믹스인
+@mixin make-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-md;
+  padding-left: $spacing-md;
+}
+
+@mixin make-container-responsive {
+  @include make-container;
+  
+  @include media-breakpoint-up(sm) {
+    max-width: $container-sm;
+  }
+  
+  @include media-breakpoint-up(md) {
+    max-width: $container-md;
+  }
+  
+  @include media-breakpoint-up(lg) {
+    max-width: $container-lg;
+  }
+  
+  @include media-breakpoint-up(xl) {
+    max-width: $container-xl;
+  }
+  
+  @include media-breakpoint-up(2xl) {
+    max-width: $container-2xl;
+  }
+} 

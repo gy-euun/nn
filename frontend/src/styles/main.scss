@@ -1,0 +1,492 @@
+/* 산업 안전 종합 관리 플랫폼 스타일 */
+
+// KRDS 스타일 임포트
+@import 'krds-styles.scss';
+
+// 페이지별 스타일 임포트
+@import 'pages/dashboard.scss';
+
+// 변수
+$primary-color: #0050a5;
+$secondary-color: #f2994a;
+$danger-color: #eb5757;
+$success-color: #27ae60;
+$background-color: #f7f9fc;
+$text-color: #333333;
+
+// 브레이크포인트
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// 토큰
+@import 'tokens/colors.scss';
+@import 'tokens/typography.scss';
+@import 'tokens/layout.scss';
+@import 'tokens/shape.scss';
+@import 'tokens/elevation.scss';
+
+/* 기본 스타일 */
+@import 'base/reset.scss';
+
+/* 유틸리티 */
+@import 'utils/a11y.scss';
+
+/* 컴포넌트 스타일 */
+@import '../components/header/header.scss';
+@import '../components/footer/footer.scss';
+@import '../components/atoms/icons/icons.scss';
+@import '../components/actions/button/button.scss';
+@import 'components/notification.scss';
+
+/* 페이지 스타일 */
+/* 필요에 따라 페이지 스타일을 가져옵니다 */
+@import 'pages/home.scss';
+@import 'pages/dashboard.scss';
+@import 'pages/auth.scss';
+
+// 기본 스타일
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// 헤더 스타일
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary-color;
+  }
+
+  nav {
+    ul {
+      display: flex;
+      list-style: none;
+      
+      li {
+        margin-left: 1.5rem;
+        
+        a {
+          text-decoration: none;
+          color: $text-color;
+          font-weight: 500;
+          transition: color 0.3s;
+          
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 버튼 스타일
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  
+  &-primary {
+    background-color: $primary-color;
+    color: white;
+    
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+  
+  &-secondary {
+    background-color: $secondary-color;
+    color: white;
+    
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+  
+  &-danger {
+    background-color: $danger-color;
+    color: white;
+    
+    &:hover {
+      background-color: darken($danger-color, 10%);
+    }
+  }
+  
+  &-success {
+    background-color: $success-color;
+    color: white;
+    
+    &:hover {
+      background-color: darken($success-color, 10%);
+    }
+  }
+  
+  &-block {
+    display: block;
+    width: 100%;
+  }
+}
+
+// 폼 스타일
+.form-group {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    }
+  }
+
+  &.form-check {
+    display: flex;
+    align-items: center;
+
+    input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+
+    label {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// 인증 페이지 스타일
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.auth-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 1.75rem;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #666;
+    font-size: 0.95rem;
+  }
+}
+
+.auth-form {
+  .auth-links {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .separator {
+      margin: 0 0.5rem;
+      color: #ccc;
+    }
+  }
+}
+
+// 알림 스타일
+.notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &-success {
+    background-color: $success-color;
+  }
+
+  &-error {
+    background-color: $danger-color;
+  }
+
+  &-warning {
+    background-color: $secondary-color;
+  }
+
+  &-info {
+    background-color: $primary-color;
+  }
+}
+
+// 메인 페이지 스타일
+.hero {
+  padding: 4rem 0;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: #666;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    .btn {
+      margin: 0 0.5rem;
+    }
+  }
+}
+
+.features {
+  padding: 4rem 0;
+  background-color: white;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    color: $primary-color;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: $primary-color;
+    }
+
+    p {
+      color: #666;
+    }
+  }
+}
+
+// 푸터 스타일
+footer {
+  background-color: #f2f2f2;
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 4rem;
+  
+  p {
+    color: #666;
+  }
+}
+
+// 반응형 스타일
+@media (max-width: $breakpoint-md) {
+  header {
+    .header-container {
+      flex-direction: column;
+      
+      nav {
+        margin-top: 1rem;
+        
+        ul {
+          flex-direction: column;
+          
+          li {
+            margin-left: 0;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+  
+  .hero {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+// KRDS 컴포넌트와 통합할 추가 스타일
+// 향후 KRDS 컴포넌트 스타일을 가져와서 통합하는 코드 추가 
+
+// 전역 스타일
+:root {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-neutral-900);
+  background-color: var(--color-white);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  
+  &:hover {
+    color: var(--color-primary-600);
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// 접근성 유틸리티
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// 컨테이너
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  
+  @media (max-width: 1200px) {
+    max-width: 992px;
+  }
+  
+  @media (max-width: 992px) {
+    max-width: 768px;
+  }
+  
+  @media (max-width: 768px) {
+    max-width: 576px;
+  }
+}
+
+// 메인 콘텐츠
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+} 

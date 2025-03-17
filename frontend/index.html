@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>산업 안전 종합 관리 플랫폼</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div class="container header-container">
+        <div class="logo">산업 안전 종합 관리 플랫폼</div>
+        <nav>
+          <ul>
+            <li><a href="index.html">홈</a></li>
+            <li><a href="src/pages/projects.html">프로젝트</a></li>
+            <li><a href="src/pages/risk-assessment.html">위험성 평가</a></li>
+            <li><a href="src/pages/documents.html">안전 문서</a></li>
+            <li><a href="src/pages/workers.html">근로자 관리</a></li>
+            <li><a href="src/pages/community.html">커뮤니티</a></li>
+            <li><a href="src/pages/chatbot.html">AI 챗봇</a></li>
+            <li><a id="loginLink" href="src/pages/login.html">로그인</a></li>
+            <li><a id="logoutBtn" href="#" style="display: none;">로그아웃</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>산업 현장의 안전과 효율성을 향상시키는 종합 관리 솔루션</h1>
+        <p>산업 안전 종합 관리 플랫폼을 통해 안전하고 효율적인 작업 환경을 구축하세요.</p>
+        <div class="cta-buttons">
+          <a href="src/pages/signup.html" class="btn btn-primary">시작하기</a>
+          <a href="src/pages/about.html" class="btn btn-secondary">더 알아보기</a>
+        </div>
+      </section>
+
+      <section class="features">
+        <h2>주요 기능</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>위험성 평가</h3>
+            <p>AI 기반 위험성 평가 도구로 작업 현장의 위험 요소를 파악하고 개선하세요.</p>
+          </div>
+          <div class="feature-card">
+            <h3>안전 문서 관리</h3>
+            <p>모든 안전 관련 문서를 한 곳에서 관리하고 필요할 때 빠르게 접근하세요.</p>
+          </div>
+          <div class="feature-card">
+            <h3>근로자 관리</h3>
+            <p>근로자 정보, 교육 이력, 출입 기록을 체계적으로 관리하세요.</p>
+          </div>
+          <div class="feature-card">
+            <h3>AI 안전 챗봇</h3>
+            <p>안전 관련 질문에 즉시 답변을 제공하는 AI 챗봇으로 정보 접근성을 높이세요.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 산업 안전 종합 관리 플랫폼. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module">
+      import { isAuthenticated, logout } from '/src/js/auth.js';
+
+      // 페이지 로드 시 인증 상태에 따라 UI 업데이트
+      document.addEventListener('DOMContentLoaded', () => {
+        const loginLink = document.getElementById('loginLink');
+        const logoutBtn = document.getElementById('logoutBtn');
+        
+        if (isAuthenticated()) {
+          loginLink.style.display = 'none';
+          logoutBtn.style.display = 'inline-block';
+        } else {
+          loginLink.style.display = 'inline-block';
+          logoutBtn.style.display = 'none';
+        }
+        
+        // 로그아웃 버튼 이벤트 추가
+        logoutBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          logout();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,641 @@
+@import "../../../styles/tokens/colors.scss";
+@import "../../../styles/tokens/typography.scss";
+@import "../../../styles/tokens/layout.scss";
+@import "../../../styles/tokens/shape.scss";
+@import "../../../styles/tokens/elevation.scss";
+
+// 메인 메뉴 컴포넌트 스타일
+// ======================
+
+// 예제 섹션 스타일
+.example-section {
+  margin-bottom: $spacing-xxl;
+  
+  h2 {
+    margin-bottom: $spacing-lg;
+    @include heading-md;
+    color: $color-text-primary;
+  }
+}
+
+// 기본 메인 메뉴 스타일
+.krds-mainmenu {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md 0;
+  background-color: $color-background-alt;
+  border-bottom: 1px solid $color-border-light;
+  box-shadow: $shadow-elevation-1;
+  
+  // 메인 메뉴 컨테이너
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+  }
+  
+  // 브랜드 영역 (로고)
+  &-brand {
+    display: flex;
+    align-items: center;
+    margin-right: $spacing-lg;
+    
+    a {
+      display: block;
+      
+      img {
+        display: block;
+        height: 40px;
+        width: auto;
+      }
+    }
+  }
+  
+  // 토글 버튼 (모바일)
+  &-toggle {
+    display: none;
+    padding: $spacing-sm;
+    background-color: transparent;
+    border: 1px solid $color-border-light;
+    border-radius: $border-radius-sm;
+    color: $color-text-primary;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: $color-background-subtle;
+      border-color: $color-border-secondary;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-border-focus;
+    }
+    
+    // 토글 아이콘
+    &-icon {
+      display: block;
+      position: relative;
+      width: 22px;
+      height: 2px;
+      background-color: $color-text-primary;
+      
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 22px;
+        height: 2px;
+        background-color: $color-text-primary;
+        left: 0;
+        transition: transform 0.2s ease;
+      }
+      
+      &::before {
+        top: -6px;
+      }
+      
+      &::after {
+        bottom: -6px;
+      }
+    }
+    
+    &[aria-expanded="true"] {
+      .krds-mainmenu-toggle-icon {
+        background-color: transparent;
+        
+        &::before {
+          transform: rotate(45deg);
+          top: 0;
+        }
+        
+        &::after {
+          transform: rotate(-45deg);
+          bottom: 0;
+        }
+      }
+    }
+  }
+  
+  // 메뉴 영역 (접을 수 있는)
+  &-collapse {
+    display: flex;
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  // 메인 네비게이션
+  &-nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    
+    // 우측 정렬 네비게이션
+    &-right {
+      margin-left: auto;
+    }
+    
+    // 메뉴 아이템
+    .krds-mainmenu-item {
+      position: relative;
+      
+      // 활성화된 아이템
+      &.active {
+        .krds-mainmenu-link {
+          color: $color-brand-primary;
+          font-weight: $font-weight-bold;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: $spacing-sm;
+            right: $spacing-sm;
+            height: 2px;
+            background-color: $color-brand-primary;
+          }
+        }
+      }
+    }
+    
+    // 메뉴 링크
+    .krds-mainmenu-link {
+      display: flex;
+      align-items: center;
+      padding: $spacing-sm $spacing-md;
+      color: $color-text-primary;
+      text-decoration: none;
+      @include body-text-md;
+      font-weight: $font-weight-medium;
+      position: relative;
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: $color-brand-primary;
+      }
+      
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $color-border-focus;
+        border-radius: $border-radius-sm;
+      }
+      
+      // 버튼 스타일의 링크
+      &.krds-btn {
+        padding: $spacing-xs $spacing-md;
+        margin-left: $spacing-sm;
+      }
+      
+      // 아이콘
+      .krds-icon {
+        margin-left: $spacing-xs;
+      }
+    }
+  }
+  
+  // 드롭다운 메뉴
+  &-dropdown {
+    // 드롭다운 토글 링크
+    .krds-mainmenu-dropdown-toggle {
+      &::after {
+        display: none;
+      }
+    }
+    
+    // 드롭다운 메뉴
+    &-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 100;
+      display: none;
+      min-width: 200px;
+      padding: $spacing-xs 0;
+      margin: $spacing-xs 0 0;
+      list-style: none;
+      background-color: $color-background-alt;
+      border: 1px solid $color-border-light;
+      border-radius: $border-radius-md;
+      box-shadow: $shadow-elevation-2;
+      
+      // 드롭다운 아이템
+      .krds-mainmenu-dropdown-item {
+        display: block;
+        width: 100%;
+        padding: $spacing-sm $spacing-md;
+        clear: both;
+        text-align: inherit;
+        white-space: nowrap;
+        color: $color-text-primary;
+        text-decoration: none;
+        background-color: transparent;
+        border: 0;
+        @include body-text-md;
+        transition: background-color 0.2s ease;
+        
+        &:hover {
+          color: $color-text-primary;
+          background-color: $color-background-subtle;
+        }
+        
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px $color-border-focus inset;
+        }
+      }
+    }
+    
+    // 드롭다운 열기 상태
+    &.show {
+      .krds-mainmenu-dropdown-menu {
+        display: block;
+        animation: dropdown-fade-in 0.2s ease-in-out;
+      }
+      
+      .krds-mainmenu-dropdown-toggle {
+        color: $color-brand-primary;
+        
+        .krds-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  
+  // 메가 메뉴
+  &-megamenu {
+    position: static;
+    
+    // 메가 메뉴 패널
+    &-panel {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: none;
+      padding: $spacing-lg;
+      margin: $spacing-xs 0 0;
+      background-color: $color-background-alt;
+      border: 1px solid $color-border-light;
+      border-radius: $border-radius-md;
+      box-shadow: $shadow-elevation-2;
+    }
+    
+    // 메가 메뉴 행
+    &-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-lg;
+    }
+    
+    // 메가 메뉴 컬럼
+    &-col {
+      flex: 1 0 0%;
+      min-width: 200px;
+    }
+    
+    // 메가 메뉴 제목
+    &-title {
+      margin: 0 0 $spacing-md;
+      padding-bottom: $spacing-xs;
+      border-bottom: 1px solid $color-border-light;
+      color: $color-text-primary;
+      @include heading-sm;
+      font-weight: $font-weight-bold;
+    }
+    
+    // 메가 메뉴 리스트
+    &-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        margin-bottom: $spacing-xs;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        a {
+          display: block;
+          color: $color-text-secondary;
+          text-decoration: none;
+          @include body-text-md;
+          padding: $spacing-xs 0;
+          transition: color 0.2s ease;
+          
+          &:hover {
+            color: $color-brand-primary;
+          }
+          
+          &:focus {
+            outline: none;
+            color: $color-brand-primary;
+          }
+        }
+      }
+    }
+    
+    // 메가 메뉴 열기 상태
+    &.show {
+      .krds-mainmenu-megamenu-panel {
+        display: block;
+        animation: dropdown-fade-in 0.2s ease-in-out;
+      }
+      
+      .krds-mainmenu-dropdown-toggle {
+        color: $color-brand-primary;
+        
+        .krds-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  
+  // 검색 영역
+  &-search {
+    margin-left: $spacing-md;
+    
+    &-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    &-input {
+      padding: $spacing-xs $spacing-md;
+      padding-right: 40px;
+      border: 1px solid $color-border-light;
+      border-radius: $border-radius-md;
+      @include body-text-md;
+      width: 240px;
+      transition: all 0.2s ease;
+      
+      &::placeholder {
+        color: $color-text-tertiary;
+      }
+      
+      &:focus {
+        outline: none;
+        border-color: $color-brand-primary;
+        box-shadow: 0 0 0 2px rgba($color-brand-primary, 0.2);
+        width: 280px;
+      }
+    }
+    
+    &-button {
+      position: absolute;
+      right: $spacing-xs;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: $color-text-secondary;
+      cursor: pointer;
+      padding: $spacing-xs;
+      
+      &:hover {
+        color: $color-brand-primary;
+      }
+      
+      &:focus {
+        outline: none;
+        color: $color-brand-primary;
+      }
+    }
+  }
+  
+  // 다크 모드
+  &-dark {
+    background-color: $color-background-inverse;
+    border-bottom: 1px solid rgba($color-white, 0.1);
+    
+    .krds-mainmenu-toggle {
+      border-color: rgba($color-white, 0.2);
+      
+      &:hover {
+        background-color: rgba($color-white, 0.05);
+      }
+      
+      &-icon,
+      &-icon::before,
+      &-icon::after {
+        background-color: $color-text-inverse;
+      }
+    }
+    
+    .krds-mainmenu-link {
+      color: $color-text-inverse;
+      
+      &:hover {
+        color: $color-brand-secondary;
+      }
+    }
+    
+    .krds-mainmenu-item.active {
+      .krds-mainmenu-link {
+        color: $color-brand-secondary;
+        
+        &::after {
+          background-color: $color-brand-secondary;
+        }
+      }
+    }
+    
+    .krds-mainmenu-dropdown-menu {
+      background-color: $color-background-inverse;
+      border-color: rgba($color-white, 0.1);
+      
+      .krds-mainmenu-dropdown-item {
+        color: $color-text-inverse;
+        
+        &:hover {
+          background-color: rgba($color-white, 0.05);
+        }
+      }
+    }
+    
+    .krds-mainmenu-megamenu-panel {
+      background-color: $color-background-inverse;
+      border-color: rgba($color-white, 0.1);
+    }
+    
+    .krds-mainmenu-megamenu-title {
+      color: $color-text-inverse;
+      border-bottom-color: rgba($color-white, 0.1);
+    }
+    
+    .krds-mainmenu-megamenu-list {
+      li {
+        a {
+          color: rgba($color-white, 0.7);
+          
+          &:hover {
+            color: $color-brand-secondary;
+          }
+        }
+      }
+    }
+    
+    .krds-mainmenu-search-input {
+      background-color: rgba($color-white, 0.05);
+      border-color: rgba($color-white, 0.1);
+      color: $color-text-inverse;
+      
+      &::placeholder {
+        color: rgba($color-white, 0.5);
+      }
+      
+      &:focus {
+        border-color: $color-brand-secondary;
+        box-shadow: 0 0 0 2px rgba($color-brand-secondary, 0.2);
+      }
+    }
+    
+    .krds-mainmenu-search-button {
+      color: rgba($color-white, 0.7);
+      
+      &:hover,
+      &:focus {
+        color: $color-brand-secondary;
+      }
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 992px) {
+  .krds-mainmenu {
+    padding: $spacing-sm 0;
+    
+    &-toggle {
+      display: block;
+      margin-left: auto;
+    }
+    
+    &-collapse {
+      display: none;
+      width: 100%;
+      flex-basis: 100%;
+      margin-top: $spacing-md;
+      
+      &.show {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    
+    &-nav {
+      flex-direction: column;
+      width: 100%;
+      
+      &-right {
+        margin-left: 0;
+        margin-top: $spacing-md;
+        
+        .krds-mainmenu-link.krds-btn {
+          margin-left: 0;
+          margin-top: $spacing-xs;
+        }
+      }
+      
+      .krds-mainmenu-item {
+        width: 100%;
+        
+        &.active {
+          .krds-mainmenu-link::after {
+            display: none;
+          }
+        }
+      }
+      
+      .krds-mainmenu-link {
+        padding: $spacing-sm 0;
+        width: 100%;
+      }
+    }
+    
+    &-dropdown {
+      &-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        border-left: 2px solid $color-border-light;
+        margin: $spacing-xs 0 $spacing-xs $spacing-md;
+        padding: 0;
+        border-radius: 0;
+        
+        .krds-mainmenu-dropdown-item {
+          padding: $spacing-sm 0;
+        }
+      }
+    }
+    
+    &-megamenu {
+      &-panel {
+        position: static;
+        box-shadow: none;
+        border: none;
+        margin: $spacing-xs 0;
+        padding: $spacing-md 0;
+      }
+      
+      &-row {
+        flex-direction: column;
+        gap: $spacing-md;
+      }
+      
+      &-col {
+        padding-left: $spacing-md;
+        border-left: 2px solid $color-border-light;
+      }
+    }
+    
+    &-search {
+      margin: $spacing-md 0 0 0;
+      width: 100%;
+      
+      &-container {
+        width: 100%;
+      }
+      
+      &-input {
+        width: 100%;
+        
+        &:focus {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// 애니메이션
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

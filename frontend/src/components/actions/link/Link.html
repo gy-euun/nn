@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRDS 링크 컴포넌트</title>
+  <link rel="stylesheet" href="link.css">
+</head>
+<body>
+  <h1>KRDS 링크 컴포넌트</h1>
+  
+  <!-- 기본 링크 -->
+  <section class="example-section">
+    <h2>기본 링크</h2>
+    <div class="example-container">
+      <!-- 기본 링크 -->
+      <a href="#" class="krds-link">
+        <span class="underline">기본 링크</span>
+      </a>
+
+      <!-- 외부 링크 -->
+      <a href="https://www.example.com" class="krds-link external" target="_blank" rel="noopener noreferrer">
+        <span class="underline">외부 링크</span>
+        <i class="krds-icon icon-external"></i>
+      </a>
+
+      <!-- 다운로드 링크 -->
+      <a href="#" class="krds-link download" download>
+        <span class="underline">다운로드 링크</span>
+        <i class="krds-icon icon-download"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 크기 변형 링크 -->
+  <section class="example-section">
+    <h2>크기 변형 링크</h2>
+    <div class="example-container">
+      <!-- 작은 링크 -->
+      <a href="#" class="krds-link small">
+        <span class="underline">작은 링크</span>
+      </a>
+
+      <!-- 중간 링크 (기본) -->
+      <a href="#" class="krds-link medium">
+        <span class="underline">중간 링크 (기본)</span>
+      </a>
+
+      <!-- 큰 링크 -->
+      <a href="#" class="krds-link large">
+        <span class="underline">큰 링크</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 스타일 변형 링크 -->
+  <section class="example-section">
+    <h2>스타일 변형 링크</h2>
+    <div class="example-container">
+      <!-- 기본 컬러 링크 -->
+      <a href="#" class="krds-link primary">
+        <span class="underline">기본 컬러 링크</span>
+      </a>
+
+      <!-- 본문 텍스트 컬러 링크 -->
+      <a href="#" class="krds-link basic">
+        <span class="underline">본문 텍스트 컬러 링크</span>
+      </a>
+
+      <!-- 가상클래스 상태 시 컬러 유지 -->
+      <a href="#" class="krds-link pure">
+        <span class="underline">가상클래스 상태 시 컬러 유지</span>
+      </a>
+
+      <!-- 가상클래스 상태 시 밑줄 -->
+      <a href="#" class="krds-link basic">
+        <span class="underline hidden-underline">가상클래스 상태 시 밑줄</span>
+      </a>
+
+      <!-- 밑줄 없음 -->
+      <a href="#" class="krds-link basic">
+        <span>밑줄 없음</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 상태 변형 링크 -->
+  <section class="example-section">
+    <h2>상태 변형 링크</h2>
+    <div class="example-container">
+      <!-- 활성화 링크 -->
+      <a href="#" class="krds-link active">
+        <span class="underline">활성화 링크</span>
+      </a>
+
+      <!-- 비활성화 링크 -->
+      <a href="#" class="krds-link disabled" aria-disabled="true" tabindex="-1">
+        <span class="underline">비활성화 링크</span>
+      </a>
+
+      <!-- 방문한 링크 (CSS에서 :visited 선택자로 처리) -->
+      <a href="#visited" class="krds-link visited">
+        <span class="underline">방문한 링크</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 아이콘이 있는 링크 -->
+  <section class="example-section">
+    <h2>아이콘이 있는 링크</h2>
+    <div class="example-container">
+      <!-- 앞에 아이콘이 있는 링크 -->
+      <a href="#" class="krds-link icon-left">
+        <i class="krds-icon icon-arrow-left"></i>
+        <span class="underline">앞에 아이콘이 있는 링크</span>
+      </a>
+
+      <!-- 뒤에 아이콘이 있는 링크 -->
+      <a href="#" class="krds-link icon-right">
+        <span class="underline">뒤에 아이콘이 있는 링크</span>
+        <i class="krds-icon icon-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 네비게이션에서 사용하는 링크 -->
+  <section class="example-section">
+    <h2>네비게이션에서 사용하는 링크</h2>
+    <div class="example-container nav-example">
+      <nav class="krds-nav">
+        <ul>
+          <li><a href="#" class="krds-link nav-link active">홈</a></li>
+          <li><a href="#" class="krds-link nav-link">서비스</a></li>
+          <li><a href="#" class="krds-link nav-link">제품</a></li>
+          <li><a href="#" class="krds-link nav-link">문의하기</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <script src="link.js"></script>
+</body>
+</html> 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 - 산업 안전 종합 관리 플랫폼</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.scss">
+    <!-- Pretendard GOV 폰트 로드 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard-dynamic-subset.css" />
+  </head>
+  <body>
+    <!-- 헤더 컴포넌트 -->
+    <div id="header-container"></div>
+    
+    <!-- 메인 콘텐츠 -->
+    <main id="main-content" class="krds-main">
+      <div class="krds-container">
+        <div class="krds-auth">
+          <div class="krds-auth__box">
+            <div class="krds-auth__header">
+              <h1 class="krds-auth__title">로그인</h1>
+              <p class="krds-auth__subtitle">계정 정보를 입력하여 로그인하세요.</p>
+            </div>
+            
+            <form id="loginForm" class="krds-auth__form">
+              <div class="krds-form-group">
+                <label for="email" class="krds-form-label">이메일</label>
+                <input type="email" id="email" name="email" class="krds-form-input" placeholder="이메일 주소를 입력하세요" required>
+              </div>
+              
+              <div class="krds-form-group">
+                <label for="password" class="krds-form-label">비밀번호</label>
+                <input type="password" id="password" name="password" class="krds-form-input" placeholder="비밀번호를 입력하세요" required>
+              </div>
+              
+              <div class="krds-form-check">
+                <input type="checkbox" id="rememberMe" name="rememberMe" class="krds-form-check-input">
+                <label for="rememberMe" class="krds-form-check-label">로그인 상태 유지</label>
+              </div>
+              
+              <button type="submit" class="krds-btn krds-btn--primary krds-btn--block">로그인</button>
+              
+              <div class="krds-auth__links">
+                <a href="/find-password.html" class="krds-auth__link">비밀번호 찾기</a>
+                <span class="krds-auth__separator">|</span>
+                <a href="/signup.html" class="krds-auth__link">회원가입</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- 푸터 컴포넌트 -->
+    <div id="footer-container"></div>
+    
+    <!-- 스크립트 -->
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module">
+      import { login } from '/src/js/auth.js';
+      import { showNotification } from '/src/js/main.js';
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const loginForm = document.getElementById('loginForm');
+        
+        loginForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const rememberMe = document.getElementById('rememberMe').checked;
+          
+          try {
+            const result = await login(email, password, rememberMe);
+            
+            if (result.success) {
+              showNotification('로그인되었습니다.', 'success');
+              window.location.href = '/';
+            } else {
+              showNotification(result.message || '로그인에 실패했습니다.', 'error');
+            }
+          } catch (error) {
+            showNotification('로그인 중 오류가 발생했습니다.', 'error');
+            console.error(error);
+          }
+        });
+      });
+    </script>
+  </body>
+</html> 

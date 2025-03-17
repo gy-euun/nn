@@ -1,0 +1,224 @@
+@import '../../styles/tokens/colors.scss';
+@import '../../styles/tokens/typography.scss';
+@import '../../styles/tokens/layout.scss';
+@import '../../styles/tokens/shape.scss';
+@import '../../styles/tokens/elevation.scss';
+
+/* 푸터 컴포넌트 스타일 */
+#krds-footer {
+  background-color: var(--color-neutral-900);
+  color: var(--color-white);
+  width: 100%;
+  
+  /* 푸터 상단 영역 */
+  .footer-top {
+    background-color: var(--color-neutral-800);
+    padding: 24px 0;
+    border-bottom: 1px solid var(--color-neutral-700);
+    
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+    
+    .footer-logo {
+      .logo-image {
+        height: 32px;
+        width: auto;
+      }
+    }
+    
+    .footer-nav {
+      .footer-links {
+        display: flex;
+        gap: 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        
+        @media (max-width: 576px) {
+          flex-direction: column;
+          gap: 12px;
+        }
+        
+        li {
+          position: relative;
+          
+          &:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -12px;
+            width: 1px;
+            height: 12px;
+            background-color: var(--color-neutral-600);
+            transform: translateY(-50%);
+            
+            @media (max-width: 576px) {
+              display: none;
+            }
+          }
+          
+          a {
+            color: var(--color-neutral-300);
+            font-size: var(--font-size-sm);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            
+            &:hover {
+              color: var(--color-white);
+            }
+            
+            &.emphasis {
+              font-weight: var(--font-weight-bold);
+              color: var(--color-neutral-200);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* 푸터 메인 영역 */
+  .footer-main {
+    padding: 40px 0;
+    
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    
+    .footer-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      
+      .info-item {
+        h2 {
+          font-size: var(--font-size-md);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-white);
+          margin: 0 0 16px 0;
+        }
+        
+        p {
+          margin: 0 0 8px 0;
+          color: var(--color-neutral-400);
+          font-size: var(--font-size-sm);
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        
+        .contact-number {
+          font-size: var(--font-size-lg);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-white);
+        }
+        
+        .contact-hours {
+          color: var(--color-neutral-500);
+        }
+        
+        address {
+          font-style: normal;
+          
+          p {
+            margin-bottom: 4px;
+          }
+        }
+        
+        .quick-links {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          
+          li {
+            margin-bottom: 8px;
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+            
+            a {
+              color: var(--color-neutral-400);
+              font-size: var(--font-size-sm);
+              text-decoration: none;
+              transition: color 0.2s ease;
+              
+              &:hover {
+                color: var(--color-white);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* 푸터 하단 영역 */
+  .footer-bottom {
+    background-color: var(--color-neutral-950);
+    padding: 16px 0;
+    
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+    }
+    
+    .copyright {
+      color: var(--color-neutral-500);
+      font-size: var(--font-size-xs);
+      margin: 0;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: var(--color-neutral-800);
+        color: var(--color-neutral-400);
+        transition: all 0.2s ease;
+        
+        .svg-icon {
+          width: 16px;
+          height: 16px;
+        }
+        
+        &:hover {
+          background-color: var(--color-neutral-700);
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+} 

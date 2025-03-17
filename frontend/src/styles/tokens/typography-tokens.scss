@@ -1,0 +1,202 @@
+// KRDS 타이포그래피 토큰
+// KRDS 디자인 시스템의 공식 타이포그래피 토큰입니다.
+
+// 폰트 패밀리
+$font-family-base: 'Pretendard GOV', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+$font-family-heading: $font-family-base;
+$font-family-code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+// 폰트 사이즈
+$font-size-xxs: 0.75rem;  // 12px
+$font-size-xs: 0.8125rem; // 13px
+$font-size-sm: 0.875rem;  // 14px
+$font-size-md: 1rem;      // 16px
+$font-size-lg: 1.125rem;  // 18px
+$font-size-xl: 1.25rem;   // 20px
+$font-size-2xl: 1.5rem;   // 24px
+$font-size-3xl: 1.75rem;  // 28px
+$font-size-4xl: 2rem;     // 32px
+$font-size-5xl: 2.5rem;   // 40px
+$font-size-6xl: 3rem;     // 48px
+
+// 폰트 가중치
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 라인 높이
+$line-height-tight: 1.25;    // 125%
+$line-height-normal: 1.5;    // 150%
+$line-height-relaxed: 1.75;  // 175%
+
+// 글자 간격
+$letter-spacing-tight: -0.025em; // -0.4px at 16px
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.025em;   // 0.4px at 16px
+
+// 제목 스타일
+$heading-1: (
+  font-size: $font-size-4xl,
+  line-height: $line-height-tight,
+  font-weight: $font-weight-bold,
+  letter-spacing: $letter-spacing-tight
+);
+
+$heading-2: (
+  font-size: $font-size-3xl,
+  line-height: $line-height-tight,
+  font-weight: $font-weight-bold,
+  letter-spacing: $letter-spacing-tight
+);
+
+$heading-3: (
+  font-size: $font-size-2xl,
+  line-height: $line-height-tight,
+  font-weight: $font-weight-bold,
+  letter-spacing: $letter-spacing-tight
+);
+
+$heading-4: (
+  font-size: $font-size-xl,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-semibold,
+  letter-spacing: $letter-spacing-normal
+);
+
+$heading-5: (
+  font-size: $font-size-lg,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-semibold,
+  letter-spacing: $letter-spacing-normal
+);
+
+$heading-6: (
+  font-size: $font-size-md,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-semibold,
+  letter-spacing: $letter-spacing-normal
+);
+
+// 본문 스타일
+$body-lg: (
+  font-size: $font-size-lg,
+  line-height: $line-height-relaxed,
+  font-weight: $font-weight-regular,
+  letter-spacing: $letter-spacing-normal
+);
+
+$body-md: (
+  font-size: $font-size-md,
+  line-height: $line-height-relaxed,
+  font-weight: $font-weight-regular,
+  letter-spacing: $letter-spacing-normal
+);
+
+$body-sm: (
+  font-size: $font-size-sm,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-regular,
+  letter-spacing: $letter-spacing-normal
+);
+
+$body-xs: (
+  font-size: $font-size-xs,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-regular,
+  letter-spacing: $letter-spacing-normal
+);
+
+// 레이블과 버튼 스타일
+$label-lg: (
+  font-size: $font-size-lg,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-medium,
+  letter-spacing: $letter-spacing-normal
+);
+
+$label-md: (
+  font-size: $font-size-md,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-medium,
+  letter-spacing: $letter-spacing-normal
+);
+
+$label-sm: (
+  font-size: $font-size-sm,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-medium,
+  letter-spacing: $letter-spacing-normal
+);
+
+$label-xs: (
+  font-size: $font-size-xs,
+  line-height: $line-height-normal,
+  font-weight: $font-weight-medium,
+  letter-spacing: $letter-spacing-normal
+);
+
+// 유틸리티 믹스인
+@mixin text-style($style) {
+  font-size: map-get($style, font-size);
+  line-height: map-get($style, line-height);
+  font-weight: map-get($style, font-weight);
+  letter-spacing: map-get($style, letter-spacing);
+}
+
+@mixin heading-1 {
+  @include text-style($heading-1);
+}
+
+@mixin heading-2 {
+  @include text-style($heading-2);
+}
+
+@mixin heading-3 {
+  @include text-style($heading-3);
+}
+
+@mixin heading-4 {
+  @include text-style($heading-4);
+}
+
+@mixin heading-5 {
+  @include text-style($heading-5);
+}
+
+@mixin heading-6 {
+  @include text-style($heading-6);
+}
+
+@mixin body-lg {
+  @include text-style($body-lg);
+}
+
+@mixin body-md {
+  @include text-style($body-md);
+}
+
+@mixin body-sm {
+  @include text-style($body-sm);
+}
+
+@mixin body-xs {
+  @include text-style($body-xs);
+}
+
+@mixin label-lg {
+  @include text-style($label-lg);
+}
+
+@mixin label-md {
+  @include text-style($label-md);
+}
+
+@mixin label-sm {
+  @include text-style($label-sm);
+}
+
+@mixin label-xs {
+  @include text-style($label-xs);
+} 

@@ -1,0 +1,31 @@
+:root {
+  /* 간격(Spacing) */
+  --spacing-4: 0.25rem;   /* 4px */
+  --spacing-8: 0.5rem;    /* 8px */
+  --spacing-12: 0.75rem;  /* 12px */
+  --spacing-16: 1rem;     /* 16px */
+  --spacing-20: 1.25rem;  /* 20px */
+  --spacing-24: 1.5rem;   /* 24px */
+  --spacing-32: 2rem;     /* 32px */
+  --spacing-40: 2.5rem;   /* 40px */
+  --spacing-48: 3rem;     /* 48px */
+  --spacing-64: 4rem;     /* 64px */
+  
+  /* 그리드 설정 */
+  --grid-columns: 12;
+  --grid-gutter: 24px;
+  
+  /* 컨테이너 너비 */
+  --container-sm: 540px;
+  --container-md: 720px;
+  --container-lg: 960px;
+  --container-xl: 1140px;
+  --container-xxl: 1320px;
+  
+  /* 브레이크포인트 */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+} 

@@ -1,0 +1,138 @@
+@import "../../../styles/tokens/colors.scss";
+@import "../../../styles/tokens/typography.scss";
+@import "../../../styles/tokens/layout.scss";
+@import "../../../styles/tokens/shape.scss";
+@import "../../../styles/tokens/elevation.scss";
+
+// 탭 컴포넌트 스타일
+.krds-tabs {
+  width: 100%;
+  margin-bottom: $spacing-lg;
+
+  // 탭 헤더 영역
+  .krds-tabs-header {
+    border-bottom: 1px solid $color-border-default;
+    position: relative;
+  }
+
+  // 탭 리스트
+  .krds-tabs-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // 탭 항목
+  .krds-tabs-item {
+    position: relative;
+    margin-bottom: -1px;
+  }
+
+  // 탭 버튼
+  .krds-tabs-btn {
+    @include body-text-md;
+    display: flex;
+    align-items: center;
+    padding: $spacing-md $spacing-lg;
+    border: none;
+    background-color: transparent;
+    color: $color-text-secondary;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $color-text-primary;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-border-focus;
+    }
+
+    &.active {
+      color: $color-brand-primary;
+      border-bottom: 2px solid $color-brand-primary;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  // 탭 콘텐츠 영역
+  .krds-tabs-content {
+    padding: $spacing-lg 0;
+  }
+
+  // 탭 패널
+  .krds-tabs-panel {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  // 패널 콘텐츠
+  .krds-tabs-panel-content {
+    @include body-text-md;
+    color: $color-text-primary;
+  }
+}
+
+// 스크롤 가능한 탭 (모바일용)
+.krds-tabs-scrollable {
+  .krds-tabs-header {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; // Firefox
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Edge
+    }
+  }
+
+  .krds-tabs-list {
+    flex-wrap: nowrap;
+    width: max-content;
+    padding-bottom: $spacing-xs;
+  }
+
+  .krds-tabs-btn {
+    white-space: nowrap;
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 768px) {
+  .krds-tabs:not(.krds-tabs-scrollable) {
+    .krds-tabs-list {
+      flex-wrap: wrap;
+    }
+
+    .krds-tabs-item {
+      width: 100%;
+    }
+
+    .krds-tabs-btn {
+      width: 100%;
+      text-align: left;
+      justify-content: space-between;
+      
+      &::after {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid $color-icon-secondary;
+        border-bottom: 2px solid $color-icon-secondary;
+        transform: rotate(-45deg);
+        margin-left: $spacing-md;
+        display: inline-block;
+        transition: transform 0.2s ease;
+      }
+      
+      &.active::after {
+        transform: rotate(45deg);
+        border-color: $color-brand-primary;
+      }
+    }
+  }
+} 

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRDS 토글 스위치 컴포넌트</title>
+  <link rel="stylesheet" href="toggle.css">
+</head>
+<body>
+  <h1>KRDS 토글 스위치 컴포넌트</h1>
+  
+  <!-- 기본 토글 스위치 -->
+  <section class="example-section">
+    <h2>기본 토글 스위치</h2>
+    <div class="example-container">
+      <!-- 기본 상태 -->
+      <div class="krds-form-toggle-switch">
+        <input type="checkbox" id="switch_basic">
+        <label for="switch_basic"><span class="switch-toggle"><i></i></span>기본 토글 스위치</label>
+      </div>
+      
+      <!-- 체크된 상태 -->
+      <div class="krds-form-toggle-switch">
+        <input type="checkbox" id="switch_checked" checked>
+        <label for="switch_checked"><span class="switch-toggle"><i></i></span>활성화된 토글 스위치</label>
+      </div>
+      
+      <!-- 비활성화 상태 -->
+      <div class="krds-form-toggle-switch">
+        <input type="checkbox" id="switch_disabled" disabled>
+        <label for="switch_disabled"><span class="switch-toggle"><i></i></span>비활성화된 토글 스위치</label>
+      </div>
+      
+      <!-- 비활성화 + 체크된 상태 -->
+      <div class="krds-form-toggle-switch">
+        <input type="checkbox" id="switch_disabled_checked" disabled checked>
+        <label for="switch_disabled_checked"><span class="switch-toggle"><i></i></span>비활성화된 활성 토글 스위치</label>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 크기 변형 토글 스위치 -->
+  <section class="example-section">
+    <h2>크기 변형 토글 스위치</h2>
+    <div class="example-container">
+      <!-- 작은 크기 -->
+      <div class="krds-form-toggle-switch small">
+        <input type="checkbox" id="switch_small">
+        <label for="switch_small"><span class="switch-toggle"><i></i></span>작은 토글 스위치</label>
+      </div>
+      
+      <!-- 중간 크기 (기본) -->
+      <div class="krds-form-toggle-switch">
+        <input type="checkbox" id="switch_medium">
+        <label for="switch_medium"><span class="switch-toggle"><i></i></span>중간 토글 스위치 (기본)</label>
+      </div>
+      
+      <!-- 큰 크기 -->
+      <div class="krds-form-toggle-switch large">
+        <input type="checkbox" id="switch_large">
+        <label for="switch_large"><span class="switch-toggle"><i></i></span>큰 토글 스위치</label>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 색상 변형 토글 스위치 -->
+  <section class="example-section">
+    <h2>색상 변형 토글 스위치</h2>
+    <div class="example-container">
+      <!-- 기본 색상 (Primary) -->
+      <div class="krds-form-toggle-switch">
+        <input type="checkbox" id="switch_primary" checked>
+        <label for="switch_primary"><span class="switch-toggle"><i></i></span>기본 색상 (Primary)</label>
+      </div>
+      
+      <!-- 성공 색상 -->
+      <div class="krds-form-toggle-switch success">
+        <input type="checkbox" id="switch_success" checked>
+        <label for="switch_success"><span class="switch-toggle"><i></i></span>성공 색상</label>
+      </div>
+      
+      <!-- 경고 색상 -->
+      <div class="krds-form-toggle-switch warning">
+        <input type="checkbox" id="switch_warning" checked>
+        <label for="switch_warning"><span class="switch-toggle"><i></i></span>경고 색상</label>
+      </div>
+      
+      <!-- 위험 색상 -->
+      <div class="krds-form-toggle-switch danger">
+        <input type="checkbox" id="switch_danger" checked>
+        <label for="switch_danger"><span class="switch-toggle"><i></i></span>위험 색상</label>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 라벨 위치 변형 토글 스위치 -->
+  <section class="example-section">
+    <h2>라벨 위치 변형 토글 스위치</h2>
+    <div class="example-container">
+      <!-- 왼쪽 라벨 -->
+      <div class="krds-form-toggle-switch label-left">
+        <input type="checkbox" id="switch_label_left">
+        <label for="switch_label_left"><span class="switch-toggle"><i></i></span>왼쪽 라벨</label>
+      </div>
+      
+      <!-- 오른쪽 라벨 (기본) -->
+      <div class="krds-form-toggle-switch">
+        <input type="checkbox" id="switch_label_right">
+        <label for="switch_label_right"><span class="switch-toggle"><i></i></span>오른쪽 라벨 (기본)</label>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 상태 텍스트가 있는 토글 스위치 -->
+  <section class="example-section">
+    <h2>상태 텍스트가 있는 토글 스위치</h2>
+    <div class="example-container">
+      <div class="krds-form-toggle-switch with-status">
+        <input type="checkbox" id="switch_with_status">
+        <label for="switch_with_status">
+          <span class="switch-toggle">
+            <i></i>
+            <span class="status-text on">ON</span>
+            <span class="status-text off">OFF</span>
+          </span>
+          <span class="label-text">상태 텍스트가 있는 토글</span>
+        </label>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 유효성 검사 토글 스위치 -->
+  <section class="example-section">
+    <h2>유효성 검사 토글 스위치</h2>
+    <div class="example-container">
+      <!-- 유효한 상태 -->
+      <div class="krds-form-toggle-switch is-valid">
+        <input type="checkbox" id="switch_valid" checked>
+        <label for="switch_valid"><span class="switch-toggle"><i></i></span>유효한 토글 스위치</label>
+        <div class="form-feedback valid">유효한 선택입니다.</div>
+      </div>
+      
+      <!-- 유효하지 않은 상태 -->
+      <div class="krds-form-toggle-switch is-invalid">
+        <input type="checkbox" id="switch_invalid">
+        <label for="switch_invalid"><span class="switch-toggle"><i></i></span>유효하지 않은 토글 스위치</label>
+        <div class="form-feedback invalid">이 기능을 활성화해야 합니다.</div>
+      </div>
+    </div>
+  </section>
+  
+  <script src="toggle.js"></script>
+</body>
+</html> 

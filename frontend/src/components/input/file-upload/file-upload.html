@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>파일 업로드 컴포넌트 - KRDS</title>
+  <link rel="stylesheet" href="file-upload.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>파일 업로드 컴포넌트</h1>
+      <p>KRDS 디자인 시스템의 다양한 파일 업로드 컴포넌트와 사용 예시입니다.</p>
+    </header>
+
+    <!-- 기본 파일 업로드 -->
+    <section class="example-section">
+      <h2>기본 파일 업로드</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label for="basic-file-upload" class="krds-label">기본 파일 선택</label>
+          <div class="krds-file-upload">
+            <input type="file" id="basic-file-upload" class="krds-file-input">
+            <label for="basic-file-upload" class="krds-file-label">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name">선택된 파일 없음</div>
+          </div>
+          <div class="krds-file-description">파일을 선택하려면 클릭하세요.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 드래그 앤 드롭 파일 업로드 -->
+    <section class="example-section">
+      <h2>드래그 앤 드롭 파일 업로드</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label class="krds-label">파일 끌어다 놓기</label>
+          <div class="krds-file-upload-drag" id="drag-drop-upload">
+            <div class="krds-file-upload-drag-inner">
+              <div class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </div>
+              <p class="krds-file-upload-text">
+                <span>파일을 끌어다 놓거나</span>
+                <label for="drag-drop-input" class="krds-file-browse-link">파일 찾기</label>
+              </p>
+              <p class="krds-file-upload-hint">최대 10MB</p>
+              <input type="file" id="drag-drop-input" class="krds-file-input-hidden">
+            </div>
+            <div class="krds-file-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 다중 파일 업로드 -->
+    <section class="example-section">
+      <h2>다중 파일 업로드</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label for="multi-file-upload" class="krds-label">여러 파일 선택</label>
+          <div class="krds-file-upload">
+            <input type="file" id="multi-file-upload" class="krds-file-input" multiple>
+            <label for="multi-file-upload" class="krds-file-label">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name">선택된 파일 없음</div>
+          </div>
+          <div class="krds-file-description">여러 파일을 선택하려면 Ctrl 키를 누른 상태에서 선택하세요.</div>
+          <div class="krds-file-list" id="multi-file-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 이미지 미리보기 -->
+    <section class="example-section">
+      <h2>이미지 미리보기</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label for="image-upload" class="krds-label">이미지 파일 선택</label>
+          <div class="krds-file-upload">
+            <input type="file" id="image-upload" class="krds-file-input" accept="image/*">
+            <label for="image-upload" class="krds-file-label">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </span>
+              <span class="krds-file-text">이미지 선택</span>
+            </label>
+            <div class="krds-file-name">선택된 이미지 없음</div>
+          </div>
+          <div class="krds-file-description">JPG, PNG, GIF 파일만 업로드 가능합니다.</div>
+          <div class="krds-image-preview" id="image-preview"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 파일 업로드 크기 변형 -->
+    <section class="example-section">
+      <h2>파일 업로드 크기 변형</h2>
+      <div class="example-container sizes">
+        <div class="krds-form-group">
+          <label for="small-file-upload" class="krds-label">소형 파일 업로드</label>
+          <div class="krds-file-upload">
+            <input type="file" id="small-file-upload" class="krds-file-input">
+            <label for="small-file-upload" class="krds-file-label krds-file-label-sm">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name krds-file-name-sm">선택된 파일 없음</div>
+          </div>
+        </div>
+
+        <div class="krds-form-group">
+          <label for="default-file-upload" class="krds-label">기본 파일 업로드</label>
+          <div class="krds-file-upload">
+            <input type="file" id="default-file-upload" class="krds-file-input">
+            <label for="default-file-upload" class="krds-file-label">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name">선택된 파일 없음</div>
+          </div>
+        </div>
+
+        <div class="krds-form-group">
+          <label for="large-file-upload" class="krds-label">대형 파일 업로드</label>
+          <div class="krds-file-upload">
+            <input type="file" id="large-file-upload" class="krds-file-input">
+            <label for="large-file-upload" class="krds-file-label krds-file-label-lg">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name krds-file-name-lg">선택된 파일 없음</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 파일 업로드 상태 변형 -->
+    <section class="example-section">
+      <h2>파일 업로드 상태 변형</h2>
+      <div class="example-container states">
+        <div class="krds-form-group">
+          <label for="disabled-file-upload" class="krds-label">비활성화 상태</label>
+          <div class="krds-file-upload">
+            <input type="file" id="disabled-file-upload" class="krds-file-input" disabled>
+            <label for="disabled-file-upload" class="krds-file-label">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name">선택된 파일 없음</div>
+          </div>
+        </div>
+
+        <div class="krds-form-group">
+          <label for="valid-file-upload" class="krds-label">유효한 상태</label>
+          <div class="krds-file-upload">
+            <input type="file" id="valid-file-upload" class="krds-file-input is-valid">
+            <label for="valid-file-upload" class="krds-file-label">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name">document.pdf</div>
+          </div>
+          <div class="krds-file-feedback valid">유효한 파일 형식입니다.</div>
+        </div>
+
+        <div class="krds-form-group">
+          <label for="invalid-file-upload" class="krds-label">유효하지 않은 상태</label>
+          <div class="krds-file-upload">
+            <input type="file" id="invalid-file-upload" class="krds-file-input is-invalid">
+            <label for="invalid-file-upload" class="krds-file-label">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name">invalid-file.exe</div>
+          </div>
+          <div class="krds-file-feedback invalid">허용되지 않는 파일 형식입니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 파일 업로드 스타일 변형 -->
+    <section class="example-section">
+      <h2>파일 업로드 스타일 변형</h2>
+      <div class="example-container variants">
+        <div class="krds-form-group">
+          <label for="outline-file-upload" class="krds-label">외곽선 스타일</label>
+          <div class="krds-file-upload">
+            <input type="file" id="outline-file-upload" class="krds-file-input">
+            <label for="outline-file-upload" class="krds-file-label krds-file-label-outline">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name">선택된 파일 없음</div>
+          </div>
+        </div>
+
+        <div class="krds-form-group">
+          <label for="icon-file-upload" class="krds-label">아이콘만 표시</label>
+          <div class="krds-file-upload">
+            <input type="file" id="icon-file-upload" class="krds-file-input">
+            <label for="icon-file-upload" class="krds-file-label krds-file-label-icon">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="sr-only">파일 선택</span>
+            </label>
+            <div class="krds-file-name">선택된 파일 없음</div>
+          </div>
+        </div>
+
+        <div class="krds-form-group">
+          <label for="text-file-upload" class="krds-label">텍스트만 표시</label>
+          <div class="krds-file-upload">
+            <input type="file" id="text-file-upload" class="krds-file-input">
+            <label for="text-file-upload" class="krds-file-label krds-file-label-text">
+              <span class="krds-file-text">파일 업로드</span>
+            </label>
+            <div class="krds-file-name">선택된 파일 없음</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 파일 업로드 API 예제 -->
+    <section class="example-section">
+      <h2>자바스크립트 API 예제</h2>
+      <div class="example-container">
+        <div class="krds-form-group">
+          <label for="js-file-upload" class="krds-label">파일 업로드</label>
+          <div class="krds-file-upload">
+            <input type="file" id="js-file-upload" class="krds-file-input">
+            <label for="js-file-upload" class="krds-file-label">
+              <span class="krds-file-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </span>
+              <span class="krds-file-text">파일 선택</span>
+            </label>
+            <div class="krds-file-name">선택된 파일 없음</div>
+          </div>
+          <div class="krds-file-description">API 예제를 위한 파일 업로드</div>
+          
+          <div class="api-buttons">
+            <button type="button" class="btn btn-clear-file" data-target="js-file-upload">파일 지우기</button>
+            <button type="button" class="btn btn-toggle-disable" data-target="js-file-upload">비활성화 토글</button>
+            <button type="button" class="btn btn-validate" data-target="js-file-upload">유효성 검사</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="file-upload.js"></script>
+</body>
+</html> 

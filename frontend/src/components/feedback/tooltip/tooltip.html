@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>툴팁 컴포넌트 - KRDS</title>
+  <link rel="stylesheet" href="tooltip.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>툴팁 컴포넌트</h1>
+      <p>사용자에게 추가 정보를 제공하는 작은 팝업 요소입니다.</p>
+    </header>
+
+    <section class="example-section">
+      <h2>기본 툴팁</h2>
+      <div class="example-container">
+        <button class="btn" data-tooltip="기본 툴팁입니다.">
+          마우스를 올려보세요
+        </button>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>툴팁 위치</h2>
+      <div class="example-container positions">
+        <div>
+          <button class="btn" data-tooltip="상단에 표시되는 툴팁입니다." data-tooltip-position="top">
+            상단
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="우측에 표시되는 툴팁입니다." data-tooltip-position="right">
+            우측
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="하단에 표시되는 툴팁입니다." data-tooltip-position="bottom">
+            하단
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="좌측에 표시되는 툴팁입니다." data-tooltip-position="left">
+            좌측
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>툴팁 스타일</h2>
+      <div class="example-container styles">
+        <div>
+          <button class="btn" data-tooltip="기본 툴팁입니다." data-tooltip-theme="light">
+            라이트 테마
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="다크 테마 툴팁입니다." data-tooltip-theme="dark">
+            다크 테마
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="성공 메시지 툴팁입니다." data-tooltip-theme="success">
+            성공
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="경고 메시지 툴팁입니다." data-tooltip-theme="warning">
+            경고
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="오류 메시지 툴팁입니다." data-tooltip-theme="error">
+            오류
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>툴팁 크기</h2>
+      <div class="example-container sizes">
+        <div>
+          <button class="btn" data-tooltip="작은 크기 툴팁입니다." data-tooltip-size="small">
+            작은 크기
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="기본 크기 툴팁입니다." data-tooltip-size="medium">
+            기본 크기
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="큰 크기 툴팁입니다." data-tooltip-size="large">
+            큰 크기
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>트리거 방식</h2>
+      <div class="example-container triggers">
+        <div>
+          <button class="btn" data-tooltip="마우스 오버시 표시되는 툴팁입니다." data-tooltip-trigger="hover">
+            마우스 오버
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="클릭시 표시되는 툴팁입니다." data-tooltip-trigger="click">
+            클릭
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="포커스시 표시되는 툴팁입니다." data-tooltip-trigger="focus">
+            포커스
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>HTML 콘텐츠 툴팁</h2>
+      <div class="example-container html-content">
+        <button class="btn" id="html-tooltip-btn" aria-describedby="html-tooltip-template">
+          HTML 툴팁
+        </button>
+        <template id="html-tooltip-template">
+          <div class="tooltip-rich-content">
+            <h3>HTML 콘텐츠 툴팁</h3>
+            <p>이미지, 링크 등 <strong>다양한 요소</strong>를 포함할 수 있는 툴팁입니다.</p>
+            <a href="#" class="tooltip-link">자세히 보기</a>
+          </div>
+        </template>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>애니메이션 효과</h2>
+      <div class="example-container animations">
+        <div>
+          <button class="btn" data-tooltip="페이드 효과 툴팁입니다." data-tooltip-animation="fade">
+            페이드
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="확대 효과 툴팁입니다." data-tooltip-animation="scale">
+            확대
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="슬라이드 효과 툴팁입니다." data-tooltip-animation="slide">
+            슬라이드
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>인터랙티브 툴팁</h2>
+      <div class="example-container interactive">
+        <button class="btn" data-tooltip="이 툴팁 내부에서 상호작용할 수 있습니다." data-tooltip-interactive="true">
+          인터랙티브 툴팁
+        </button>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>툴팁 지연 효과</h2>
+      <div class="example-container delays">
+        <div>
+          <button class="btn" data-tooltip="표시 지연이 있는 툴팁입니다." data-tooltip-delay-show="1000">
+            표시 지연 (1초)
+          </button>
+        </div>
+        <div>
+          <button class="btn" data-tooltip="숨김 지연이 있는 툴팁입니다." data-tooltip-delay-hide="1000">
+            숨김 지연 (1초)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <h2>JavaScript API 예제</h2>
+      <div class="example-container api">
+        <div class="api-buttons">
+          <button class="btn" id="create-tooltip">툴팁 생성</button>
+          <button class="btn" id="show-tooltip">툴팁 표시</button>
+          <button class="btn" id="hide-tooltip">툴팁 숨김</button>
+          <button class="btn" id="destroy-tooltip">툴팁 제거</button>
+        </div>
+        <div class="api-target" id="api-target">
+          API 예제 대상 요소
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="tooltip.js"></script>
+</body>
+</html> 

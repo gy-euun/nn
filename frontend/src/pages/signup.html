@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 - 산업 안전 종합 관리 플랫폼</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.scss">
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-box">
+        <div class="auth-header">
+          <h1>회원가입</h1>
+          <p>산업 안전 종합 관리 플랫폼에 가입하세요.</p>
+        </div>
+
+        <form id="signupForm" class="auth-form">
+          <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" class="krds-input" required placeholder="이름을 입력하세요">
+          </div>
+
+          <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" class="krds-input" required placeholder="이메일 주소를 입력하세요">
+          </div>
+
+          <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" class="krds-input" required placeholder="비밀번호를 입력하세요">
+            <small class="text-muted">8자 이상, 영문, 숫자, 특수문자 포함</small>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">비밀번호 확인</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="krds-input" required placeholder="비밀번호를 다시 입력하세요">
+          </div>
+
+          <div class="form-group form-check">
+            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+            <label for="agreeTerms">이용약관 및 개인정보 처리방침에 동의합니다.</label>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="krds-btn primary large">회원가입</button>
+          </div>
+
+          <div class="auth-links">
+            <span>이미 계정이 있으신가요?</span>
+            <a href="login.html" class="krds-btn text small">로그인</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module">
+      import { register } from '/src/js/auth.js';
+      import { showNotification } from '/src/js/main.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const signupForm = document.getElementById('signupForm');
+        
+        signupForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const confirmPassword = document.getElementById('confirmPassword').value;
+          const agreeTerms = document.getElementById('agreeTerms').checked;
+          
+          // 입력 검증
+          if (!name || !email || !password || !confirmPassword) {
+            showNotification('모든 필드를 입력해주세요.', 'error');
+            return;
+          }
+          
+          if (password !== confirmPassword) {
+            showNotification('비밀번호가 일치하지 않습니다.', 'error');
+            return;
+          }
+          
+          if (!agreeTerms) {
+            showNotification('이용약관에 동의해주세요.', 'error');
+            return;
+          }
+          
+          // 회원가입 시도
+          const result = await register(name, email, password);
+          
+          if (result.success) {
+            showNotification('회원가입 성공! 로그인 페이지로 이동합니다.', 'success');
+            // 회원가입 성공 시 로그인 페이지로 리다이렉트
+            setTimeout(() => {
+              window.location.href = '/login.html';
+            }, 2000);
+          } else {
+            showNotification(result.error || '회원가입에 실패했습니다.', 'error');
+          }
+        });
+      });
+    </script>
+  </body>
+</html> 

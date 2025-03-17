@@ -1,0 +1,320 @@
+@import '../../../tokens/colors';
+@import '../../../tokens/typography';
+@import '../../../tokens/spacing';
+@import '../../../tokens/breakpoints';
+
+// 토글 스위치 컴포넌트 스타일
+.krds-form-toggle-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-medium;
+  font-family: $font-family-base;
+  
+  // 체크박스 숨기기
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    
+    // 포커스 상태
+    &:focus + label .switch-toggle {
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.25);
+    }
+    
+    // 체크된 상태
+    &:checked + label .switch-toggle {
+      background-color: $color-primary;
+      
+      i {
+        left: calc(100% - 18px);
+      }
+    }
+    
+    // 비활성화 상태
+    &:disabled + label {
+      cursor: not-allowed;
+      color: $color-disabled;
+      
+      .switch-toggle {
+        background-color: $color-bg-disabled;
+        border-color: $color-border-disabled;
+        
+        i {
+          background-color: $color-disabled;
+        }
+      }
+    }
+    
+    // 비활성화 + 체크된 상태
+    &:disabled:checked + label .switch-toggle {
+      background-color: rgba($color-primary, 0.5);
+    }
+  }
+  
+  // 라벨 스타일
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    color: $color-text;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+  
+  // 토글 스위치 UI
+  .switch-toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    margin-right: $spacing-small;
+    background-color: $color-bg-light;
+    border: 1px solid $color-border;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    
+    i {
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 18px;
+      height: 18px;
+      background-color: $color-white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  // 크기 변형
+  &.small {
+    .switch-toggle {
+      width: 36px;
+      height: 20px;
+      border-radius: 10px;
+      
+      i {
+        width: 14px;
+        height: 14px;
+      }
+    }
+    
+    input[type="checkbox"]:checked + label .switch-toggle i {
+      left: calc(100% - 16px);
+    }
+    
+    label {
+      font-size: $font-size-small;
+      line-height: $line-height-small;
+    }
+  }
+  
+  &.large {
+    .switch-toggle {
+      width: 56px;
+      height: 30px;
+      border-radius: 15px;
+      
+      i {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    
+    input[type="checkbox"]:checked + label .switch-toggle i {
+      left: calc(100% - 26px);
+    }
+    
+    label {
+      font-size: $font-size-large;
+      line-height: $line-height-large;
+    }
+  }
+  
+  // 색상 변형
+  &.success {
+    input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: $color-success;
+    }
+    
+    input[type="checkbox"]:disabled:checked + label .switch-toggle {
+      background-color: rgba($color-success, 0.5);
+    }
+  }
+  
+  &.warning {
+    input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: $color-warning;
+    }
+    
+    input[type="checkbox"]:disabled:checked + label .switch-toggle {
+      background-color: rgba($color-warning, 0.5);
+    }
+  }
+  
+  &.danger {
+    input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: $color-danger;
+    }
+    
+    input[type="checkbox"]:disabled:checked + label .switch-toggle {
+      background-color: rgba($color-danger, 0.5);
+    }
+  }
+  
+  // 라벨 위치 변형
+  &.label-left {
+    label {
+      flex-direction: row-reverse;
+      
+      .switch-toggle {
+        margin-right: 0;
+        margin-left: $spacing-small;
+      }
+    }
+  }
+  
+  // 상태 텍스트
+  &.with-status {
+    .status-text {
+      position: absolute;
+      font-size: 10px;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+    
+    .status-text.on {
+      opacity: 0;
+      left: 8px;
+      color: $color-white;
+    }
+    
+    .status-text.off {
+      opacity: 1;
+      right: 5px;
+      color: $color-text-secondary;
+    }
+    
+    input[type="checkbox"]:checked + label {
+      .status-text.on {
+        opacity: 1;
+      }
+      
+      .status-text.off {
+        opacity: 0;
+      }
+    }
+    
+    .label-text {
+      margin-left: $spacing-small;
+    }
+  }
+  
+  // 유효성 검사 스타일
+  &.is-valid {
+    input[type="checkbox"] + label {
+      color: $color-valid;
+    }
+    
+    input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: $color-valid;
+    }
+  }
+  
+  &.is-invalid {
+    input[type="checkbox"] + label {
+      color: $color-invalid;
+    }
+    
+    .switch-toggle {
+      border-color: $color-invalid;
+    }
+    
+    input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: $color-invalid;
+    }
+  }
+}
+
+// 피드백 메시지
+.form-feedback {
+  margin-top: $spacing-small;
+  font-size: $font-size-small;
+  padding-left: calc(44px + #{$spacing-small});
+  
+  &.valid {
+    color: $color-valid;
+  }
+  
+  &.invalid {
+    color: $color-invalid;
+  }
+}
+
+// 예제 컨테이너
+.example-container {
+  margin-bottom: $spacing-large;
+}
+
+// 다크 모드 스타일
+@media (prefers-color-scheme: dark) {
+  .krds-form-toggle-switch {
+    label {
+      color: $color-text-dark;
+    }
+    
+    .switch-toggle {
+      background-color: darken($color-bg-dark, 5%);
+      border-color: $color-border-dark;
+      
+      i {
+        background-color: $color-bg-dark;
+      }
+    }
+    
+    input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: lighten($color-primary, 10%);
+    }
+    
+    input[type="checkbox"]:disabled + label {
+      color: $color-disabled-dark;
+      
+      .switch-toggle {
+        background-color: darken($color-bg-disabled-dark, 5%);
+        border-color: $color-border-disabled-dark;
+        
+        i {
+          background-color: $color-disabled-dark;
+        }
+      }
+    }
+    
+    input[type="checkbox"]:disabled:checked + label .switch-toggle {
+      background-color: rgba(lighten($color-primary, 10%), 0.5);
+    }
+    
+    // 색상 변형
+    &.success input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: lighten($color-success, 10%);
+    }
+    
+    &.warning input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: lighten($color-warning, 10%);
+    }
+    
+    &.danger input[type="checkbox"]:checked + label .switch-toggle {
+      background-color: lighten($color-danger, 10%);
+    }
+    
+    // 상태 텍스트
+    &.with-status {
+      .status-text.off {
+        color: $color-text-secondary-dark;
+      }
+    }
+  }
+} 

@@ -1,0 +1,115 @@
+:root {
+  /* 주요 색상 */
+  --color-primary-50: #e7f5ff;
+  --color-primary-100: #d0ebff;
+  --color-primary-200: #a5d8ff;
+  --color-primary-300: #74c0fc;
+  --color-primary-400: #4dabf7;
+  --color-primary-500: #339af0;
+  --color-primary-600: #228be6;
+  --color-primary-700: #1c7ed6;
+  --color-primary-800: #1971c2;
+  --color-primary-900: #1864ab;
+  
+  /* 보조 색상 */
+  --color-secondary-50: #f3f0ff;
+  --color-secondary-100: #e5dbff;
+  --color-secondary-200: #d0bfff;
+  --color-secondary-300: #b197fc;
+  --color-secondary-400: #9775fa;
+  --color-secondary-500: #845ef7;
+  --color-secondary-600: #7950f2;
+  --color-secondary-700: #7048e8;
+  --color-secondary-800: #6741d9;
+  --color-secondary-900: #5f3dc4;
+  
+  /* 중립 색상 */
+  --color-neutral-50: #f8f9fa;
+  --color-neutral-100: #f1f3f5;
+  --color-neutral-200: #e9ecef;
+  --color-neutral-300: #dee2e6;
+  --color-neutral-400: #ced4da;
+  --color-neutral-500: #adb5bd;
+  --color-neutral-600: #868e96;
+  --color-neutral-700: #495057;
+  --color-neutral-800: #343a40;
+  --color-neutral-900: #212529;
+  --color-neutral-950: #1a1d20;
+  
+  /* 상태 색상 */
+  --color-success-50: #ebfbee;
+  --color-success-100: #d3f9d8;
+  --color-success-200: #b2f2bb;
+  --color-success-300: #8ce99a;
+  --color-success-400: #69db7c;
+  --color-success-500: #51cf66;
+  --color-success-600: #40c057;
+  --color-success-700: #37b24d;
+  --color-success-800: #2f9e44;
+  --color-success-900: #2b8a3e;
+  
+  --color-warning-50: #fff9db;
+  --color-warning-100: #fff3bf;
+  --color-warning-200: #ffec99;
+  --color-warning-300: #ffe066;
+  --color-warning-400: #ffd43b;
+  --color-warning-500: #fcc419;
+  --color-warning-600: #fab005;
+  --color-warning-700: #f59f00;
+  --color-warning-800: #f08c00;
+  --color-warning-900: #e67700;
+  
+  --color-danger-50: #fff5f5;
+  --color-danger-100: #ffe3e3;
+  --color-danger-200: #ffc9c9;
+  --color-danger-300: #ffa8a8;
+  --color-danger-400: #ff8787;
+  --color-danger-500: #ff6b6b;
+  --color-danger-600: #fa5252;
+  --color-danger-700: #f03e3e;
+  --color-danger-800: #e03131;
+  --color-danger-900: #c92a2a;
+  
+  --color-info-50: #e3fafc;
+  --color-info-100: #c5f6fa;
+  --color-info-200: #99e9f2;
+  --color-info-300: #66d9e8;
+  --color-info-400: #3bc9db;
+  --color-info-500: #22b8cf;
+  --color-info-600: #15aabf;
+  --color-info-700: #1098ad;
+  --color-info-800: #0c8599;
+  --color-info-900: #0b7285;
+  
+  /* 기본 색상 */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  
+  /* 의미적 색상 매핑 */
+  --color-primary: var(--color-primary-600);
+  --color-secondary: var(--color-secondary-600);
+  --color-success: var(--color-success-600);
+  --color-warning: var(--color-warning-500);
+  --color-danger: var(--color-danger-600);
+  --color-info: var(--color-info-600);
+  
+  /* 배경 색상 */
+  --color-background: var(--color-white);
+  --color-background-alt: var(--color-neutral-50);
+  
+  /* 텍스트 색상 */
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-700);
+  --color-text-tertiary: var(--color-neutral-600);
+  --color-text-disabled: var(--color-neutral-400);
+  --color-text-inverse: var(--color-white);
+  
+  /* 테두리 색상 */
+  --color-border: var(--color-neutral-200);
+  --color-border-focus: var(--color-primary-300);
+  
+  /* 링크 색상 */
+  --color-link: var(--color-primary-600);
+  --color-link-hover: var(--color-primary-700);
+  --color-link-visited: var(--color-secondary-600);
+} 

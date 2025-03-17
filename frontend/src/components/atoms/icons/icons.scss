@@ -1,0 +1,138 @@
+@import '../../../styles/tokens/colors.scss';
+
+// 아이콘 컴포넌트 스타일
+.svg-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  
+  // 크기 변형
+  &.icon-xs {
+    width: 16px;
+    height: 16px;
+  }
+  
+  &.icon-sm {
+    width: 20px;
+    height: 20px;
+  }
+  
+  &.icon-md {
+    width: 24px;
+    height: 24px;
+  }
+  
+  &.icon-lg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  &.icon-xl {
+    width: 40px;
+    height: 40px;
+  }
+  
+  // 색상 변형
+  &.icon-primary {
+    color: var(--color-primary);
+  }
+  
+  &.icon-secondary {
+    color: var(--color-secondary);
+  }
+  
+  &.icon-success {
+    color: var(--color-success);
+  }
+  
+  &.icon-warning {
+    color: var(--color-warning);
+  }
+  
+  &.icon-danger {
+    color: var(--color-danger);
+  }
+  
+  &.icon-info {
+    color: var(--color-info);
+  }
+  
+  &.icon-neutral {
+    color: var(--color-neutral-700);
+  }
+  
+  &.icon-light {
+    color: var(--color-neutral-300);
+  }
+  
+  &.icon-dark {
+    color: var(--color-neutral-900);
+  }
+  
+  // 특정 아이콘 스타일
+  // 대시보드 아이콘
+  &.ico-dashboard {
+    path {
+      stroke-width: 1.5;
+    }
+  }
+  
+  // 알림 아이콘
+  &.ico-notification {
+    .dot {
+      fill: var(--color-danger);
+    }
+  }
+  
+  // 상태 아이콘
+  &.ico-status-success {
+    circle {
+      fill: var(--color-success);
+    }
+  }
+  
+  &.ico-status-warning {
+    circle {
+      fill: var(--color-warning);
+    }
+  }
+  
+  &.ico-status-danger {
+    circle {
+      fill: var(--color-danger);
+    }
+  }
+  
+  // 애니메이션 효과
+  &.icon-pulse {
+    animation: icon-pulse 2s infinite;
+  }
+  
+  &.icon-spin {
+    animation: icon-spin 1s linear infinite;
+  }
+}
+
+// 애니메이션 정의
+@keyframes icon-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} 

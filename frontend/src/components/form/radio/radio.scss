@@ -1,0 +1,284 @@
+@import '../../../tokens/colors';
+@import '../../../tokens/typography';
+@import '../../../tokens/spacing';
+@import '../../../tokens/breakpoints';
+
+// 라디오 버튼 컴포넌트 스타일
+.krds-check-area {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-small;
+  
+  // 인라인 레이아웃
+  &.inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    .krds-form-check {
+      margin-right: $spacing-medium;
+      
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  // 열 레이아웃 (부가 설명이 있는 경우)
+  &.chk-column {
+    .krds-form-check {
+      margin-bottom: $spacing-medium;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  // 유효성 검사 상태
+  &.is-valid {
+    .krds-form-check {
+      input[type="radio"] + label {
+        color: $color-valid;
+      }
+      
+      input[type="radio"]:checked + label::before {
+        border-color: $color-valid;
+      }
+      
+      input[type="radio"]:checked + label::after {
+        background-color: $color-valid;
+      }
+    }
+  }
+  
+  &.is-invalid {
+    .krds-form-check {
+      input[type="radio"] + label {
+        color: $color-invalid;
+      }
+      
+      input[type="radio"] + label::before {
+        border-color: $color-invalid;
+      }
+      
+      input[type="radio"]:checked + label::after {
+        background-color: $color-invalid;
+      }
+    }
+  }
+}
+
+// 라디오 버튼 체크 컨테이너
+.krds-form-check {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  
+  // 라디오 버튼 입력 필드
+  input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    
+    // 기본 상태의 라디오 버튼
+    & + label {
+      position: relative;
+      padding-left: 28px;
+      cursor: pointer;
+      display: inline-block;
+      color: $color-text;
+      font-size: $font-size-base;
+      line-height: $line-height-base;
+      user-select: none;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 2px;
+        width: 18px;
+        height: 18px;
+        border: 2px solid $color-border;
+        border-radius: 50%;
+        background-color: $color-white;
+        transition: all 0.2s ease-in-out;
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 7px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: transparent;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+    
+    // 체크된 상태
+    &:checked + label::before {
+      border-color: $color-primary;
+    }
+    
+    &:checked + label::after {
+      background-color: $color-primary;
+    }
+    
+    // 포커스 상태
+    &:focus + label::before {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.25);
+    }
+    
+    // 비활성화 상태
+    &:disabled + label {
+      color: $color-disabled;
+      cursor: not-allowed;
+      
+      &::before {
+        border-color: $color-border-disabled;
+        background-color: $color-bg-disabled;
+      }
+    }
+    
+    // 체크된 비활성화 상태
+    &:disabled:checked + label::after {
+      background-color: $color-disabled;
+    }
+  }
+  
+  // 부가 설명
+  .krds-form-check-cnt {
+    width: 100%;
+    padding-left: 28px;
+    margin-top: $spacing-small;
+    
+    .krds-form-check-p {
+      margin: 0;
+      font-size: $font-size-small;
+      line-height: $line-height-small;
+      color: $color-text-secondary;
+    }
+  }
+}
+
+// 필수 항목 스타일
+.form-label {
+  .required {
+    position: relative;
+    
+    &::after {
+      content: '*';
+      color: $color-invalid;
+      margin-left: 4px;
+    }
+  }
+}
+
+// 피드백 메시지
+.form-feedback {
+  margin-top: $spacing-small;
+  font-size: $font-size-small;
+  
+  &.valid {
+    color: $color-valid;
+  }
+  
+  &.invalid {
+    color: $color-invalid;
+  }
+}
+
+// 폼 그룹 및 컨테이너
+.form-group {
+  margin-bottom: $spacing-medium;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-conts {
+  margin-top: $spacing-small;
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 $spacing-large 0;
+}
+
+// 반응형 스타일
+@media (max-width: $breakpoint-md) {
+  .krds-check-area {
+    &.inline {
+      flex-direction: column;
+      
+      .krds-form-check {
+        margin-right: 0;
+        margin-bottom: $spacing-small;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// 다크 모드 스타일
+@media (prefers-color-scheme: dark) {
+  .krds-form-check {
+    input[type="radio"] {
+      & + label {
+        color: $color-text-dark;
+        
+        &::before {
+          border-color: $color-border-dark;
+          background-color: $color-bg-dark;
+        }
+      }
+      
+      &:checked + label::before {
+        border-color: lighten($color-primary, 15%);
+      }
+      
+      &:checked + label::after {
+        background-color: lighten($color-primary, 15%);
+      }
+      
+      &:focus + label::before {
+        border-color: lighten($color-primary, 15%);
+        box-shadow: 0 0 0 3px rgba(lighten($color-primary, 15%), 0.25);
+      }
+      
+      &:disabled + label {
+        color: $color-disabled-dark;
+        
+        &::before {
+          border-color: $color-border-disabled-dark;
+          background-color: $color-bg-disabled-dark;
+        }
+      }
+      
+      &:disabled:checked + label::after {
+        background-color: $color-disabled-dark;
+      }
+    }
+    
+    .krds-form-check-cnt {
+      .krds-form-check-p {
+        color: $color-text-secondary-dark;
+      }
+    }
+  }
+} 

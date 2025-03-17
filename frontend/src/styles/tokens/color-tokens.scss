@@ -1,0 +1,127 @@
+// KRDS 색상 토큰
+// KRDS 디자인 시스템의 공식 색상 토큰입니다.
+
+// 기본 색상
+$color-primary-5: #ecf2fe;
+$color-primary-10: #d8e5fd;
+$color-primary-20: #b1cefb;
+$color-primary-30: #86aff9;
+$color-primary-40: #4c87f6;
+$color-primary-50: #256ef4;
+$color-primary-60: #1259e4;
+$color-primary-70: #0e48c0;
+$color-primary-80: #0a379c;
+$color-primary-90: #072778;
+$color-primary-100: #041956;
+
+// 중립 색상
+$color-gray-5: #f9fafb;
+$color-gray-10: #f2f4f6;
+$color-gray-20: #e5e8eb;
+$color-gray-30: #d1d6db;
+$color-gray-40: #b0b8c1;
+$color-gray-50: #8b95a1;
+$color-gray-60: #6b7684;
+$color-gray-70: #4e5968;
+$color-gray-80: #333d4b;
+$color-gray-90: #191f28;
+$color-gray-100: #111827;
+
+// 상태 색상
+$color-success-5: #ebfbf2;
+$color-success-10: #d6f7e6;
+$color-success-20: #acefcc;
+$color-success-30: #7ce7ae;
+$color-success-40: #36d986;
+$color-success-50: #12c870;
+$color-success-60: #0ea55c;
+$color-success-70: #0a8247;
+$color-success-80: #066035;
+$color-success-90: #033d22;
+$color-success-100: #011b0f;
+
+$color-danger-5: #fef2f2;
+$color-danger-10: #fee2e2;
+$color-danger-20: #fecaca;
+$color-danger-30: #fca5a5;
+$color-danger-40: #f87171;
+$color-danger-50: #ef4444;
+$color-danger-60: #dc2626;
+$color-danger-70: #b91c1c;
+$color-danger-80: #991b1b;
+$color-danger-90: #7f1d1d;
+$color-danger-100: #450a0a;
+
+$color-warning-5: #fffbeb;
+$color-warning-10: #fef3c7;
+$color-warning-20: #fde68a;
+$color-warning-30: #fcd34d;
+$color-warning-40: #fbbf24;
+$color-warning-50: #f59e0b;
+$color-warning-60: #d97706;
+$color-warning-70: #b45309;
+$color-warning-80: #92400e;
+$color-warning-90: #78350f;
+$color-warning-100: #451a03;
+
+$color-info-5: #ecfeff;
+$color-info-10: #cffafe;
+$color-info-20: #a5f3fc;
+$color-info-30: #67e8f9;
+$color-info-40: #22d3ee;
+$color-info-50: #06b6d4;
+$color-info-60: #0891b2;
+$color-info-70: #0e7490;
+$color-info-80: #155e75;
+$color-info-90: #164e63;
+$color-info-100: #083344;
+
+// 기본 색상 매핑
+$color-primary-light: $color-primary-30;
+$color-primary-base: $color-primary-50;
+$color-primary-dark: $color-primary-70;
+
+$color-secondary-light: $color-gray-30;
+$color-secondary-base: $color-gray-50;
+$color-secondary-dark: $color-gray-70;
+
+// 액션 컴포넌트 색상
+$color-primary-action: $color-primary-50;
+$color-primary-action-hover: $color-primary-60;
+$color-primary-action-active: $color-primary-70;
+$color-primary-action-disabled: $color-primary-20;
+
+$color-secondary-action: $color-gray-50;
+$color-secondary-action-hover: $color-gray-60;
+$color-secondary-action-active: $color-gray-70;
+$color-secondary-action-disabled: $color-gray-20;
+
+// 피드백 색상
+$color-success: $color-success-50;
+$color-warning: $color-warning-50;
+$color-danger: $color-danger-50;
+$color-info: $color-info-50;
+
+// 배경 색상
+$color-background-primary: #ffffff;
+$color-background-secondary: $color-gray-5;
+$color-background-tertiary: $color-gray-10;
+
+// 텍스트 색상
+$color-text-primary: $color-gray-90;
+$color-text-secondary: $color-gray-70;
+$color-text-tertiary: $color-gray-50;
+$color-text-inverse: #ffffff;
+$color-text-disabled: $color-gray-40;
+
+// 테두리 색상
+$color-border-light: $color-gray-20;
+$color-border-base: $color-gray-30;
+$color-border-dark: $color-gray-40;
+
+// 포커스 색상
+$color-focus-ring: rgba($color-primary-50, 0.3);
+
+// 그림자 색상
+$color-shadow: rgba($color-gray-90, 0.1);
+$color-shadow-dark: rgba($color-gray-90, 0.2); 

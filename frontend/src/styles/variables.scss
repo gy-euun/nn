@@ -1,0 +1,50 @@
+// 색상 변수
+$primary-color: #0050a5;
+$secondary-color: #f2994a;
+$danger-color: #eb5757;
+$success-color: #27ae60;
+$warning-color: #f2c94c;
+$info-color: #2d9cdb;
+$background-color: #f7f9fc;
+$text-color: #333333;
+$text-light: #666666;
+$text-lighter: #999999;
+$border-color: #e0e0e0;
+
+// 브레이크포인트
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// 폰트 크기
+$font-size-xs: 0.75rem;   // 12px
+$font-size-sm: 0.875rem;  // 14px
+$font-size-base: 1rem;    // 16px
+$font-size-md: 1.125rem;  // 18px
+$font-size-lg: 1.25rem;   // 20px
+$font-size-xl: 1.5rem;    // 24px
+$font-size-xxl: 2rem;     // 32px
+
+// 간격
+$spacing-xs: 0.25rem;     // 4px
+$spacing-sm: 0.5rem;      // 8px
+$spacing-md: 1rem;        // 16px
+$spacing-lg: 1.5rem;      // 24px
+$spacing-xl: 2rem;        // 32px
+$spacing-xxl: 3rem;       // 48px
+
+// 테두리 반경
+$border-radius-sm: 2px;
+$border-radius-md: 4px;
+$border-radius-lg: 8px;
+
+// 그림자
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+// 애니메이션
+$transition-fast: 0.2s;
+$transition-normal: 0.3s;
+$transition-slow: 0.5s; 

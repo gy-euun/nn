@@ -1,0 +1,671 @@
+@import '../../../tokens/colors';
+@import '../../../tokens/typography';
+@import '../../../tokens/spacing';
+@import '../../../tokens/borders';
+@import '../../../tokens/shadows';
+@import '../../../tokens/animation';
+
+// 폼 그룹 스타일
+.krds-form-group {
+  margin-bottom: $spacing-lg;
+  width: 100%;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// 라벨 스타일
+.krds-label {
+  display: block;
+  margin-bottom: $spacing-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-sm;
+  
+  &.required:after {
+    content: "*";
+    color: $color-danger;
+    margin-left: $spacing-xs;
+  }
+}
+
+// 기본 날짜 입력 스타일
+.krds-date-input-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  
+  .krds-date-input {
+    width: 100%;
+    padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    color: $color-text-primary;
+    background-color: $color-white;
+    border: 1px solid $color-border-base;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-inner-xs;
+    transition: all $transition-duration-sm ease;
+    cursor: pointer;
+    
+    &::placeholder {
+      color: $color-text-placeholder;
+    }
+    
+    &:focus, &:hover {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.25);
+    }
+    
+    &:disabled {
+      background-color: $color-background-disabled;
+      border-color: $color-border-light;
+      color: $color-text-muted;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    
+    // 크기 변형
+    &.krds-date-input-sm {
+      padding: ($spacing-sm * 0.7) ($spacing-xl * 0.85) ($spacing-sm * 0.7) $spacing-sm;
+      font-size: $font-size-sm;
+      border-radius: $border-radius-sm;
+    }
+    
+    &.krds-date-input-lg {
+      padding: ($spacing-md * 1.1) ($spacing-xl * 1.1) ($spacing-md * 1.1) ($spacing-md * 1.2);
+      font-size: $font-size-lg;
+      border-radius: $border-radius-lg;
+    }
+    
+    // 상태별 스타일
+    &.is-valid {
+      border-color: $color-success;
+      
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($color-success, 0.25);
+      }
+      
+      & + .krds-date-input-icon {
+        color: $color-success;
+      }
+    }
+    
+    &.is-invalid {
+      border-color: $color-danger;
+      
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($color-danger, 0.25);
+      }
+      
+      & + .krds-date-input-icon {
+        color: $color-danger;
+      }
+    }
+  }
+  
+  // 달력 아이콘
+  .krds-date-input-icon {
+    position: absolute;
+    top: 50%;
+    right: $spacing-sm;
+    transform: translateY(-50%);
+    color: $color-text-secondary;
+    pointer-events: none;
+    
+    svg {
+      display: block;
+    }
+  }
+  
+  // 포커스 상태 래퍼 스타일
+  &.focus {
+    .krds-date-input {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.25);
+    }
+    
+    .krds-date-input-icon {
+      color: $color-primary;
+    }
+  }
+}
+
+// 날짜 입력 설명 및 피드백
+.krds-date-input-description {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.krds-date-input-feedback {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  
+  &.valid {
+    color: $color-success;
+  }
+  
+  &.invalid {
+    color: $color-danger;
+  }
+}
+
+// 날짜 범위 선택 스타일
+.krds-date-range-wrapper {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  
+  .krds-date-input-wrapper {
+    flex: 1;
+  }
+  
+  .krds-date-range-separator {
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+    line-height: 1;
+    margin: 0 ($spacing-xs * 0.5);
+  }
+}
+
+// 달력 기본 스타일
+.krds-inline-calendar,
+.krds-calendar-wrapper {
+  width: 100%;
+  max-width: 320px;
+  background-color: $color-white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  font-size: $font-size-sm;
+}
+
+// 달력 헤더
+.krds-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  background-color: $color-background-subtle;
+  border-bottom: 1px solid $color-border-light;
+  
+  .krds-calendar-title {
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+  }
+  
+  .krds-calendar-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    color: $color-text-secondary;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all $transition-duration-xs ease;
+    
+    &:hover {
+      background-color: rgba($color-primary, 0.1);
+      color: $color-primary;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($color-primary, 0.25);
+    }
+  }
+}
+
+// 요일 헤더
+.krds-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: $spacing-sm 0;
+  
+  .krds-calendar-weekday {
+    text-align: center;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+    line-height: 1.4;
+    
+    &:first-child,
+    &:last-child {
+      color: $color-danger;
+    }
+  }
+}
+
+// 날짜 그리드
+.krds-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0 $spacing-xs $spacing-sm;
+  
+  .krds-calendar-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    width: 34px;
+    margin: 2px auto;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+    font-size: $font-size-sm;
+    color: $color-text-primary;
+    cursor: pointer;
+    transition: all $transition-duration-xs ease;
+    
+    &:hover:not(.disabled):not(.selected):not(.start-date):not(.end-date) {
+      background-color: rgba($color-primary, 0.1);
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($color-primary, 0.25);
+    }
+    
+    &.disabled {
+      color: $color-text-disabled;
+      cursor: default;
+    }
+    
+    &.today {
+      border: 1px solid $color-primary;
+      font-weight: $font-weight-bold;
+    }
+    
+    &.selected,
+    &.start-date,
+    &.end-date {
+      background-color: $color-primary;
+      color: $color-white;
+      font-weight: $font-weight-medium;
+    }
+    
+    &.in-range {
+      background-color: rgba($color-primary, 0.2);
+      border-radius: 0;
+    }
+    
+    &.start-date {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    &.end-date {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    &.start-date.end-date {
+      border-radius: 50%;
+    }
+  }
+}
+
+// 달력 푸터
+.krds-calendar-footer {
+  padding: $spacing-sm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid $color-border-light;
+  
+  button {
+    padding: $spacing-xs $spacing-sm;
+    border: none;
+    background-color: transparent;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    border-radius: $border-radius-sm;
+    transition: background-color $transition-duration-xs ease;
+    
+    &:hover {
+      background-color: rgba($color-primary, 0.1);
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($color-primary, 0.25);
+    }
+  }
+}
+
+// 날짜 범위 달력
+.krds-date-range-calendar {
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
+  width: 100%;
+  background-color: $color-white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    .krds-calendar-wrapper {
+      flex: 1;
+      min-width: 280px;
+      max-width: 320px;
+      
+      &:not(:last-child) {
+        border-right: 1px solid $color-border-light;
+      }
+    }
+    
+    .krds-calendar-footer {
+      flex-basis: 100%;
+    }
+  }
+  
+  .krds-calendar-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    
+    .krds-calendar-preset-btn {
+      white-space: nowrap;
+    }
+  }
+  
+  .krds-calendar-actions {
+    display: flex;
+    gap: $spacing-sm;
+    
+    .krds-calendar-apply-btn {
+      background-color: $color-primary;
+      color: $color-white;
+      padding: $spacing-xs $spacing-md;
+      
+      &:hover {
+        background-color: darken($color-primary, 5%);
+      }
+    }
+  }
+}
+
+// API 버튼 컨테이너
+.api-buttons {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  flex-wrap: wrap;
+}
+
+// 버튼 스타일 (예제용)
+.btn {
+  padding: $spacing-sm $spacing-md;
+  color: $color-white;
+  background-color: $color-primary;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: background-color $transition-duration-sm ease;
+  
+  &:hover {
+    background-color: darken($color-primary, 7%);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+  }
+}
+
+// 예제 스타일
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: $spacing-xl;
+}
+
+header {
+  margin-bottom: $spacing-xl;
+  
+  h1 {
+    font-size: $font-size-xxl;
+    margin-bottom: $spacing-sm;
+    color: $color-text-primary;
+  }
+  
+  p {
+    font-size: $font-size-md;
+    color: $color-text-secondary;
+  }
+}
+
+.example-section {
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-md;
+    color: $color-text-primary;
+  }
+}
+
+.example-container {
+  padding: $spacing-lg;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-lg;
+  background-color: $color-background-subtle;
+  
+  &.sizes, &.states, &.validation {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: $spacing-lg;
+  }
+}
+
+// 다크 모드 지원
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $color-background-dark;
+    color: $color-text-light;
+  }
+  
+  .krds-label {
+    color: $color-text-light;
+  }
+  
+  .krds-date-input-wrapper {
+    .krds-date-input {
+      background-color: darken($color-background-dark, 3%);
+      border-color: $color-border-dark;
+      color: $color-text-light;
+      
+      &::placeholder {
+        color: rgba($color-text-light, 0.4);
+      }
+      
+      &:focus, &:hover {
+        border-color: lighten($color-primary, 10%);
+        box-shadow: 0 0 0 3px rgba(lighten($color-primary, 10%), 0.25);
+      }
+      
+      &:disabled {
+        background-color: darken($color-background-dark, 5%);
+        border-color: $color-border-dark;
+        color: rgba($color-text-light, 0.5);
+      }
+    }
+    
+    .krds-date-input-icon {
+      color: rgba($color-text-light, 0.6);
+    }
+  }
+  
+  .krds-date-input-description {
+    color: rgba($color-text-light, 0.7);
+  }
+  
+  .krds-date-range-wrapper {
+    .krds-date-range-separator {
+      color: rgba($color-text-light, 0.7);
+    }
+  }
+  
+  .krds-inline-calendar,
+  .krds-date-range-calendar,
+  .krds-calendar-wrapper {
+    background-color: $color-background-dark;
+    box-shadow: $shadow-md-dark;
+  }
+  
+  .krds-calendar-header {
+    background-color: lighten($color-background-dark, 5%);
+    border-color: $color-border-dark;
+    
+    .krds-calendar-title {
+      color: $color-text-light;
+    }
+    
+    .krds-calendar-nav-btn {
+      color: rgba($color-text-light, 0.7);
+      
+      &:hover {
+        background-color: rgba($color-primary, 0.2);
+        color: lighten($color-primary, 15%);
+      }
+    }
+  }
+  
+  .krds-calendar-weekdays {
+    .krds-calendar-weekday {
+      color: rgba($color-text-light, 0.7);
+      
+      &:first-child,
+      &:last-child {
+        color: lighten($color-danger, 15%);
+      }
+    }
+  }
+  
+  .krds-calendar-days {
+    .krds-calendar-day {
+      color: $color-text-light;
+      
+      &:hover:not(.disabled):not(.selected):not(.start-date):not(.end-date) {
+        background-color: rgba($color-primary, 0.2);
+      }
+      
+      &.disabled {
+        color: rgba($color-text-light, 0.3);
+      }
+      
+      &.today {
+        border-color: lighten($color-primary, 15%);
+      }
+      
+      &.selected,
+      &.start-date,
+      &.end-date {
+        background-color: lighten($color-primary, 5%);
+      }
+      
+      &.in-range {
+        background-color: rgba($color-primary, 0.25);
+      }
+    }
+  }
+  
+  .krds-calendar-footer {
+    border-color: $color-border-dark;
+    
+    button {
+      color: lighten($color-primary, 15%);
+      
+      &:hover {
+        background-color: rgba($color-primary, 0.15);
+      }
+    }
+  }
+  
+  .krds-date-range-calendar {
+    background-color: $color-background-dark;
+    
+    .krds-calendar-wrapper:not(:last-child) {
+      border-color: $color-border-dark;
+    }
+    
+    .krds-calendar-actions {
+      .krds-calendar-apply-btn {
+        background-color: lighten($color-primary, 5%);
+        
+        &:hover {
+          background-color: lighten($color-primary, 10%);
+        }
+      }
+    }
+  }
+  
+  .btn {
+    background-color: $color-primary;
+    
+    &:hover {
+      background-color: lighten($color-primary, 5%);
+    }
+  }
+  
+  header {
+    h1 {
+      color: $color-text-light;
+    }
+    
+    p {
+      color: rgba($color-text-light, 0.7);
+    }
+  }
+  
+  .example-section h2 {
+    color: $color-text-light;
+  }
+  
+  .example-container {
+    background-color: lighten($color-background-dark, 3%);
+    border-color: $color-border-dark;
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 576px) {
+  .krds-date-range-wrapper {
+    flex-direction: column;
+    gap: $spacing-sm;
+    
+    .krds-date-range-separator {
+      display: none;
+    }
+  }
+  
+  .example-container {
+    &.sizes, &.states, &.validation {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .api-buttons {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+} 

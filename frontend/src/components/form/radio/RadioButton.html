@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRDS 라디오 버튼 컴포넌트</title>
+  <link rel="stylesheet" href="radio.css">
+</head>
+<body>
+  <h1>KRDS 라디오 버튼 컴포넌트</h1>
+  
+  <!-- 기본 라디오 버튼 -->
+  <section class="example-section">
+    <h2>기본 라디오 버튼</h2>
+    <div class="fieldset">
+      <div class="form-group">
+        <div class="form-conts">
+          <div class="krds-check-area">
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_basic" id="rdo_basic_1">
+              <label for="rdo_basic_1">기본</label>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_basic" id="rdo_basic_2" checked>
+              <label for="rdo_basic_2">선택됨</label>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_basic" id="rdo_basic_3" disabled>
+              <label for="rdo_basic_3">비활성화</label>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_basic_disabled" id="rdo_basic_4" disabled checked>
+              <label for="rdo_basic_4">선택된 비활성화</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 부가 설명이 있는 라디오 버튼 -->
+  <section class="example-section">
+    <h2>부가 설명이 있는 라디오 버튼</h2>
+    <div class="fieldset">
+      <div class="form-group">
+        <div class="form-conts">
+          <div class="krds-check-area chk-column">
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_desc" id="rdo_desc_1" checked>
+              <label for="rdo_desc_1">기본 요금제</label>
+              <div class="krds-form-check-cnt">
+                <p class="krds-form-check-p">
+                  월 5,000원의 기본 서비스를 제공합니다. 기본적인 기능을 모두 사용할 수 있습니다.
+                </p>
+              </div>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_desc" id="rdo_desc_2">
+              <label for="rdo_desc_2">프리미엄 요금제</label>
+              <div class="krds-form-check-cnt">
+                <p class="krds-form-check-p">
+                  월 15,000원의 프리미엄 서비스를 제공합니다. 모든 기능과 추가 혜택을 누릴 수 있습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 인라인 라디오 버튼 -->
+  <section class="example-section">
+    <h2>인라인 라디오 버튼</h2>
+    <div class="fieldset">
+      <div class="form-group">
+        <div class="form-conts">
+          <div class="krds-check-area inline">
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_inline" id="rdo_inline_1" checked>
+              <label for="rdo_inline_1">옵션 1</label>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_inline" id="rdo_inline_2">
+              <label for="rdo_inline_2">옵션 2</label>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_inline" id="rdo_inline_3">
+              <label for="rdo_inline_3">옵션 3</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 필수 항목 라디오 버튼 -->
+  <section class="example-section">
+    <h2>필수 항목 라디오 버튼</h2>
+    <div class="fieldset">
+      <div class="form-group">
+        <div class="form-label">
+          <label class="required">필수 선택 항목</label>
+        </div>
+        <div class="form-conts">
+          <div class="krds-check-area">
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_required" id="rdo_required_1" required>
+              <label for="rdo_required_1">옵션 A</label>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_required" id="rdo_required_2" required>
+              <label for="rdo_required_2">옵션 B</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 유효성 검사 라디오 버튼 -->
+  <section class="example-section">
+    <h2>유효성 검사 라디오 버튼</h2>
+    <div class="fieldset">
+      <div class="form-group">
+        <div class="form-label">
+          <label>선택 항목</label>
+        </div>
+        <div class="form-conts">
+          <div class="krds-check-area is-valid">
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_valid" id="rdo_valid_1" checked>
+              <label for="rdo_valid_1">유효한 옵션</label>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_valid" id="rdo_valid_2">
+              <label for="rdo_valid_2">다른 옵션</label>
+            </div>
+          </div>
+          <div class="form-feedback valid">올바른 선택입니다.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-label">
+          <label>다른 선택 항목</label>
+        </div>
+        <div class="form-conts">
+          <div class="krds-check-area is-invalid">
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_invalid" id="rdo_invalid_1">
+              <label for="rdo_invalid_1">옵션 1</label>
+            </div>
+            <div class="krds-form-check">
+              <input type="radio" name="rdo_invalid" id="rdo_invalid_2">
+              <label for="rdo_invalid_2">옵션 2</label>
+            </div>
+          </div>
+          <div class="form-feedback invalid">필수 항목입니다. 옵션을 선택해주세요.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="radio.js"></script>
+</body>
+</html> 

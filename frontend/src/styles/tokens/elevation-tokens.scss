@@ -1,0 +1,84 @@
+// KRDS 상승 효과 토큰
+// KRDS 디자인 시스템의 상승 효과(Elevation) 토큰입니다.
+
+// 그림자 값 가져오기
+@import 'shape-tokens';
+
+// 기본 상승 효과 클래스
+.elevation-0 {
+  box-shadow: $elevation-0;
+  z-index: 0;
+}
+
+.elevation-1 {
+  box-shadow: $elevation-1;
+  z-index: 10;
+}
+
+.elevation-2 {
+  box-shadow: $elevation-2;
+  z-index: 20;
+}
+
+.elevation-3 {
+  box-shadow: $elevation-3;
+  z-index: 30;
+}
+
+.elevation-4 {
+  box-shadow: $elevation-4;
+  z-index: 40;
+}
+
+.elevation-5 {
+  box-shadow: $elevation-5;
+  z-index: 50;
+}
+
+.elevation-6 {
+  box-shadow: $elevation-6;
+  z-index: 60;
+}
+
+// 컴포넌트별 상승 효과
+$elevation-card: $elevation-2;
+$elevation-dropdown: $elevation-3;
+$elevation-modal: $elevation-4;
+$elevation-popover: $elevation-3;
+$elevation-tooltip: $elevation-2;
+$elevation-header: $elevation-2;
+$elevation-sidebar: $elevation-2;
+$elevation-floating-action-button: $elevation-4;
+
+// 상승 효과 믹스인
+@mixin elevation($level) {
+  @if $level == 'card' {
+    box-shadow: $elevation-card;
+  } @else if $level == 'dropdown' {
+    box-shadow: $elevation-dropdown;
+  } @else if $level == 'modal' {
+    box-shadow: $elevation-modal;
+  } @else if $level == 'popover' {
+    box-shadow: $elevation-popover;
+  } @else if $level == 'tooltip' {
+    box-shadow: $elevation-tooltip;
+  } @else if $level == 'header' {
+    box-shadow: $elevation-header;
+  } @else if $level == 'sidebar' {
+    box-shadow: $elevation-sidebar;
+  } @else if $level == 'fab' {
+    box-shadow: $elevation-floating-action-button;
+  } @else {
+    @include shadow($level);
+  }
+}
+
+// 호버 시 상승 효과 증가 믹스인
+@mixin elevation-hover($from, $to) {
+  transition: box-shadow 0.3s ease-in-out;
+  @include elevation($from);
+  
+  &:hover {
+    @include elevation($to);
+  }
+} 

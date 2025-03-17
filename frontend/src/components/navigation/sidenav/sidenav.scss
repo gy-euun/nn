@@ -1,0 +1,466 @@
+@import "../../../styles/tokens/colors.scss";
+@import "../../../styles/tokens/typography.scss";
+@import "../../../styles/tokens/layout.scss";
+@import "../../../styles/tokens/shape.scss";
+@import "../../../styles/tokens/elevation.scss";
+
+// 사이드 내비게이션 컴포넌트 스타일
+// =============================
+
+// 예제 영역 스타일
+.example-section {
+  margin-bottom: $spacing-xxl;
+  
+  h2 {
+    margin-bottom: $spacing-lg;
+    @include heading-md;
+    color: $color-text-primary;
+  }
+}
+
+.example-layout {
+  display: flex;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  position: relative;
+  height: 600px;
+}
+
+.example-content {
+  flex: 1;
+  padding: $spacing-md;
+  position: relative;
+  
+  &-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: $spacing-xl;
+  }
+}
+
+// 기본 사이드 내비게이션 스타일
+.krds-sidenav {
+  width: 280px;
+  background-color: $color-background-alt;
+  border-right: 1px solid $color-border-light;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  // 사이드 내비게이션 헤더
+  &-header {
+    padding: $spacing-md;
+    border-bottom: 1px solid $color-border-light;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  
+  // 브랜드 영역
+  &-brand {
+    a {
+      display: block;
+      
+      img {
+        height: 40px;
+        width: auto;
+        display: block;
+      }
+    }
+  }
+  
+  // 닫기 버튼
+  &-close {
+    display: none;
+    background: transparent;
+    border: none;
+    color: $color-text-secondary;
+    cursor: pointer;
+    padding: $spacing-xs;
+    
+    &:hover {
+      color: $color-text-primary;
+    }
+    
+    svg {
+      display: block;
+    }
+  }
+  
+  // 사이드 내비게이션 본문
+  &-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-md 0;
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-border-light;
+      border-radius: $border-radius-sm;
+      
+      &:hover {
+        background-color: $color-border-secondary;
+      }
+    }
+  }
+  
+  // 내비게이션 목록
+  &-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  // 내비게이션 항목
+  &-item {
+    margin: 0;
+    position: relative;
+    
+    &.active {
+      .krds-sidenav-link {
+        color: $color-brand-primary;
+        background-color: rgba($color-brand-primary, 0.05);
+        
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 4px;
+          background-color: $color-brand-primary;
+          border-radius: 0 $border-radius-sm $border-radius-sm 0;
+        }
+        
+        svg {
+          color: $color-brand-primary;
+        }
+      }
+    }
+    
+    // 드롭다운이 열렸을 때
+    &.expanded {
+      .krds-sidenav-dropdown-toggle {
+        .krds-sidenav-dropdown-icon {
+          transform: rotate(180deg);
+        }
+      }
+      
+      .krds-sidenav-dropdown-menu {
+        max-height: 1000px; // 충분히 큰 값
+        opacity: 1;
+      }
+    }
+  }
+  
+  // 내비게이션 링크
+  &-link {
+    display: flex;
+    align-items: center;
+    padding: $spacing-md $spacing-md;
+    color: $color-text-secondary;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.2s ease;
+    @include body-text-md;
+    
+    &:hover {
+      color: $color-text-primary;
+      background-color: $color-background-subtle;
+    }
+    
+    .krds-icon {
+      color: $color-text-tertiary;
+      margin-right: $spacing-sm;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    
+    span {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  // 드롭다운 토글
+  &-dropdown-toggle {
+    .krds-sidenav-dropdown-icon {
+      margin-left: $spacing-sm;
+      transition: transform 0.2s ease;
+    }
+  }
+  
+  // 드롭다운 메뉴
+  &-dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background-color: $color-background-subtle;
+    
+    .krds-sidenav-link {
+      padding-left: $spacing-xl * 2;
+      font-size: 0.9em;
+      
+      &::before {
+        left: $spacing-xl;
+      }
+    }
+  }
+  
+  // 사이드 내비게이션 푸터
+  &-footer {
+    border-top: 1px solid $color-border-light;
+    padding: $spacing-md;
+    flex-shrink: 0;
+  }
+  
+  // 사용자 정보
+  &-user {
+    display: flex;
+    align-items: center;
+    
+    &-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: $spacing-sm;
+    }
+    
+    &-info {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    &-name {
+      margin: 0;
+      @include body-text-md;
+      font-weight: $font-weight-bold;
+      color: $color-text-primary;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    &-role {
+      margin: 0;
+      @include body-text-sm;
+      color: $color-text-secondary;
+    }
+  }
+  
+  // 접힌 사이드 내비게이션
+  &.krds-sidenav-collapsed {
+    width: 70px;
+    
+    .krds-sidenav-brand {
+      display: none;
+    }
+    
+    .krds-sidenav-link {
+      padding: $spacing-md;
+      justify-content: center;
+      
+      span {
+        display: none;
+      }
+      
+      .krds-icon {
+        margin-right: 0;
+      }
+    }
+    
+    .krds-sidenav-dropdown-toggle {
+      .krds-sidenav-dropdown-icon {
+        display: none;
+      }
+    }
+    
+    .krds-sidenav-dropdown-menu {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      width: 200px;
+      max-height: 0;
+      padding: 0;
+      z-index: 100;
+      border: 1px solid $color-border-light;
+      background-color: $color-background-alt;
+      box-shadow: $shadow-elevation-2;
+      border-radius: $border-radius-md;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      
+      .krds-sidenav-link {
+        padding: $spacing-md;
+        justify-content: flex-start;
+        
+        span {
+          display: block;
+        }
+      }
+    }
+    
+    .krds-sidenav-item:hover {
+      .krds-sidenav-dropdown-menu {
+        max-height: 1000px;
+        padding: $spacing-xs 0;
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    
+    .krds-sidenav-footer {
+      padding: $spacing-md $spacing-xs;
+      
+      .krds-sidenav-user {
+        justify-content: center;
+        
+        &-image {
+          margin-right: 0;
+        }
+        
+        &-info {
+          display: none;
+        }
+      }
+    }
+  }
+  
+  // 다크 테마
+  &.krds-sidenav-dark {
+    background-color: $color-background-inverse;
+    border-right-color: rgba($color-white, 0.1);
+    
+    .krds-sidenav-header {
+      border-bottom-color: rgba($color-white, 0.1);
+    }
+    
+    .krds-sidenav-close {
+      color: rgba($color-white, 0.7);
+      
+      &:hover {
+        color: $color-white;
+      }
+    }
+    
+    .krds-sidenav-link {
+      color: rgba($color-white, 0.7);
+      
+      &:hover {
+        color: $color-white;
+        background-color: rgba($color-white, 0.05);
+      }
+      
+      .krds-icon {
+        color: rgba($color-white, 0.5);
+      }
+    }
+    
+    .krds-sidenav-item.active {
+      .krds-sidenav-link {
+        color: $color-brand-secondary;
+        background-color: rgba($color-brand-secondary, 0.1);
+        
+        &::before {
+          background-color: $color-brand-secondary;
+        }
+        
+        svg {
+          color: $color-brand-secondary;
+        }
+      }
+    }
+    
+    .krds-sidenav-dropdown-menu {
+      background-color: rgba($color-white, 0.05);
+    }
+    
+    .krds-sidenav-footer {
+      border-top-color: rgba($color-white, 0.1);
+    }
+    
+    .krds-sidenav-user {
+      &-name {
+        color: $color-white;
+      }
+      
+      &-role {
+        color: rgba($color-white, 0.7);
+      }
+    }
+  }
+}
+
+// 내비게이션 토글 버튼
+.krds-sidenav-toggle {
+  position: absolute;
+  top: $spacing-md;
+  left: $spacing-md;
+  padding: $spacing-xs;
+  background-color: $color-background-alt;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-sm;
+  color: $color-text-primary;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: $color-background-subtle;
+    box-shadow: $shadow-elevation-1;
+  }
+  
+  svg {
+    display: block;
+  }
+}
+
+// 미디어 쿼리 - 모바일 대응
+@media (max-width: 768px) {
+  .krds-sidenav {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    box-shadow: $shadow-elevation-3;
+    
+    &.krds-sidenav-expanded {
+      left: 0;
+    }
+    
+    &-close {
+      display: block;
+    }
+  }
+  
+  .example-layout {
+    overflow: visible;
+  }
+  
+  .example-content {
+    overflow: hidden;
+  }
+} 

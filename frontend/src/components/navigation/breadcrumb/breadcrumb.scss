@@ -1,0 +1,185 @@
+@import '../../../styles/tokens/colors.scss';
+@import '../../../styles/tokens/typography.scss';
+@import '../../../styles/tokens/layout.scss';
+@import '../../../styles/tokens/shape.scss';
+@import '../../../styles/tokens/elevation.scss';
+
+// 브레드크럼 컴포넌트 스타일
+.krds-breadcrumb {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  
+  // 기본 리스트 스타일
+  &-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  // 브레드크럼 아이템
+  &-item {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    
+    &:last-child {
+      .krds-breadcrumb-link,
+      .krds-breadcrumb-current {
+        color: var(--color-neutral-900);
+        font-weight: var(--font-weight-medium);
+      }
+    }
+  }
+  
+  // 링크 스타일
+  &-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-neutral-600);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+    
+    &:focus {
+      outline: none;
+      color: var(--color-primary);
+    }
+    
+    .svg-icon {
+      margin-right: 4px;
+    }
+  }
+  
+  // 구분자 스타일
+  &-separator {
+    margin: 0 8px;
+    color: var(--color-neutral-400);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  
+  // 현재 페이지 표시
+  &-current {
+    color: var(--color-neutral-900);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  // 응축 브레드크럼 (모바일용)
+  &-condensed {
+    .krds-breadcrumb-dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      background: none;
+      border: none;
+      color: var(--color-neutral-600);
+      cursor: pointer;
+      font-size: var(--font-size-sm);
+      font-family: var(--font-family);
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: var(--color-primary);
+      }
+      
+      .svg-icon {
+        margin-left: 4px;
+        width: 14px;
+        height: 14px;
+      }
+    }
+    
+    .krds-breadcrumb-dropdown {
+      position: absolute;
+      z-index: 100;
+      margin-top: 4px;
+      background-color: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--elevation-3);
+      min-width: 200px;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: visibility 0.2s, opacity 0.2s, transform 0.2s;
+      
+      &-list {
+        list-style: none;
+        margin: 0;
+        padding: 8px 0;
+      }
+      
+      &-item {
+        margin: 0;
+        padding: 0;
+      }
+      
+      &-link {
+        display: block;
+        padding: 8px 16px;
+        color: var(--color-neutral-700);
+        text-decoration: none;
+        transition: background-color 0.2s, color 0.2s;
+        
+        &:hover {
+          background-color: var(--color-neutral-50);
+          color: var(--color-primary);
+        }
+      }
+    }
+    
+    .krds-breadcrumb-item {
+      position: relative;
+      
+      &:hover,
+      &:focus-within {
+        .krds-breadcrumb-dropdown {
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+// 반응형 조정
+@media (max-width: 768px) {
+  .krds-breadcrumb {
+    font-size: var(--font-size-xs);
+    
+    &-separator {
+      margin: 0 4px;
+      width: 14px;
+      height: 14px;
+    }
+    
+    // 일반 브레드크럼은 모바일에서 숨김
+    &:not(.krds-breadcrumb-condensed) {
+      display: none;
+    }
+    
+    // 모바일에서는 응축 브레드크럼만 표시
+    &-condensed {
+      display: flex;
+    }
+  }
+}
+
+// 데스크탑에서는 응축 브레드크럼 숨김
+@media (min-width: 769px) {
+  .krds-breadcrumb-condensed {
+    display: none;
+  }
+} 

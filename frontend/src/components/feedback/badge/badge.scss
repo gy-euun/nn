@@ -1,0 +1,307 @@
+@import "../../../styles/tokens/colors.scss";
+@import "../../../styles/tokens/typography.scss";
+@import "../../../styles/tokens/layout.scss";
+@import "../../../styles/tokens/shape.scss";
+@import "../../../styles/tokens/elevation.scss";
+
+// 배지 컴포넌트 스타일
+.krds-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xs $spacing-sm;
+  background-color: $color-neutral-500;
+  color: $color-white;
+  border-radius: $border-radius-sm;
+  @include body-text-sm;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+  
+  // 링크 배지
+  &[href] {
+    text-decoration: none;
+    cursor: pointer;
+    
+    &:hover {
+      text-decoration: none;
+      background-color: darken($color-neutral-500, 10%);
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-border-focus;
+    }
+  }
+  
+  // 배지에 아이콘이 있을 경우
+  &-icon {
+    margin-right: $spacing-xs;
+  }
+  
+  // 크기 변형
+  &-sm {
+    padding: $spacing-xxs $spacing-xs;
+    @include body-text-xs;
+  }
+  
+  &-lg {
+    padding: $spacing-xs $spacing-md;
+    @include body-text-md;
+  }
+  
+  // 둥근 모서리 배지
+  &-pill {
+    border-radius: 20px;
+    padding-left: $spacing-md;
+    padding-right: $spacing-md;
+  }
+  
+  // 카운터 배지
+  &-counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 $spacing-xs;
+    margin-left: $spacing-xs;
+    font-size: 12px;
+    border-radius: 10px;
+    background-color: $color-status-danger;
+    color: $color-white;
+    line-height: 1;
+    
+    // 버튼 내 카운터 배지의 위치 조정
+    .krds-btn & {
+      position: relative;
+      top: -8px;
+      right: -8px;
+      transform: translate(50%, -50%);
+      margin-left: 0;
+      margin-right: -12px;
+    }
+  }
+  
+  // 상태 점 배지
+  &-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: $spacing-xs;
+    background-color: $color-neutral-500;
+  }
+  
+  // 상태 배지
+  &-status {
+    display: inline-flex;
+    align-items: center;
+    margin-right: $spacing-md;
+    
+    &-text {
+      @include body-text-sm;
+      color: $color-text-secondary;
+    }
+  }
+  
+  // 제거 가능한 배지
+  &-dismissible {
+    padding-right: $spacing-xs;
+  }
+  
+  // 배지 닫기 버튼
+  &-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: $spacing-xs;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+    border: none;
+    background: transparent;
+    color: currentColor;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 1;
+    }
+    
+    &:focus {
+      outline: none;
+      opacity: 1;
+    }
+  }
+}
+
+// 배지 색상 변형
+.krds-badge {
+  // 주요 색상
+  &-primary {
+    background-color: $color-brand-primary;
+    color: $color-white;
+    
+    &[href]:hover {
+      background-color: darken($color-brand-primary, 10%);
+    }
+  }
+  
+  // 보조 색상
+  &-secondary {
+    background-color: $color-brand-secondary;
+    color: $color-white;
+    
+    &[href]:hover {
+      background-color: darken($color-brand-secondary, 10%);
+    }
+  }
+  
+  // 성공 색상
+  &-success {
+    background-color: $color-status-success;
+    color: $color-white;
+    
+    &[href]:hover {
+      background-color: darken($color-status-success, 10%);
+    }
+  }
+  
+  // 위험 색상
+  &-danger {
+    background-color: $color-status-danger;
+    color: $color-white;
+    
+    &[href]:hover {
+      background-color: darken($color-status-danger, 10%);
+    }
+  }
+  
+  // 경고 색상
+  &-warning {
+    background-color: $color-status-warning;
+    color: $color-text-primary;
+    
+    &[href]:hover {
+      background-color: darken($color-status-warning, 10%);
+    }
+  }
+  
+  // 정보 색상
+  &-info {
+    background-color: $color-status-info;
+    color: $color-white;
+    
+    &[href]:hover {
+      background-color: darken($color-status-info, 10%);
+    }
+  }
+  
+  // 라이트 색상 변형
+  &-primary-light {
+    background-color: rgba($color-brand-primary, 0.15);
+    color: $color-brand-primary;
+    
+    &[href]:hover {
+      background-color: rgba($color-brand-primary, 0.25);
+    }
+  }
+  
+  &-secondary-light {
+    background-color: rgba($color-brand-secondary, 0.15);
+    color: $color-brand-secondary;
+    
+    &[href]:hover {
+      background-color: rgba($color-brand-secondary, 0.25);
+    }
+  }
+  
+  &-success-light {
+    background-color: rgba($color-status-success, 0.15);
+    color: $color-status-success;
+    
+    &[href]:hover {
+      background-color: rgba($color-status-success, 0.25);
+    }
+  }
+  
+  &-danger-light {
+    background-color: rgba($color-status-danger, 0.15);
+    color: $color-status-danger;
+    
+    &[href]:hover {
+      background-color: rgba($color-status-danger, 0.25);
+    }
+  }
+  
+  &-warning-light {
+    background-color: rgba($color-status-warning, 0.15);
+    color: darken($color-status-warning, 20%);
+    
+    &[href]:hover {
+      background-color: rgba($color-status-warning, 0.25);
+    }
+  }
+  
+  &-info-light {
+    background-color: rgba($color-status-info, 0.15);
+    color: $color-status-info;
+    
+    &[href]:hover {
+      background-color: rgba($color-status-info, 0.25);
+    }
+  }
+  
+  // 아웃라인 배지
+  &-outline-primary {
+    background-color: transparent;
+    color: $color-brand-primary;
+    border: 1px solid $color-brand-primary;
+    
+    &[href]:hover {
+      background-color: rgba($color-brand-primary, 0.1);
+    }
+  }
+  
+  &-outline-danger {
+    background-color: transparent;
+    color: $color-status-danger;
+    border: 1px solid $color-status-danger;
+    
+    &[href]:hover {
+      background-color: rgba($color-status-danger, 0.1);
+    }
+  }
+}
+
+// 상태 점 색상
+.krds-badge-dot {
+  &.krds-badge-primary {
+    background-color: $color-brand-primary;
+  }
+  
+  &.krds-badge-secondary {
+    background-color: $color-brand-secondary;
+  }
+  
+  &.krds-badge-success {
+    background-color: $color-status-success;
+  }
+  
+  &.krds-badge-danger {
+    background-color: $color-status-danger;
+  }
+  
+  &.krds-badge-warning {
+    background-color: $color-status-warning;
+  }
+  
+  &.krds-badge-info {
+    background-color: $color-status-info;
+  }
+} 

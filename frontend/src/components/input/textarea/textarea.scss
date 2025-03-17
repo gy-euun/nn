@@ -1,0 +1,353 @@
+@import '../../../tokens/colors';
+@import '../../../tokens/typography';
+@import '../../../tokens/spacing';
+@import '../../../tokens/borders';
+@import '../../../tokens/shadows';
+@import '../../../tokens/animation';
+
+// 폼 그룹 스타일
+.krds-form-group {
+  margin-bottom: $spacing-lg;
+  width: 100%;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// 라벨 스타일
+.krds-label {
+  display: block;
+  margin-bottom: $spacing-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-sm;
+  
+  &.required:after {
+    content: "*";
+    color: $color-danger;
+    margin-left: $spacing-xs;
+  }
+}
+
+// 기본 텍스트 영역 스타일
+.krds-textarea {
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-md;
+  line-height: $line-height-md;
+  color: $color-text-primary;
+  background-color: $color-white;
+  border: 1px solid $color-border-base;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-inner-xs;
+  transition: all $transition-duration-sm ease;
+  resize: vertical; // 기본적으로 수직 리사이즈만 허용
+  min-height: 4em;
+  
+  // 플레이스홀더 스타일
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+  
+  // 포커스 스타일
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.25);
+  }
+  
+  // 비활성화 및 읽기 전용 스타일
+  &:disabled,
+  &[readonly] {
+    background-color: $color-background-disabled;
+    border-color: $color-border-light;
+    color: $color-text-muted;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  // 상태별 스타일
+  &.is-valid {
+    border-color: $color-success;
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($color-success, 0.25);
+    }
+  }
+  
+  &.is-invalid {
+    border-color: $color-danger;
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($color-danger, 0.25);
+    }
+  }
+  
+  // 크기 변형
+  &.krds-textarea-sm {
+    padding: ($spacing-sm * 0.7) $spacing-sm;
+    font-size: $font-size-sm;
+    border-radius: $border-radius-sm;
+  }
+  
+  &.krds-textarea-lg {
+    padding: ($spacing-md * 1.1) ($spacing-md * 1.2);
+    font-size: $font-size-lg;
+    border-radius: $border-radius-lg;
+  }
+  
+  // 리사이즈 옵션
+  &.resize-both {
+    resize: both;
+  }
+  
+  &.resize-vertical {
+    resize: vertical;
+  }
+  
+  &.resize-horizontal {
+    resize: horizontal;
+  }
+  
+  &.resize-none {
+    resize: none;
+  }
+  
+  // 자동 높이 조절 텍스트 영역
+  &.auto-resize {
+    overflow-y: hidden; // 스크롤바 숨김
+    resize: none;
+    transition: height $transition-duration-sm ease;
+  }
+}
+
+// 텍스트 영역 설명 텍스트
+.krds-textarea-description {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+// 유효성 검사 피드백
+.krds-textarea-feedback {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  
+  &.valid {
+    color: $color-success;
+  }
+  
+  &.invalid {
+    color: $color-danger;
+  }
+}
+
+// 텍스트 영역 래퍼 (카운터 등의 추가 기능 포함)
+.krds-textarea-wrapper {
+  position: relative;
+  width: 100%;
+  
+  // 글자 수 카운터
+  .krds-textarea-counter {
+    position: absolute;
+    bottom: $spacing-xs;
+    right: $spacing-sm;
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    background-color: rgba($color-white, 0.8);
+    padding: ($spacing-xs * 0.5) $spacing-xs;
+    border-radius: $border-radius-sm;
+    pointer-events: none; // 텍스트 영역 사용에 방해되지 않도록
+    
+    // 글자 수 제한에 근접하면 경고 색상으로 변경
+    &.near-limit {
+      color: $color-warning;
+    }
+    
+    // 글자 수 제한에 도달하면 오류 색상으로 변경
+    &.at-limit {
+      color: $color-danger;
+    }
+  }
+  
+  // 카운터가 있는 텍스트 영역
+  .krds-textarea.with-counter {
+    padding-bottom: ($spacing-md * 1.5);
+  }
+}
+
+// API 버튼 컨테이너
+.api-buttons {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  flex-wrap: wrap;
+}
+
+// 버튼 스타일 (예제용)
+.btn {
+  padding: $spacing-sm $spacing-md;
+  color: $color-white;
+  background-color: $color-primary;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: background-color $transition-duration-sm ease;
+  
+  &:hover {
+    background-color: darken($color-primary, 7%);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+  }
+}
+
+// 예제 스타일
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-xl;
+}
+
+header {
+  margin-bottom: $spacing-xl;
+  
+  h1 {
+    font-size: $font-size-xxl;
+    margin-bottom: $spacing-sm;
+    color: $color-text-primary;
+  }
+  
+  p {
+    font-size: $font-size-md;
+    color: $color-text-secondary;
+  }
+}
+
+.example-section {
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-md;
+    color: $color-text-primary;
+  }
+}
+
+.example-container {
+  padding: $spacing-lg;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-lg;
+  background-color: $color-background-subtle;
+  
+  &.sizes, &.states, &.validation, &.resize-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: $spacing-lg;
+  }
+}
+
+// 다크 모드 지원
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $color-background-dark;
+    color: $color-text-light;
+  }
+  
+  .krds-label {
+    color: $color-text-light;
+  }
+  
+  .krds-textarea {
+    color: $color-text-light;
+    background-color: darken($color-background-dark, 3%);
+    border-color: $color-border-dark;
+    
+    &::placeholder {
+      color: rgba($color-text-light, 0.4);
+    }
+    
+    &:focus {
+      border-color: lighten($color-primary, 10%);
+      box-shadow: 0 0 0 3px rgba(lighten($color-primary, 10%), 0.25);
+    }
+    
+    &:disabled,
+    &[readonly] {
+      background-color: darken($color-background-dark, 5%);
+      border-color: $color-border-dark;
+      color: rgba($color-text-light, 0.5);
+    }
+  }
+  
+  .krds-textarea-description {
+    color: rgba($color-text-light, 0.7);
+  }
+  
+  .krds-textarea-wrapper {
+    .krds-textarea-counter {
+      color: rgba($color-text-light, 0.7);
+      background-color: rgba(darken($color-background-dark, 3%), 0.8);
+      
+      &.near-limit {
+        color: lighten($color-warning, 10%);
+      }
+      
+      &.at-limit {
+        color: lighten($color-danger, 10%);
+      }
+    }
+  }
+  
+  header {
+    h1 {
+      color: $color-text-light;
+    }
+    
+    p {
+      color: rgba($color-text-light, 0.7);
+    }
+  }
+  
+  .example-section h2 {
+    color: $color-text-light;
+  }
+  
+  .example-container {
+    border-color: $color-border-dark;
+    background-color: lighten($color-background-dark, 3%);
+  }
+  
+  .btn {
+    background-color: $color-primary;
+    
+    &:hover {
+      background-color: lighten($color-primary, 5%);
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 576px) {
+  .example-container {
+    &.sizes, &.states, &.validation, &.resize-options {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .api-buttons {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+} 

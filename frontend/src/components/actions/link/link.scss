@@ -1,0 +1,201 @@
+@import '../../../tokens/colors';
+@import '../../../tokens/typography';
+@import '../../../tokens/spacing';
+@import '../../../tokens/breakpoints';
+
+// 링크 컴포넌트 스타일
+.krds-link {
+  // 기본 스타일
+  display: inline-flex;
+  align-items: center;
+  font-family: $font-family-base;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  color: $color-primary;
+  
+  // 크기 변형
+  &.small {
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+  }
+  
+  &.medium {
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+  
+  &.large {
+    font-size: $font-size-large;
+    line-height: $line-height-large;
+  }
+  
+  // 스타일 변형
+  &.primary {
+    color: $color-primary;
+  }
+  
+  &.basic {
+    color: $color-text;
+  }
+  
+  &.pure {
+    &:hover, &:focus, &:active {
+      color: inherit;
+    }
+  }
+  
+  // 밑줄 스타일
+  .underline {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: currentColor;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  
+  .hidden-underline {
+    &::after {
+      opacity: 0;
+    }
+  }
+  
+  &:hover, &:focus {
+    color: darken($color-primary, 10%);
+    
+    .underline::after {
+      opacity: 1;
+      height: 1px;
+    }
+    
+    .hidden-underline::after {
+      opacity: 1;
+    }
+  }
+  
+  // 상태 변형
+  &.active {
+    font-weight: $font-weight-bold;
+  }
+  
+  &.disabled {
+    color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+    
+    .underline::after {
+      background-color: $color-disabled;
+    }
+  }
+  
+  &.visited {
+    color: $color-visited;
+  }
+  
+  // 아이콘이 있는 링크
+  &.icon-left {
+    .krds-icon {
+      margin-right: $spacing-small;
+    }
+  }
+  
+  &.icon-right {
+    .krds-icon {
+      margin-left: $spacing-small;
+    }
+  }
+  
+  // 외부 링크 및 다운로드 링크
+  &.external, &.download {
+    .krds-icon {
+      margin-left: $spacing-small;
+      font-size: 0.85em;
+    }
+  }
+}
+
+// 네비게이션에서 사용하는 링크
+.krds-nav {
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-right: $spacing-medium;
+      
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  .nav-link {
+    padding: $spacing-small $spacing-medium;
+    
+    &.active {
+      font-weight: $font-weight-bold;
+      color: $color-primary;
+      
+      .underline::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: $breakpoint-md) {
+  .krds-link {
+    &.icon-left .krds-icon,
+    &.icon-right .krds-icon {
+      font-size: 0.9em;
+    }
+  }
+  
+  .krds-nav {
+    ul {
+      flex-wrap: wrap;
+      
+      li {
+        margin-bottom: $spacing-small;
+      }
+    }
+  }
+}
+
+// 다크 모드 스타일
+@media (prefers-color-scheme: dark) {
+  .krds-link {
+    color: lighten($color-primary, 15%);
+    
+    &.basic {
+      color: $color-text-dark;
+    }
+    
+    &:hover, &:focus {
+      color: lighten($color-primary, 25%);
+    }
+    
+    &.disabled {
+      color: $color-disabled-dark;
+      
+      .underline::after {
+        background-color: $color-disabled-dark;
+      }
+    }
+    
+    &.visited {
+      color: lighten($color-visited, 15%);
+    }
+  }
+} 

@@ -1,0 +1,245 @@
+@import "../../../styles/tokens/colors.scss";
+@import "../../../styles/tokens/typography.scss";
+@import "../../../styles/tokens/layout.scss";
+@import "../../../styles/tokens/shape.scss";
+@import "../../../styles/tokens/elevation.scss";
+
+// 카드 컴포넌트 스타일
+.krds-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  background-color: $color-background-paper;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-elevation-1;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  margin-bottom: $spacing-md;
+  
+  // 카드 호버 효과
+  &:hover {
+    box-shadow: $shadow-elevation-2;
+  }
+  
+  // 카드 헤더
+  &-header {
+    padding: $spacing-md;
+    border-bottom: 1px solid $color-border-default;
+    background-color: $color-background-subtle;
+    
+    &-title {
+      margin: 0;
+      @include heading-sm;
+      color: $color-text-primary;
+    }
+  }
+  
+  // 카드 본문
+  &-body {
+    flex: 1;
+    padding: $spacing-md;
+  }
+  
+  // 카드 푸터
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md;
+    border-top: 1px solid $color-border-default;
+    background-color: $color-background-subtle;
+    
+    &-text {
+      @include body-text-sm;
+      color: $color-text-secondary;
+    }
+    
+    &-actions {
+      display: flex;
+      gap: $spacing-sm;
+    }
+  }
+  
+  // 카드 제목
+  &-title {
+    margin: 0 0 $spacing-sm 0;
+    @include heading-md;
+    color: $color-text-primary;
+  }
+  
+  // 카드 텍스트
+  &-text {
+    margin: 0 0 $spacing-md 0;
+    @include body-text-md;
+    color: $color-text-secondary;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  // 카드 상단 이미지
+  &-img-top {
+    width: 100%;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+  
+  // 카드 하단 이미지
+  &-img-bottom {
+    width: 100%;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+  
+  // 수평 카드를 위한 이미지
+  &-img {
+    flex: 0 0 33%;
+    max-width: 33%;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  // 아이콘 래퍼
+  &-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-md;
+    color: $color-brand-primary;
+    
+    .krds-icon {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  
+  // 액션 카드의 링크
+  &-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-border-focus;
+      border-radius: $border-radius-md;
+    }
+  }
+}
+
+// 수평 카드 (가로 레이아웃)
+.krds-card-horizontal {
+  flex-direction: row;
+  
+  .krds-card-body {
+    flex: 1;
+  }
+}
+
+// 그림자가 강조된 카드
+.krds-card-shadow {
+  box-shadow: $shadow-elevation-3;
+  
+  &:hover {
+    box-shadow: $shadow-elevation-4;
+  }
+}
+
+// 테두리가 있는 카드
+.krds-card-outlined {
+  box-shadow: none;
+  border: 2px solid $color-border-default;
+  
+  &:hover {
+    box-shadow: none;
+    border-color: $color-border-hover;
+  }
+}
+
+// 아이콘이 있는 카드
+.krds-card-icon {
+  text-align: center;
+  
+  .krds-card-title {
+    margin-top: 0;
+  }
+}
+
+// 액션 카드 (클릭 가능한 카드)
+.krds-card-action {
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  // 액션 카드 내 요소들은 버튼보다 높은 z-index를 가짐
+  .krds-card-body,
+  .krds-card-title,
+  .krds-card-text,
+  .krds-btn {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// 카드 그리드 (반응형 그리드 레이아웃)
+.krds-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+  
+  .krds-card {
+    margin-bottom: 0;
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 768px) {
+  .krds-card-horizontal {
+    flex-direction: column;
+    
+    .krds-card-img {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  
+  .krds-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .krds-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    
+    &-actions {
+      margin-top: $spacing-sm;
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+} 

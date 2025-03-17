@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRDS 캐러셀 컴포넌트</title>
+  <link rel="stylesheet" href="carousel.css">
+</head>
+<body>
+  <h1>KRDS 캐러셀 컴포넌트</h1>
+  
+  <!-- 기본 캐러셀 -->
+  <section class="example-section">
+    <h2>기본 캐러셀</h2>
+    <div class="krds-carousel" id="basic-carousel">
+      <div class="krds-carousel-container">
+        <div class="krds-carousel-track">
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/3498db/ffffff?text=슬라이드+1" alt="슬라이드 1">
+            <div class="krds-carousel-caption">
+              <h3>안전 관리 시스템</h3>
+              <p>효율적인 안전 관리를 위한 통합 솔루션</p>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/2ecc71/ffffff?text=슬라이드+2" alt="슬라이드 2">
+            <div class="krds-carousel-caption">
+              <h3>근로자 교육 프로그램</h3>
+              <p>체계적인 안전 교육 커리큘럼</p>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/e74c3c/ffffff?text=슬라이드+3" alt="슬라이드 3">
+            <div class="krds-carousel-caption">
+              <h3>위험성 평가 자동화</h3>
+              <p>빠르고 정확한 위험 요소 분석</p>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/f39c12/ffffff?text=슬라이드+4" alt="슬라이드 4">
+            <div class="krds-carousel-caption">
+              <h3>안전 점검 앱</h3>
+              <p>모바일에서 편리하게 안전 점검</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="krds-carousel-control krds-carousel-control-prev" aria-label="이전 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <button class="krds-carousel-control krds-carousel-control-next" aria-label="다음 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <div class="krds-carousel-indicators">
+        <button class="krds-carousel-indicator active" aria-label="슬라이드 1로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 2로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 3로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 4로 이동"></button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 자동 전환 캐러셀 -->
+  <section class="example-section">
+    <h2>자동 전환 캐러셀</h2>
+    <div class="krds-carousel krds-carousel-autoplay" id="autoplay-carousel" data-interval="5000">
+      <div class="krds-carousel-container">
+        <div class="krds-carousel-track">
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/9b59b6/ffffff?text=슬라이드+1" alt="슬라이드 1">
+            <div class="krds-carousel-caption">
+              <h3>월간 안전 뉴스</h3>
+              <p>최신 안전 규정 및 업데이트</p>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/1abc9c/ffffff?text=슬라이드+2" alt="슬라이드 2">
+            <div class="krds-carousel-caption">
+              <h3>안전 우수 사례</h3>
+              <p>현장에서의 성공적인 안전 관리 사례</p>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/34495e/ffffff?text=슬라이드+3" alt="슬라이드 3">
+            <div class="krds-carousel-caption">
+              <h3>안전 장비 가이드</h3>
+              <p>최신 안전 장비 사용법 및 관리 방법</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="krds-carousel-control krds-carousel-control-prev" aria-label="이전 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <button class="krds-carousel-control krds-carousel-control-next" aria-label="다음 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <div class="krds-carousel-indicators">
+        <button class="krds-carousel-indicator active" aria-label="슬라이드 1로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 2로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 3로 이동"></button>
+      </div>
+      
+      <button class="krds-carousel-autoplay-toggle" aria-label="자동 재생 토글">
+        <span class="krds-carousel-autoplay-pause" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/>
+            <rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="krds-carousel-autoplay-play" aria-hidden="true" style="display: none;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 4.75L17.5 12L6 19.25V4.75Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </section>
+  
+  <!-- 페이드 효과 캐러셀 -->
+  <section class="example-section">
+    <h2>페이드 효과 캐러셀</h2>
+    <div class="krds-carousel krds-carousel-fade" id="fade-carousel">
+      <div class="krds-carousel-container">
+        <div class="krds-carousel-track">
+          <div class="krds-carousel-slide active">
+            <img src="https://via.placeholder.com/800x400/3498db/ffffff?text=슬라이드+1" alt="슬라이드 1">
+            <div class="krds-carousel-caption">
+              <h3>작업 현장 안전</h3>
+              <p>안전한 작업 환경 구축 가이드</p>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/2ecc71/ffffff?text=슬라이드+2" alt="슬라이드 2">
+            <div class="krds-carousel-caption">
+              <h3>안전 점검 체크리스트</h3>
+              <p>효율적인 안전 점검을 위한 체크리스트</p>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <img src="https://via.placeholder.com/800x400/e74c3c/ffffff?text=슬라이드+3" alt="슬라이드 3">
+            <div class="krds-carousel-caption">
+              <h3>비상 대응 계획</h3>
+              <p>비상 상황 대비 행동 지침</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="krds-carousel-control krds-carousel-control-prev" aria-label="이전 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <button class="krds-carousel-control krds-carousel-control-next" aria-label="다음 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <div class="krds-carousel-indicators">
+        <button class="krds-carousel-indicator active" aria-label="슬라이드 1로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 2로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 3로 이동"></button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 썸네일 캐러셀 -->
+  <section class="example-section">
+    <h2>썸네일 캐러셀</h2>
+    <div class="krds-carousel-wrapper">
+      <div class="krds-carousel" id="thumbnail-carousel">
+        <div class="krds-carousel-container">
+          <div class="krds-carousel-track">
+            <div class="krds-carousel-slide active">
+              <img src="https://via.placeholder.com/800x400/f39c12/ffffff?text=슬라이드+1" alt="슬라이드 1">
+              <div class="krds-carousel-caption">
+                <h3>개인 보호 장비(PPE)</h3>
+                <p>작업별 필수 보호 장비 안내</p>
+              </div>
+            </div>
+            <div class="krds-carousel-slide">
+              <img src="https://via.placeholder.com/800x400/9b59b6/ffffff?text=슬라이드+2" alt="슬라이드 2">
+              <div class="krds-carousel-caption">
+                <h3>안전 표지판</h3>
+                <p>표준 안전 표지판 및 의미 설명</p>
+              </div>
+            </div>
+            <div class="krds-carousel-slide">
+              <img src="https://via.placeholder.com/800x400/1abc9c/ffffff?text=슬라이드+3" alt="슬라이드 3">
+              <div class="krds-carousel-caption">
+                <h3>화재 예방</h3>
+                <p>화재 위험 감소를 위한 예방책</p>
+              </div>
+            </div>
+            <div class="krds-carousel-slide">
+              <img src="https://via.placeholder.com/800x400/34495e/ffffff?text=슬라이드+4" alt="슬라이드 4">
+              <div class="krds-carousel-caption">
+                <h3>응급 처치</h3>
+                <p>기본 응급 처치 방법 안내</p>
+              </div>
+            </div>
+            <div class="krds-carousel-slide">
+              <img src="https://via.placeholder.com/800x400/16a085/ffffff?text=슬라이드+5" alt="슬라이드 5">
+              <div class="krds-carousel-caption">
+                <h3>위험물 취급</h3>
+                <p>위험물 안전한 보관 및 취급 방법</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button class="krds-carousel-control krds-carousel-control-prev" aria-label="이전 슬라이드">
+          <span aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        
+        <button class="krds-carousel-control krds-carousel-control-next" aria-label="다음 슬라이드">
+          <span aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+      
+      <div class="krds-carousel-thumbnails">
+        <div class="krds-carousel-thumbnail active">
+          <img src="https://via.placeholder.com/160x90/f39c12/ffffff?text=1" alt="썸네일 1">
+        </div>
+        <div class="krds-carousel-thumbnail">
+          <img src="https://via.placeholder.com/160x90/9b59b6/ffffff?text=2" alt="썸네일 2">
+        </div>
+        <div class="krds-carousel-thumbnail">
+          <img src="https://via.placeholder.com/160x90/1abc9c/ffffff?text=3" alt="썸네일 3">
+        </div>
+        <div class="krds-carousel-thumbnail">
+          <img src="https://via.placeholder.com/160x90/34495e/ffffff?text=4" alt="썸네일 4">
+        </div>
+        <div class="krds-carousel-thumbnail">
+          <img src="https://via.placeholder.com/160x90/16a085/ffffff?text=5" alt="썸네일 5">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 카드 캐러셀 -->
+  <section class="example-section">
+    <h2>카드 캐러셀</h2>
+    <div class="krds-carousel krds-carousel-cards" id="card-carousel">
+      <div class="krds-carousel-container">
+        <div class="krds-carousel-track">
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=안전+교육" alt="안전 교육">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">안전 교육 일정</h3>
+                <p class="krds-card-text">7월 안전 교육 일정이 업데이트 되었습니다. 필수 교육 일정을 확인하세요.</p>
+                <a href="#" class="krds-btn krds-btn-primary">자세히 보기</a>
+              </div>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=위험성+평가" alt="위험성 평가">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">위험성 평가 가이드</h3>
+                <p class="krds-card-text">최신 위험성 평가 방법론과 체크리스트를 제공합니다.</p>
+                <a href="#" class="krds-btn krds-btn-primary">자세히 보기</a>
+              </div>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/e74c3c/ffffff?text=안전+점검" alt="안전 점검">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">월간 안전 점검</h3>
+                <p class="krds-card-text">7월 안전 점검 계획이 발표되었습니다. 점검 항목을 확인하세요.</p>
+                <a href="#" class="krds-btn krds-btn-primary">자세히 보기</a>
+              </div>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/f39c12/ffffff?text=응급+상황" alt="응급 상황">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">응급 상황 대응 훈련</h3>
+                <p class="krds-card-text">다음 주 화요일에 응급 대응 훈련이 예정되어 있습니다.</p>
+                <a href="#" class="krds-btn krds-btn-primary">자세히 보기</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="krds-carousel-control krds-carousel-control-prev" aria-label="이전 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <button class="krds-carousel-control krds-carousel-control-next" aria-label="다음 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <div class="krds-carousel-indicators">
+        <button class="krds-carousel-indicator active" aria-label="슬라이드 1로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 2로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 3로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 4로 이동"></button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 멀티 아이템 캐러셀 -->
+  <section class="example-section">
+    <h2>멀티 아이템 캐러셀</h2>
+    <div class="krds-carousel krds-carousel-multi" id="multi-carousel" data-items="3" data-items-mobile="1">
+      <div class="krds-carousel-container">
+        <div class="krds-carousel-track">
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/9b59b6/ffffff?text=헬멧" alt="안전 헬멧">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">안전 헬멧</h3>
+                <p class="krds-card-text">현장 작업에 필수적인 안전 헬멧입니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/1abc9c/ffffff?text=장갑" alt="안전 장갑">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">안전 장갑</h3>
+                <p class="krds-card-text">내구성 높은 작업용 안전 장갑입니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/34495e/ffffff?text=조끼" alt="안전 조끼">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">안전 조끼</h3>
+                <p class="krds-card-text">고가시성 안전 조끼로 작업 현장에서 눈에 잘 띕니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/16a085/ffffff?text=안전화" alt="안전화">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">안전화</h3>
+                <p class="krds-card-text">내충격성이 우수한 작업용 안전화입니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/d35400/ffffff?text=보안경" alt="보안경">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">보안경</h3>
+                <p class="krds-card-text">작업 중 눈을 보호하는 보안경입니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="krds-carousel-slide">
+            <div class="krds-card">
+              <div class="krds-card-image">
+                <img src="https://via.placeholder.com/300x200/2980b9/ffffff?text=청력보호구" alt="청력보호구">
+              </div>
+              <div class="krds-card-content">
+                <h3 class="krds-card-title">청력보호구</h3>
+                <p class="krds-card-text">소음이 심한 작업 환경에서 귀를 보호합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="krds-carousel-control krds-carousel-control-prev" aria-label="이전 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <button class="krds-carousel-control krds-carousel-control-next" aria-label="다음 슬라이드">
+        <span aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <div class="krds-carousel-indicators">
+        <button class="krds-carousel-indicator active" aria-label="슬라이드 그룹 1로 이동"></button>
+        <button class="krds-carousel-indicator" aria-label="슬라이드 그룹 2로 이동"></button>
+      </div>
+    </div>
+  </section>
+  
+  <script src="carousel.js"></script>
+</body>
+</html> 

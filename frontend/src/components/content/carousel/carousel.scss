@@ -1,0 +1,401 @@
+@import "../../../tokens/colors";
+@import "../../../tokens/typography";
+@import "../../../tokens/layout";
+@import "../../../tokens/shape";
+@import "../../../tokens/elevation";
+
+// 캐러셀 컴포넌트 스타일
+// ======================
+
+// 섹션 스타일
+.example-section {
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    margin-bottom: $spacing-md;
+    font-size: $font-size-xl;
+    color: $color-text-primary;
+  }
+}
+
+// 기본 캐러셀 스타일
+.krds-carousel {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: $spacing-lg;
+  overflow: hidden;
+  box-shadow: $elevation-md;
+  border-radius: $border-radius-md;
+  
+  // 캐러셀 컨테이너
+  .krds-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  // 캐러셀 트랙
+  .krds-carousel-track {
+    display: flex;
+    position: relative;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+  
+  // 캐러셀 슬라이드
+  .krds-carousel-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+  
+  // 캐러셀 캡션
+  .krds-carousel-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: $spacing-md;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    color: $color-text-inverse;
+    text-align: left;
+    
+    h3 {
+      margin: 0 0 $spacing-xs;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+    }
+    
+    p {
+      margin: 0;
+      font-size: $font-size-md;
+      opacity: 0.9;
+    }
+  }
+  
+  // 캐러셀 컨트롤
+  .krds-carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background-color: rgba($color-background-alt, 0.6);
+    border: none;
+    border-radius: 50%;
+    color: $color-text-primary;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+    z-index: 2;
+    box-shadow: $elevation-sm;
+    
+    &:hover {
+      background-color: rgba($color-background-alt, 0.9);
+      box-shadow: $elevation-md;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($color-primary-500, 0.4);
+    }
+    
+    &-prev {
+      left: $spacing-md;
+    }
+    
+    &-next {
+      right: $spacing-md;
+    }
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  
+  // 캐러셀 인디케이터
+  .krds-carousel-indicators {
+    position: absolute;
+    left: 0;
+    bottom: $spacing-md;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: $spacing-xs;
+    z-index: 2;
+    
+    .krds-carousel-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba($color-background-alt, 0.5);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      
+      &:hover {
+        background-color: rgba($color-background-alt, 0.8);
+      }
+      
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($color-primary-500, 0.4);
+      }
+      
+      &.active {
+        background-color: $color-background-alt;
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+
+// 페이드 효과 캐러셀
+.krds-carousel-fade {
+  .krds-carousel-track {
+    transition: none;
+  }
+  
+  .krds-carousel-slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+    
+    &.active {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}
+
+// 자동 전환 캐러셀 토글 버튼
+.krds-carousel-autoplay-toggle {
+  position: absolute;
+  bottom: $spacing-md;
+  right: $spacing-md;
+  width: 36px;
+  height: 36px;
+  background-color: rgba($color-background-alt, 0.6);
+  border: none;
+  border-radius: 50%;
+  color: $color-text-primary;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
+  z-index: 2;
+  
+  &:hover {
+    background-color: rgba($color-background-alt, 0.9);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color-primary-500, 0.4);
+  }
+  
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// 썸네일 캐러셀
+.krds-carousel-wrapper {
+  position: relative;
+  margin-bottom: $spacing-lg;
+}
+
+.krds-carousel-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  
+  .krds-carousel-thumbnail {
+    width: 80px;
+    height: 60px;
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+    
+    &.active {
+      border-color: $color-primary-500;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// 카드 캐러셀
+.krds-carousel-cards {
+  background-color: transparent;
+  box-shadow: none;
+  
+  .krds-carousel-slide {
+    padding: $spacing-md;
+  }
+  
+  .krds-card {
+    margin: 0 auto;
+    max-width: 340px;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+// 멀티 아이템 캐러셀
+.krds-carousel-multi {
+  .krds-carousel-track {
+    gap: $spacing-md;
+    padding: $spacing-md;
+  }
+  
+  .krds-carousel-slide {
+    flex: 0 0 calc(33.333% - #{$spacing-md});
+    max-width: calc(33.333% - #{$spacing-md});
+    
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 992px) {
+  .krds-carousel-multi {
+    .krds-carousel-slide {
+      flex: 0 0 calc(50% - #{$spacing-md});
+      max-width: calc(50% - #{$spacing-md});
+    }
+  }
+  
+  .krds-carousel-control {
+    width: 40px;
+    height: 40px;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .krds-carousel-multi {
+    .krds-carousel-slide {
+      flex: 0 0 calc(100% - #{$spacing-md});
+      max-width: calc(100% - #{$spacing-md});
+    }
+  }
+  
+  .krds-carousel-caption {
+    padding: $spacing-sm;
+    
+    h3 {
+      font-size: $font-size-md;
+    }
+    
+    p {
+      font-size: $font-size-sm;
+    }
+  }
+  
+  .krds-carousel-control {
+    width: 36px;
+    height: 36px;
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    &-prev {
+      left: $spacing-sm;
+    }
+    
+    &-next {
+      right: $spacing-sm;
+    }
+  }
+  
+  .krds-carousel-thumbnails {
+    .krds-carousel-thumbnail {
+      width: 60px;
+      height: 45px;
+    }
+  }
+}
+
+// 접근성 및 포커스 스타일
+.krds-carousel {
+  &:focus-within {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color-primary-500, 0.4);
+  }
+}
+
+// 애니메이션 효과
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+// 슬라이드 전환 효과
+.krds-carousel-slide {
+  &.slide-in-right {
+    animation: slide-in-right 0.5s forwards;
+  }
+  
+  &.slide-in-left {
+    animation: slide-in-left 0.5s forwards;
+  }
+  
+  &.fade-in {
+    animation: fade-in 0.5s forwards;
+  }
+} 

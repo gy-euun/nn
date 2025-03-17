@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스피너 컴포넌트 - KRDS</title>
+  <link rel="stylesheet" href="spinner.css">
+</head>
+<body>
+  <h1>스피너 컴포넌트</h1>
+
+  <section class="example-section">
+    <h2>기본 스피너</h2>
+    <div class="example-container">
+      <div class="krds-spinner" role="status" aria-label="로딩 중">
+        <svg viewBox="0 0 50 50" class="spinner-circle">
+          <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+        <span class="sr-only">로딩 중...</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="example-section">
+    <h2>크기 변형</h2>
+    <div class="example-container sizes">
+      <!-- 작은 스피너 -->
+      <div>
+        <h3>작은 크기</h3>
+        <div class="krds-spinner small" role="status" aria-label="로딩 중">
+          <svg viewBox="0 0 50 50" class="spinner-circle">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+
+      <!-- 기본 스피너 -->
+      <div>
+        <h3>기본 크기</h3>
+        <div class="krds-spinner" role="status" aria-label="로딩 중">
+          <svg viewBox="0 0 50 50" class="spinner-circle">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+
+      <!-- 큰 스피너 -->
+      <div>
+        <h3>큰 크기</h3>
+        <div class="krds-spinner large" role="status" aria-label="로딩 중">
+          <svg viewBox="0 0 50 50" class="spinner-circle">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="example-section">
+    <h2>색상 변형</h2>
+    <div class="example-container colors">
+      <!-- 기본 색상 -->
+      <div>
+        <h3>기본 색상</h3>
+        <div class="krds-spinner" role="status" aria-label="로딩 중">
+          <svg viewBox="0 0 50 50" class="spinner-circle">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+
+      <!-- 성공 색상 -->
+      <div>
+        <h3>성공 색상</h3>
+        <div class="krds-spinner success" role="status" aria-label="로딩 중">
+          <svg viewBox="0 0 50 50" class="spinner-circle">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+
+      <!-- 경고 색상 -->
+      <div>
+        <h3>경고 색상</h3>
+        <div class="krds-spinner warning" role="status" aria-label="로딩 중">
+          <svg viewBox="0 0 50 50" class="spinner-circle">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+
+      <!-- 오류 색상 -->
+      <div>
+        <h3>오류 색상</h3>
+        <div class="krds-spinner error" role="status" aria-label="로딩 중">
+          <svg viewBox="0 0 50 50" class="spinner-circle">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="example-section">
+    <h2>텍스트가 있는 스피너</h2>
+    <div class="example-container with-text">
+      <!-- 인라인 텍스트 -->
+      <div>
+        <h3>인라인 텍스트</h3>
+        <div class="krds-spinner-container inline" role="status" aria-label="로딩 중">
+          <div class="krds-spinner" aria-hidden="true">
+            <svg viewBox="0 0 50 50" class="spinner-circle">
+              <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+            </svg>
+          </div>
+          <span class="spinner-text">로딩 중...</span>
+        </div>
+      </div>
+
+      <!-- 중앙 정렬 텍스트 -->
+      <div>
+        <h3>중앙 정렬 텍스트</h3>
+        <div class="krds-spinner-container center" role="status" aria-label="로딩 중">
+          <div class="krds-spinner" aria-hidden="true">
+            <svg viewBox="0 0 50 50" class="spinner-circle">
+              <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+            </svg>
+          </div>
+          <span class="spinner-text">로딩 중...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="example-section">
+    <h2>다른 스피너 유형</h2>
+    <div class="example-container types">
+      <!-- 바운스 스피너 -->
+      <div>
+        <h3>바운스 스피너</h3>
+        <div class="krds-spinner-bounce" role="status" aria-label="로딩 중">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+
+      <!-- 펄스 스피너 -->
+      <div>
+        <h3>펄스 스피너</h3>
+        <div class="krds-spinner-pulse" role="status" aria-label="로딩 중">
+          <div class="pulse"></div>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+
+      <!-- 도트 스피너 -->
+      <div>
+        <h3>도트 스피너</h3>
+        <div class="krds-spinner-dots" role="status" aria-label="로딩 중">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <span class="sr-only">로딩 중...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="example-section">
+    <h2>전체 화면 오버레이</h2>
+    <div class="example-container">
+      <button id="showOverlayBtn" class="btn">전체 화면 로딩 표시</button>
+      
+      <!-- 전체 화면 로딩 오버레이 (초기에는 숨김) -->
+      <div class="krds-spinner-overlay" id="spinnerOverlay" aria-hidden="true">
+        <div class="krds-spinner-container center" role="status" aria-label="로딩 중">
+          <div class="krds-spinner large" aria-hidden="true">
+            <svg viewBox="0 0 50 50" class="spinner-circle">
+              <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+            </svg>
+          </div>
+          <span class="spinner-text">데이터를 불러오는 중입니다...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="spinner.js"></script>
+</body>
+</html> 

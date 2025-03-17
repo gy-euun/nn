@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRDS 건너뛰기 링크 컴포넌트</title>
+  <link rel="stylesheet" href="skiplink.css">
+</head>
+<body>
+  <h1>KRDS 건너뛰기 링크 컴포넌트</h1>
+  
+  <!-- 기본 건너뛰기 링크 -->
+  <section class="example-section">
+    <h2>기본 건너뛰기 링크</h2>
+    <p>Tab 키를 누르면 건너뛰기 링크가 나타납니다.</p>
+    
+    <div id="krds-skip-link">
+      <a href="#main-content">본문 바로가기</a>
+    </div>
+    
+    <div class="mock-page">
+      <header class="mock-header">
+        <nav class="mock-nav">메인 네비게이션</nav>
+      </header>
+      
+      <main id="main-content" tabindex="-1">
+        <h2>메인 콘텐츠 영역</h2>
+        <p>건너뛰기 링크를 클릭하면 이 영역으로 건너뛰게 됩니다.</p>
+      </main>
+    </div>
+  </section>
+  
+  <!-- 다중 건너뛰기 링크 -->
+  <section class="example-section">
+    <h2>다중 건너뛰기 링크</h2>
+    <p>여러 목적지로 이동할 수 있는 건너뛰기 링크입니다.</p>
+    
+    <div id="krds-skip-link-multiple">
+      <ul>
+        <li><a href="#main-content-2">본문 바로가기</a></li>
+        <li><a href="#menu-2">메뉴 바로가기</a></li>
+        <li><a href="#search-2">검색 바로가기</a></li>
+      </ul>
+    </div>
+    
+    <div class="mock-page">
+      <header class="mock-header">
+        <nav id="menu-2" class="mock-nav" tabindex="-1">메인 네비게이션</nav>
+        <div id="search-2" class="mock-search" tabindex="-1">검색 영역</div>
+      </header>
+      
+      <main id="main-content-2" tabindex="-1">
+        <h2>메인 콘텐츠 영역</h2>
+        <p>건너뛰기 링크를 클릭하면 선택한 영역으로 건너뛰게 됩니다.</p>
+      </main>
+    </div>
+  </section>
+  
+  <!-- 커스텀 스타일 건너뛰기 링크 -->
+  <section class="example-section">
+    <h2>커스텀 스타일 건너뛰기 링크</h2>
+    <p>사용자 정의 스타일로 디자인된 건너뛰기 링크입니다.</p>
+    
+    <div id="krds-skip-link-custom">
+      <a href="#main-content-3" class="custom-style">
+        <span class="icon">➡️</span>
+        <span class="text">본문으로 건너뛰기</span>
+      </a>
+    </div>
+    
+    <div class="mock-page">
+      <header class="mock-header">
+        <nav class="mock-nav">메인 네비게이션</nav>
+      </header>
+      
+      <main id="main-content-3" tabindex="-1">
+        <h2>메인 콘텐츠 영역</h2>
+        <p>건너뛰기 링크를 클릭하면 이 영역으로 건너뛰게 됩니다.</p>
+      </main>
+    </div>
+  </section>
+  
+  <script src="skiplink.js"></script>
+</body>
+</html> 

@@ -1,0 +1,60 @@
+<!-- 브레드크럼 컴포넌트 -->
+<nav class="krds-breadcrumb" aria-label="현재 위치">
+  <ol class="krds-breadcrumb-list">
+    <li class="krds-breadcrumb-item">
+      <a href="/" class="krds-breadcrumb-link">
+        <i class="svg-icon ico-home"></i>
+        <span class="krds-breadcrumb-text">홈</span>
+      </a>
+    </li>
+    <li class="krds-breadcrumb-item">
+      <i class="svg-icon ico-chevron-right krds-breadcrumb-separator"></i>
+      <a href="/projects" class="krds-breadcrumb-link">
+        <span class="krds-breadcrumb-text">프로젝트</span>
+      </a>
+    </li>
+    <li class="krds-breadcrumb-item">
+      <i class="svg-icon ico-chevron-right krds-breadcrumb-separator"></i>
+      <a href="/projects/safety-management" class="krds-breadcrumb-link">
+        <span class="krds-breadcrumb-text">안전 관리 프로젝트</span>
+      </a>
+    </li>
+    <li class="krds-breadcrumb-item">
+      <i class="svg-icon ico-chevron-right krds-breadcrumb-separator"></i>
+      <span class="krds-breadcrumb-text krds-breadcrumb-current" aria-current="page">위험성 평가</span>
+    </li>
+  </ol>
+</nav>
+
+<!-- 응축 브레드크럼 (모바일용) -->
+<nav class="krds-breadcrumb krds-breadcrumb-condensed" aria-label="현재 위치">
+  <ol class="krds-breadcrumb-list">
+    <li class="krds-breadcrumb-item">
+      <a href="/" class="krds-breadcrumb-link">
+        <i class="svg-icon ico-home"></i>
+        <span class="krds-breadcrumb-text">홈</span>
+      </a>
+    </li>
+    <li class="krds-breadcrumb-item">
+      <i class="svg-icon ico-chevron-right krds-breadcrumb-separator"></i>
+      <button type="button" class="krds-breadcrumb-dropdown-trigger">
+        <span class="krds-breadcrumb-text">...</span>
+        <i class="svg-icon ico-chevron-down"></i>
+      </button>
+      <div class="krds-breadcrumb-dropdown">
+        <ul class="krds-breadcrumb-dropdown-list">
+          <li class="krds-breadcrumb-dropdown-item">
+            <a href="/projects" class="krds-breadcrumb-dropdown-link">프로젝트</a>
+          </li>
+          <li class="krds-breadcrumb-dropdown-item">
+            <a href="/projects/safety-management" class="krds-breadcrumb-dropdown-link">안전 관리 프로젝트</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="krds-breadcrumb-item">
+      <i class="svg-icon ico-chevron-right krds-breadcrumb-separator"></i>
+      <span class="krds-breadcrumb-text krds-breadcrumb-current" aria-current="page">위험성 평가</span>
+    </li>
+  </ol>
+</nav> 

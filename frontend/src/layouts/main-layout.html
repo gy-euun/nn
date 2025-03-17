@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>산업 안전 종합 관리 플랫폼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/main.scss">
+  <!-- 페이지별 추가 스타일 -->
+  <slot name="page-styles"></slot>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header id="krds-header">
+    <div class="header-in">
+      <div class="header-container">
+        <div class="inner">
+          <div class="header-utility">
+            <ul class="utility-list">
+              <li>
+                <a href="#" class="krds-btn small text" id="userProfileBtn">
+                  <span id="userName">사용자</span> <i class="svg-icon ico-toggle"></i>
+                </a>
+              </li>
+              <li>
+                <button type="button" class="krds-btn small text" id="logoutBtn">
+                  로그아웃
+                </button>
+              </li>
+              <li>
+                <button type="button" class="krds-btn small text" id="notificationBtn">
+                  알림 <span class="badge" id="notificationCount">0</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="header-main">
+        <div class="inner">
+          <h1 class="logo">
+            <a href="/">
+              <span>산업 안전 종합 관리 플랫폼</span>
+            </a>
+          </h1>
+          <nav class="gnb">
+            <ul class="gnb-list">
+              <li class="gnb-item">
+                <a href="/projects" class="gnb-link">프로젝트</a>
+              </li>
+              <li class="gnb-item">
+                <a href="/risk-assessments" class="gnb-link">위험성 평가</a>
+              </li>
+              <li class="gnb-item">
+                <a href="/safety-docs" class="gnb-link">안전 문서</a>
+              </li>
+              <li class="gnb-item">
+                <a href="/workers" class="gnb-link">근로자 관리</a>
+              </li>
+              <li class="gnb-item">
+                <a href="/community" class="gnb-link">커뮤니티</a>
+              </li>
+              <li class="gnb-item">
+                <a href="/chatbot" class="gnb-link">AI 챗봇</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- 사이드 내비게이션 -->
+    <nav class="krds-side-navigation">
+      <h2 class="lnb-tit" id="sidebarTitle">메뉴</h2>
+      <ul class="lnb-list" role="menubar" id="sidebarMenu">
+        <!-- 사이드바 메뉴는 JavaScript로 동적 생성 -->
+      </ul>
+    </nav>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+      <!-- 페이지 제목 -->
+      <div class="page-header">
+        <h1 id="pageTitle">페이지 제목</h1>
+      </div>
+      
+      <!-- 페이지 콘텐츠 -->
+      <div class="page-content">
+        <slot name="page-content"></slot>
+      </div>
+    </main>
+  </div>
+
+  <!-- 푸터 -->
+  <footer id="krds-footer">
+    <div class="footer-in">
+      <div class="inner">
+        <div class="footer-info">
+          <p class="copyright">© 2025 산업 안전 종합 관리 플랫폼. All rights reserved.</p>
+        </div>
+        <div class="footer-link">
+          <ul>
+            <li><a href="/terms">이용약관</a></li>
+            <li><a href="/privacy">개인정보처리방침</a></li>
+            <li><a href="/contact">문의하기</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 공통 스크립트 -->
+  <script type="module" src="/src/js/main.js"></script>
+  
+  <!-- 페이지별 추가 스크립트 -->
+  <slot name="page-scripts"></slot>
+</body>
+</html> 

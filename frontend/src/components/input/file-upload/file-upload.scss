@@ -1,0 +1,717 @@
+@import '../../../tokens/colors';
+@import '../../../tokens/typography';
+@import '../../../tokens/spacing';
+@import '../../../tokens/borders';
+@import '../../../tokens/shadows';
+@import '../../../tokens/animation';
+
+// 폼 그룹 스타일
+.krds-form-group {
+  margin-bottom: $spacing-lg;
+  width: 100%;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// 라벨 스타일
+.krds-label {
+  display: block;
+  margin-bottom: $spacing-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-sm;
+  
+  &.required:after {
+    content: "*";
+    color: $color-danger;
+    margin-left: $spacing-xs;
+  }
+}
+
+// 기본 파일 업로드 스타일
+.krds-file-upload {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+  // 기본 파일 input 숨기기
+  .krds-file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    
+    &:focus + .krds-file-label {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.25);
+    }
+    
+    &:disabled + .krds-file-label {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background-color: $color-background-disabled;
+      border-color: $color-border-light;
+      color: $color-text-muted;
+    }
+    
+    // 상태별 스타일
+    &.is-valid + .krds-file-label {
+      border-color: $color-success;
+      
+      &:focus, &:hover {
+        box-shadow: 0 0 0 3px rgba($color-success, 0.25);
+      }
+      
+      .krds-file-icon {
+        color: $color-success;
+      }
+    }
+    
+    &.is-invalid + .krds-file-label {
+      border-color: $color-danger;
+      
+      &:focus, &:hover {
+        box-shadow: 0 0 0 3px rgba($color-danger, 0.25);
+      }
+      
+      .krds-file-icon {
+        color: $color-danger;
+      }
+    }
+  }
+  
+  // 파일 업로드 레이블
+  .krds-file-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm $spacing-md;
+    background-color: $color-primary;
+    color: $color-white;
+    border: 1px solid $color-primary;
+    border-radius: $border-radius-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: all $transition-duration-sm ease;
+    
+    &:hover {
+      background-color: darken($color-primary, 5%);
+      border-color: darken($color-primary, 5%);
+    }
+    
+    .krds-file-icon {
+      display: flex;
+      align-items: center;
+      margin-right: $spacing-xs;
+      
+      svg {
+        display: block;
+      }
+    }
+    
+    // 크기 변형
+    &.krds-file-label-sm {
+      padding: ($spacing-xs * 1.2) $spacing-sm;
+      font-size: $font-size-xs;
+      border-radius: $border-radius-sm;
+      
+      .krds-file-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+    
+    &.krds-file-label-lg {
+      padding: $spacing-md ($spacing-md * 1.5);
+      font-size: $font-size-md;
+      border-radius: $border-radius-lg;
+      
+      .krds-file-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    
+    // 스타일 변형
+    &.krds-file-label-outline {
+      background-color: transparent;
+      color: $color-primary;
+      border: 1px solid $color-primary;
+      
+      &:hover {
+        background-color: rgba($color-primary, 0.1);
+      }
+    }
+    
+    &.krds-file-label-icon {
+      padding: $spacing-sm;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      
+      .krds-file-icon {
+        margin-right: 0;
+      }
+    }
+    
+    &.krds-file-label-text {
+      background-color: transparent;
+      color: $color-primary;
+      border: none;
+      padding: 0;
+      
+      &:hover {
+        background-color: transparent;
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  // 선택된 파일 이름
+  .krds-file-name {
+    margin-top: $spacing-xs;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    word-break: break-all;
+    
+    &.krds-file-name-sm {
+      font-size: $font-size-xs;
+    }
+    
+    &.krds-file-name-lg {
+      font-size: $font-size-md;
+    }
+  }
+}
+
+// 파일 업로드 설명 및 피드백
+.krds-file-description {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.krds-file-feedback {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  
+  &.valid {
+    color: $color-success;
+  }
+  
+  &.invalid {
+    color: $color-danger;
+  }
+}
+
+// 드래그 앤 드롭 파일 업로드
+.krds-file-upload-drag {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 2px dashed $color-border-base;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  transition: all $transition-duration-sm ease;
+  background-color: $color-background-subtle;
+  
+  &:hover, &.drag-over {
+    border-color: $color-primary;
+    background-color: rgba($color-primary, 0.05);
+  }
+  
+  &.is-valid {
+    border-color: $color-success;
+    background-color: rgba($color-success, 0.05);
+  }
+  
+  &.is-invalid {
+    border-color: $color-danger;
+    background-color: rgba($color-danger, 0.05);
+  }
+  
+  .krds-file-upload-drag-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    .krds-file-icon {
+      margin-bottom: $spacing-md;
+      color: $color-text-secondary;
+    }
+    
+    .krds-file-upload-text {
+      margin-bottom: $spacing-xs;
+      font-size: $font-size-md;
+      color: $color-text-primary;
+    }
+    
+    .krds-file-browse-link {
+      color: $color-primary;
+      cursor: pointer;
+      font-weight: $font-weight-medium;
+      text-decoration: underline;
+      margin-left: $spacing-xs;
+      
+      &:hover {
+        color: darken($color-primary, 10%);
+      }
+    }
+    
+    .krds-file-upload-hint {
+      font-size: $font-size-xs;
+      color: $color-text-secondary;
+      margin: 0;
+    }
+  }
+  
+  .krds-file-input-hidden {
+    display: none;
+  }
+}
+
+// 파일 리스트
+.krds-file-list {
+  margin-top: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  
+  .krds-file-item {
+    display: flex;
+    align-items: center;
+    padding: $spacing-sm;
+    border: 1px solid $color-border-light;
+    border-radius: $border-radius-sm;
+    background-color: $color-white;
+    
+    .krds-file-item-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin-right: $spacing-sm;
+      color: $color-text-secondary;
+    }
+    
+    .krds-file-item-info {
+      flex: 1;
+      min-width: 0;
+      
+      .krds-file-item-name {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text-primary;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .krds-file-item-size {
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+        margin: 0;
+      }
+    }
+    
+    .krds-file-item-remove {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: $spacing-sm;
+      background-color: transparent;
+      border: none;
+      border-radius: 50%;
+      color: $color-text-secondary;
+      cursor: pointer;
+      transition: all $transition-duration-xs ease;
+      
+      &:hover {
+        background-color: rgba($color-danger, 0.1);
+        color: $color-danger;
+      }
+    }
+    
+    &.is-uploading {
+      .krds-file-item-progress {
+        height: 4px;
+        margin-top: $spacing-xs;
+        background-color: $color-background-subtle;
+        border-radius: $border-radius-pill;
+        overflow: hidden;
+        
+        .krds-file-item-progress-bar {
+          height: 100%;
+          background-color: $color-primary;
+          transition: width 0.3s ease;
+        }
+      }
+    }
+    
+    &.is-valid {
+      border-color: $color-success;
+      
+      .krds-file-item-icon {
+        color: $color-success;
+      }
+    }
+    
+    &.is-invalid {
+      border-color: $color-danger;
+      
+      .krds-file-item-icon {
+        color: $color-danger;
+      }
+      
+      .krds-file-item-error {
+        font-size: $font-size-xs;
+        color: $color-danger;
+        margin: $spacing-xs 0 0;
+      }
+    }
+  }
+}
+
+// 이미지 미리보기
+.krds-image-preview {
+  margin-top: $spacing-md;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  
+  .krds-image-preview-item {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    box-shadow: $shadow-sm;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .krds-image-preview-remove {
+      position: absolute;
+      top: $spacing-xs;
+      right: $spacing-xs;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background-color: rgba($color-black, 0.5);
+      border: none;
+      border-radius: 50%;
+      color: $color-white;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity $transition-duration-xs ease;
+    }
+    
+    &:hover .krds-image-preview-remove {
+      opacity: 1;
+    }
+  }
+  
+  &:empty {
+    display: none;
+  }
+}
+
+// 스크린 리더 전용 텍스트
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// API 버튼 컨테이너
+.api-buttons {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  flex-wrap: wrap;
+}
+
+// 버튼 스타일 (예제용)
+.btn {
+  padding: $spacing-sm $spacing-md;
+  color: $color-white;
+  background-color: $color-primary;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: background-color $transition-duration-sm ease;
+  
+  &:hover {
+    background-color: darken($color-primary, 7%);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+  }
+}
+
+// 예제 스타일
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: $spacing-xl;
+}
+
+header {
+  margin-bottom: $spacing-xl;
+  
+  h1 {
+    font-size: $font-size-xxl;
+    margin-bottom: $spacing-sm;
+    color: $color-text-primary;
+  }
+  
+  p {
+    font-size: $font-size-md;
+    color: $color-text-secondary;
+  }
+}
+
+.example-section {
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-md;
+    color: $color-text-primary;
+  }
+}
+
+.example-container {
+  padding: $spacing-lg;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-lg;
+  background-color: $color-background-subtle;
+  
+  &.sizes, &.states, &.variants {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: $spacing-lg;
+  }
+}
+
+// 다크 모드 지원
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $color-background-dark;
+    color: $color-text-light;
+  }
+  
+  .krds-label {
+    color: $color-text-light;
+  }
+  
+  .krds-file-upload {
+    .krds-file-input {
+      &:disabled + .krds-file-label {
+        background-color: darken($color-background-dark, 5%);
+        border-color: $color-border-dark;
+        color: rgba($color-text-light, 0.5);
+      }
+    }
+    
+    .krds-file-label {
+      background-color: lighten($color-primary, 5%);
+      border-color: lighten($color-primary, 5%);
+      
+      &:hover {
+        background-color: lighten($color-primary, 10%);
+        border-color: lighten($color-primary, 10%);
+      }
+      
+      &.krds-file-label-outline {
+        background-color: transparent;
+        color: lighten($color-primary, 15%);
+        border-color: lighten($color-primary, 15%);
+        
+        &:hover {
+          background-color: rgba(lighten($color-primary, 15%), 0.1);
+        }
+      }
+      
+      &.krds-file-label-text {
+        color: lighten($color-primary, 15%);
+      }
+    }
+    
+    .krds-file-name {
+      color: rgba($color-text-light, 0.7);
+    }
+  }
+  
+  .krds-file-description {
+    color: rgba($color-text-light, 0.7);
+  }
+  
+  .krds-file-upload-drag {
+    background-color: lighten($color-background-dark, 3%);
+    border-color: $color-border-dark;
+    
+    &:hover, &.drag-over {
+      border-color: lighten($color-primary, 15%);
+      background-color: rgba(lighten($color-primary, 15%), 0.1);
+    }
+    
+    .krds-file-upload-drag-inner {
+      .krds-file-icon {
+        color: rgba($color-text-light, 0.6);
+      }
+      
+      .krds-file-upload-text {
+        color: $color-text-light;
+      }
+      
+      .krds-file-browse-link {
+        color: lighten($color-primary, 15%);
+        
+        &:hover {
+          color: lighten($color-primary, 25%);
+        }
+      }
+      
+      .krds-file-upload-hint {
+        color: rgba($color-text-light, 0.6);
+      }
+    }
+  }
+  
+  .krds-file-list {
+    .krds-file-item {
+      background-color: darken($color-background-dark, 3%);
+      border-color: $color-border-dark;
+      
+      .krds-file-item-icon {
+        color: rgba($color-text-light, 0.6);
+      }
+      
+      .krds-file-item-info {
+        .krds-file-item-name {
+          color: $color-text-light;
+        }
+        
+        .krds-file-item-size {
+          color: rgba($color-text-light, 0.6);
+        }
+      }
+      
+      .krds-file-item-remove {
+        color: rgba($color-text-light, 0.6);
+        
+        &:hover {
+          background-color: rgba($color-danger, 0.2);
+          color: lighten($color-danger, 15%);
+        }
+      }
+      
+      &.is-uploading {
+        .krds-file-item-progress {
+          background-color: lighten($color-background-dark, 5%);
+        }
+      }
+    }
+  }
+  
+  header {
+    h1 {
+      color: $color-text-light;
+    }
+    
+    p {
+      color: rgba($color-text-light, 0.7);
+    }
+  }
+  
+  .example-section h2 {
+    color: $color-text-light;
+  }
+  
+  .example-container {
+    background-color: lighten($color-background-dark, 3%);
+    border-color: $color-border-dark;
+  }
+  
+  .btn {
+    background-color: lighten($color-primary, 5%);
+    
+    &:hover {
+      background-color: lighten($color-primary, 10%);
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 576px) {
+  .example-container {
+    &.sizes, &.states, &.variants {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .api-buttons {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+  
+  .krds-file-upload-drag {
+    padding: $spacing-md;
+    
+    .krds-file-upload-drag-inner {
+      .krds-file-icon svg {
+        width: 32px;
+        height: 32px;
+      }
+      
+      .krds-file-upload-text {
+        font-size: $font-size-sm;
+      }
+    }
+  }
+  
+  .krds-image-preview {
+    justify-content: center;
+    
+    .krds-image-preview-item {
+      width: 100px;
+      height: 100px;
+    }
+  }
+} 

@@ -1,0 +1,485 @@
+@import '../../../tokens/colors';
+@import '../../../tokens/typography';
+@import '../../../tokens/spacing';
+@import '../../../tokens/animation';
+
+// 툴팁 컨테이너 스타일
+.krds-tooltip-container {
+  position: absolute;
+  z-index: 1000;
+  max-width: 300px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $transition-duration-md ease,
+              visibility $transition-duration-md ease,
+              transform $transition-duration-md ease;
+  
+  // 인터랙티브 툴팁
+  &.interactive {
+    pointer-events: auto;
+  }
+  
+  // 활성화 상태
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+// 툴팁 화살표와 내용
+.krds-tooltip {
+  position: relative;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-sm;
+  background-color: $color-background-tooltip;
+  color: $color-text-light;
+  font-size: $font-size-sm;
+  line-height: 1.4;
+  font-weight: $font-weight-normal;
+  text-align: center;
+  box-shadow: $shadow-sm;
+  word-wrap: break-word;
+  
+  // 화살표
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+  }
+}
+
+// 위치별 툴팁 스타일
+// 상단 툴팁
+.krds-tooltip-container[data-position="top"] {
+  transform: translateY(-8px);
+  
+  &.active {
+    transform: translateY(0);
+  }
+  
+  .krds-tooltip:after {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: $color-background-tooltip;
+  }
+}
+
+// 우측 툴팁
+.krds-tooltip-container[data-position="right"] {
+  transform: translateX(8px);
+  
+  &.active {
+    transform: translateX(0);
+  }
+  
+  .krds-tooltip:after {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) translateX(-100%);
+    border-right-color: $color-background-tooltip;
+  }
+}
+
+// 하단 툴팁
+.krds-tooltip-container[data-position="bottom"] {
+  transform: translateY(8px);
+  
+  &.active {
+    transform: translateY(0);
+  }
+  
+  .krds-tooltip:after {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: $color-background-tooltip;
+  }
+}
+
+// 좌측 툴팁
+.krds-tooltip-container[data-position="left"] {
+  transform: translateX(-8px);
+  
+  &.active {
+    transform: translateX(0);
+  }
+  
+  .krds-tooltip:after {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(100%);
+    border-left-color: $color-background-tooltip;
+  }
+}
+
+// 테마별 스타일 (색상 변형)
+// 라이트 테마
+.krds-tooltip-container[data-theme="light"] {
+  .krds-tooltip {
+    background-color: $color-white;
+    color: $color-text-primary;
+    border: 1px solid $color-border-light;
+    
+    &:after {
+      border-color: transparent;
+    }
+  }
+  
+  &[data-position="top"] .krds-tooltip:after {
+    border-top-color: $color-white;
+  }
+  
+  &[data-position="right"] .krds-tooltip:after {
+    border-right-color: $color-white;
+  }
+  
+  &[data-position="bottom"] .krds-tooltip:after {
+    border-bottom-color: $color-white;
+  }
+  
+  &[data-position="left"] .krds-tooltip:after {
+    border-left-color: $color-white;
+  }
+}
+
+// 다크 테마
+.krds-tooltip-container[data-theme="dark"] {
+  .krds-tooltip {
+    background-color: $color-background-dark;
+    color: $color-text-light;
+    
+    &:after {
+      border-color: transparent;
+    }
+  }
+  
+  &[data-position="top"] .krds-tooltip:after {
+    border-top-color: $color-background-dark;
+  }
+  
+  &[data-position="right"] .krds-tooltip:after {
+    border-right-color: $color-background-dark;
+  }
+  
+  &[data-position="bottom"] .krds-tooltip:after {
+    border-bottom-color: $color-background-dark;
+  }
+  
+  &[data-position="left"] .krds-tooltip:after {
+    border-left-color: $color-background-dark;
+  }
+}
+
+// 성공 테마
+.krds-tooltip-container[data-theme="success"] {
+  .krds-tooltip {
+    background-color: $color-success;
+    color: $color-white;
+    
+    &:after {
+      border-color: transparent;
+    }
+  }
+  
+  &[data-position="top"] .krds-tooltip:after {
+    border-top-color: $color-success;
+  }
+  
+  &[data-position="right"] .krds-tooltip:after {
+    border-right-color: $color-success;
+  }
+  
+  &[data-position="bottom"] .krds-tooltip:after {
+    border-bottom-color: $color-success;
+  }
+  
+  &[data-position="left"] .krds-tooltip:after {
+    border-left-color: $color-success;
+  }
+}
+
+// 경고 테마
+.krds-tooltip-container[data-theme="warning"] {
+  .krds-tooltip {
+    background-color: $color-warning;
+    color: $color-text-primary;
+    
+    &:after {
+      border-color: transparent;
+    }
+  }
+  
+  &[data-position="top"] .krds-tooltip:after {
+    border-top-color: $color-warning;
+  }
+  
+  &[data-position="right"] .krds-tooltip:after {
+    border-right-color: $color-warning;
+  }
+  
+  &[data-position="bottom"] .krds-tooltip:after {
+    border-bottom-color: $color-warning;
+  }
+  
+  &[data-position="left"] .krds-tooltip:after {
+    border-left-color: $color-warning;
+  }
+}
+
+// 오류 테마
+.krds-tooltip-container[data-theme="error"] {
+  .krds-tooltip {
+    background-color: $color-danger;
+    color: $color-white;
+    
+    &:after {
+      border-color: transparent;
+    }
+  }
+  
+  &[data-position="top"] .krds-tooltip:after {
+    border-top-color: $color-danger;
+  }
+  
+  &[data-position="right"] .krds-tooltip:after {
+    border-right-color: $color-danger;
+  }
+  
+  &[data-position="bottom"] .krds-tooltip:after {
+    border-bottom-color: $color-danger;
+  }
+  
+  &[data-position="left"] .krds-tooltip:after {
+    border-left-color: $color-danger;
+  }
+}
+
+// 크기 변형
+// 작은 크기
+.krds-tooltip-container[data-size="small"] {
+  max-width: 200px;
+  
+  .krds-tooltip {
+    padding: ($spacing-xs * 0.8) $spacing-xs;
+    font-size: $font-size-xs;
+    
+    &:after {
+      border-width: 4px;
+    }
+  }
+}
+
+// 큰 크기
+.krds-tooltip-container[data-size="large"] {
+  max-width: 400px;
+  
+  .krds-tooltip {
+    padding: $spacing-md ($spacing-md * 1.5);
+    font-size: $font-size-md;
+    
+    &:after {
+      border-width: 8px;
+    }
+  }
+}
+
+// 애니메이션 효과
+// 페이드 애니메이션
+.krds-tooltip-container[data-animation="fade"] {
+  transition: opacity $transition-duration-md ease, visibility $transition-duration-md ease;
+  transform: none !important;
+  
+  &.active {
+    transform: none !important;
+  }
+}
+
+// 확대 애니메이션
+.krds-tooltip-container[data-animation="scale"] {
+  transform: scale(0.8);
+  
+  &.active {
+    transform: scale(1);
+  }
+}
+
+// 슬라이드 애니메이션
+// 위치에 따른 슬라이드 방향은 기본 위치 스타일에 정의됨
+
+// HTML 콘텐츠 툴팁 스타일
+.tooltip-rich-content {
+  text-align: left;
+  
+  h3 {
+    margin: 0 0 $spacing-xs;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+  }
+  
+  p {
+    margin: 0 0 $spacing-xs;
+  }
+  
+  .tooltip-link {
+    display: inline-block;
+    color: inherit;
+    font-weight: $font-weight-medium;
+    text-decoration: underline;
+    margin-top: $spacing-xs;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+// API 예제 대상 요소 스타일
+.api-target {
+  margin-top: $spacing-md;
+  padding: $spacing-md;
+  border: 1px dashed $color-border-light;
+  border-radius: $border-radius-md;
+  text-align: center;
+  cursor: default;
+  background-color: $color-background-subtle;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: darken($color-background-subtle, 2%);
+  }
+}
+
+// 버튼 스타일 (예제용)
+.btn {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: darken($color-primary, 5%);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+  }
+}
+
+// API 버튼 컨테이너
+.api-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+// 예제 섹션 스타일
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+}
+
+header {
+  margin-bottom: $spacing-xl;
+  
+  h1 {
+    margin: 0 0 $spacing-sm;
+    font-size: $font-size-xxl;
+    color: $color-text-primary;
+  }
+  
+  p {
+    margin: 0;
+    font-size: $font-size-md;
+    color: $color-text-secondary;
+  }
+}
+
+.example-section {
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    margin: 0 0 $spacing-md;
+    font-size: $font-size-lg;
+    color: $color-text-primary;
+  }
+}
+
+// 예제 컨테이너
+.example-container {
+  padding: $spacing-md;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-md;
+  background-color: $color-background-subtle;
+  
+  &.positions,
+  &.styles,
+  &.sizes,
+  &.triggers,
+  &.animations,
+  &.delays {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    
+    > div {
+      margin-right: $spacing-md;
+      margin-bottom: $spacing-md;
+    }
+  }
+}
+
+// 다크 모드 지원
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: $color-background-dark;
+    color: $color-text-light;
+  }
+  
+  header {
+    h1 {
+      color: $color-text-light;
+    }
+    
+    p {
+      color: rgba($color-text-light, 0.8);
+    }
+  }
+  
+  .example-section h2 {
+    color: $color-text-light;
+  }
+  
+  .example-container {
+    border-color: $color-border-dark;
+    background-color: lighten($color-background-dark, 5%);
+  }
+  
+  .api-target {
+    border-color: $color-border-dark;
+    background-color: lighten($color-background-dark, 8%);
+    
+    &:hover {
+      background-color: lighten($color-background-dark, 10%);
+    }
+  }
+  
+  // 라이트 테마 툴팁 다크 모드에서 테두리 강화
+  .krds-tooltip-container[data-theme="light"] {
+    .krds-tooltip {
+      border: 1px solid $color-border-dark;
+    }
+  }
+} 

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRDS 테이블 컴포넌트</title>
+  <link rel="stylesheet" href="table.css">
+</head>
+<body>
+  <h1>KRDS 테이블 컴포넌트</h1>
+  
+  <!-- 기본 테이블 -->
+  <section class="example-section">
+    <h2>기본 테이블</h2>
+    <div class="table-container">
+      <table class="krds-table">
+        <caption>기본 테이블 예시</caption>
+        <thead>
+          <tr>
+            <th scope="col">프로젝트명</th>
+            <th scope="col">담당자</th>
+            <th scope="col">시작일</th>
+            <th scope="col">완료 예정일</th>
+            <th scope="col">상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>안전 관리 시스템 구축</td>
+            <td>김철수</td>
+            <td>2023-01-10</td>
+            <td>2023-06-30</td>
+            <td><span class="krds-badge krds-badge-success">진행 중</span></td>
+          </tr>
+          <tr>
+            <td>근로자 교육 프로그램 개발</td>
+            <td>박영희</td>
+            <td>2023-02-15</td>
+            <td>2023-05-15</td>
+            <td><span class="krds-badge krds-badge-warning">검토 중</span></td>
+          </tr>
+          <tr>
+            <td>위험성 평가 자동화</td>
+            <td>이민준</td>
+            <td>2023-03-01</td>
+            <td>2023-08-31</td>
+            <td><span class="krds-badge krds-badge-danger">지연</span></td>
+          </tr>
+          <tr>
+            <td>안전 점검 앱 개발</td>
+            <td>정지원</td>
+            <td>2023-02-10</td>
+            <td>2023-07-15</td>
+            <td><span class="krds-badge krds-badge-info">계획 중</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 스트라이프 테이블 -->
+  <section class="example-section">
+    <h2>스트라이프 테이블</h2>
+    <div class="table-container">
+      <table class="krds-table krds-table-striped">
+        <caption>스트라이프 테이블 예시</caption>
+        <thead>
+          <tr>
+            <th scope="col">사원번호</th>
+            <th scope="col">이름</th>
+            <th scope="col">부서</th>
+            <th scope="col">직급</th>
+            <th scope="col">입사일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1001</td>
+            <td>김철수</td>
+            <td>안전관리</td>
+            <td>과장</td>
+            <td>2020-01-10</td>
+          </tr>
+          <tr>
+            <td>1002</td>
+            <td>박영희</td>
+            <td>인사</td>
+            <td>대리</td>
+            <td>2021-03-15</td>
+          </tr>
+          <tr>
+            <td>1003</td>
+            <td>이민준</td>
+            <td>개발</td>
+            <td>책임</td>
+            <td>2019-06-22</td>
+          </tr>
+          <tr>
+            <td>1004</td>
+            <td>정지원</td>
+            <td>품질관리</td>
+            <td>주임</td>
+            <td>2022-02-01</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 테두리 테이블 -->
+  <section class="example-section">
+    <h2>테두리 테이블</h2>
+    <div class="table-container">
+      <table class="krds-table krds-table-bordered">
+        <caption>테두리 테이블 예시</caption>
+        <thead>
+          <tr>
+            <th scope="col">번호</th>
+            <th scope="col">교육명</th>
+            <th scope="col">필수 여부</th>
+            <th scope="col">교육 일정</th>
+            <th scope="col">교육 시간</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>신규 입사자 안전 교육</td>
+            <td><span class="krds-badge krds-badge-primary">필수</span></td>
+            <td>매월 첫째 주 월요일</td>
+            <td>4시간</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>화재 대응 교육</td>
+            <td><span class="krds-badge krds-badge-primary">필수</span></td>
+            <td>분기별 1회</td>
+            <td>2시간</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>응급처치 교육</td>
+            <td><span class="krds-badge krds-badge-secondary">선택</span></td>
+            <td>반기별 1회</td>
+            <td>3시간</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>안전장비 사용법</td>
+            <td><span class="krds-badge krds-badge-primary">필수</span></td>
+            <td>매월 셋째 주 수요일</td>
+            <td>2시간</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 호버 테이블 -->
+  <section class="example-section">
+    <h2>호버 테이블</h2>
+    <div class="table-container">
+      <table class="krds-table krds-table-hover">
+        <caption>호버 테이블 예시</caption>
+        <thead>
+          <tr>
+            <th scope="col">장비 ID</th>
+            <th scope="col">장비명</th>
+            <th scope="col">점검 주기</th>
+            <th scope="col">마지막 점검일</th>
+            <th scope="col">다음 점검일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>EQ-001</td>
+            <td>지게차</td>
+            <td>월 1회</td>
+            <td>2023-03-15</td>
+            <td>2023-04-15</td>
+          </tr>
+          <tr>
+            <td>EQ-002</td>
+            <td>크레인</td>
+            <td>주 1회</td>
+            <td>2023-04-01</td>
+            <td>2023-04-08</td>
+          </tr>
+          <tr>
+            <td>EQ-003</td>
+            <td>고소작업대</td>
+            <td>월 2회</td>
+            <td>2023-03-28</td>
+            <td>2023-04-11</td>
+          </tr>
+          <tr>
+            <td>EQ-004</td>
+            <td>용접기</td>
+            <td>월 1회</td>
+            <td>2023-03-20</td>
+            <td>2023-04-20</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 작은 테이블 -->
+  <section class="example-section">
+    <h2>작은 테이블</h2>
+    <div class="table-container">
+      <table class="krds-table krds-table-sm">
+        <caption>작은 크기 테이블</caption>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">사고유형</th>
+            <th scope="col">발생일</th>
+            <th scope="col">장소</th>
+            <th scope="col">조치사항</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ACC-001</td>
+            <td>낙상</td>
+            <td>2023-02-10</td>
+            <td>3층 계단</td>
+            <td>안전대 설치</td>
+          </tr>
+          <tr>
+            <td>ACC-002</td>
+            <td>화상</td>
+            <td>2023-02-15</td>
+            <td>식당</td>
+            <td>안전교육 실시</td>
+          </tr>
+          <tr>
+            <td>ACC-003</td>
+            <td>부딪힘</td>
+            <td>2023-03-01</td>
+            <td>창고</td>
+            <td>통로 표시 추가</td>
+          </tr>
+          <tr>
+            <td>ACC-004</td>
+            <td>화학물질 누출</td>
+            <td>2023-03-10</td>
+            <td>실험실</td>
+            <td>보관함 교체</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 큰 테이블 -->
+  <section class="example-section">
+    <h2>큰 테이블</h2>
+    <div class="table-container">
+      <table class="krds-table krds-table-lg">
+        <caption>큰 크기 테이블</caption>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">공사명</th>
+            <th scope="col">착공일</th>
+            <th scope="col">준공예정일</th>
+            <th scope="col">진행률</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PRJ-101</td>
+            <td>본사 사옥 증축</td>
+            <td>2023-01-15</td>
+            <td>2024-06-30</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>PRJ-102</td>
+            <td>A공장 설비 증설</td>
+            <td>2023-02-01</td>
+            <td>2023-12-15</td>
+            <td>40%</td>
+          </tr>
+          <tr>
+            <td>PRJ-103</td>
+            <td>B지사 리모델링</td>
+            <td>2023-03-10</td>
+            <td>2023-09-30</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td>PRJ-104</td>
+            <td>물류창고 확장</td>
+            <td>2023-04-01</td>
+            <td>2024-02-28</td>
+            <td>10%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 스크롤 가능한 테이블 -->
+  <section class="example-section">
+    <h2>스크롤 가능한 테이블</h2>
+    <div class="table-container">
+      <div class="krds-table-responsive">
+        <table class="krds-table">
+          <caption>스크롤 가능한 테이블 예시</caption>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">근로자명</th>
+              <th scope="col">부서</th>
+              <th scope="col">직급</th>
+              <th scope="col">안전교육 이수현황</th>
+              <th scope="col">최근 교육일</th>
+              <th scope="col">다음 교육 예정일</th>
+              <th scope="col">특별교육 여부</th>
+              <th scope="col">건강검진 날짜</th>
+              <th scope="col">비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>EMP-001</td>
+              <td>김철수</td>
+              <td>생산</td>
+              <td>사원</td>
+              <td>8/10</td>
+              <td>2023-03-15</td>
+              <td>2023-06-15</td>
+              <td>필요</td>
+              <td>2023-05-10</td>
+              <td>고소작업 자격증 소지</td>
+            </tr>
+            <tr>
+              <td>EMP-002</td>
+              <td>박영희</td>
+              <td>품질</td>
+              <td>대리</td>
+              <td>10/10</td>
+              <td>2023-04-01</td>
+              <td>2023-07-01</td>
+              <td>완료</td>
+              <td>2023-02-20</td>
+              <td>안전관리자 자격 취득 중</td>
+            </tr>
+            <tr>
+              <td>EMP-003</td>
+              <td>이민준</td>
+              <td>연구</td>
+              <td>과장</td>
+              <td>6/10</td>
+              <td>2023-02-10</td>
+              <td>2023-05-10</td>
+              <td>필요</td>
+              <td>2023-06-05</td>
+              <td>화학물질 취급 교육 필요</td>
+            </tr>
+            <tr>
+              <td>EMP-004</td>
+              <td>정지원</td>
+              <td>물류</td>
+              <td>주임</td>
+              <td>9/10</td>
+              <td>2023-03-25</td>
+              <td>2023-06-25</td>
+              <td>불필요</td>
+              <td>2023-04-15</td>
+              <td>지게차 운전 자격증 소지</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 복합 테이블 예시 -->
+  <section class="example-section">
+    <h2>복합 테이블 예시</h2>
+    <div class="table-container">
+      <div class="krds-table-toolbar">
+        <div class="krds-table-search">
+          <input type="text" class="krds-search-input" placeholder="테이블 검색...">
+          <button class="krds-search-button">검색</button>
+        </div>
+        <div class="krds-table-actions">
+          <button class="krds-btn krds-btn-primary">내보내기</button>
+          <button class="krds-btn krds-btn-secondary">필터</button>
+        </div>
+      </div>
+      <div class="krds-table-responsive">
+        <table class="krds-table krds-table-striped krds-table-hover krds-table-bordered">
+          <caption>복합 테이블 예시</caption>
+          <thead>
+            <tr>
+              <th scope="col">
+                <input type="checkbox" class="krds-checkbox" id="select-all">
+              </th>
+              <th scope="col" class="sortable" data-sort="id">ID <span class="sort-icon">↑</span></th>
+              <th scope="col" class="sortable" data-sort="name">이름 <span class="sort-icon"></span></th>
+              <th scope="col" class="sortable" data-sort="department">부서 <span class="sort-icon"></span></th>
+              <th scope="col" class="sortable" data-sort="risk-level">위험 등급 <span class="sort-icon"></span></th>
+              <th scope="col" class="sortable" data-sort="last-check">마지막 점검일 <span class="sort-icon"></span></th>
+              <th scope="col">조치</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" class="krds-checkbox" name="select-row"></td>
+              <td>RISK-001</td>
+              <td>용접 작업장</td>
+              <td>생산부</td>
+              <td><span class="krds-badge krds-badge-danger">상</span></td>
+              <td>2023-03-15</td>
+              <td>
+                <div class="krds-table-actions">
+                  <button class="krds-btn krds-btn-sm krds-btn-info">보기</button>
+                  <button class="krds-btn krds-btn-sm krds-btn-warning">수정</button>
+                  <button class="krds-btn krds-btn-sm krds-btn-danger">삭제</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="krds-checkbox" name="select-row"></td>
+              <td>RISK-002</td>
+              <td>창고 지역</td>
+              <td>물류부</td>
+              <td><span class="krds-badge krds-badge-warning">중</span></td>
+              <td>2023-04-01</td>
+              <td>
+                <div class="krds-table-actions">
+                  <button class="krds-btn krds-btn-sm krds-btn-info">보기</button>
+                  <button class="krds-btn krds-btn-sm krds-btn-warning">수정</button>
+                  <button class="krds-btn krds-btn-sm krds-btn-danger">삭제</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="krds-checkbox" name="select-row"></td>
+              <td>RISK-003</td>
+              <td>화학물질 보관소</td>
+              <td>연구소</td>
+              <td><span class="krds-badge krds-badge-danger">상</span></td>
+              <td>2023-02-10</td>
+              <td>
+                <div class="krds-table-actions">
+                  <button class="krds-btn krds-btn-sm krds-btn-info">보기</button>
+                  <button class="krds-btn krds-btn-sm krds-btn-warning">수정</button>
+                  <button class="krds-btn krds-btn-sm krds-btn-danger">삭제</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="krds-checkbox" name="select-row"></td>
+              <td>RISK-004</td>
+              <td>사무실 구역</td>
+              <td>관리부</td>
+              <td><span class="krds-badge krds-badge-success">하</span></td>
+              <td>2023-03-25</td>
+              <td>
+                <div class="krds-table-actions">
+                  <button class="krds-btn krds-btn-sm krds-btn-info">보기</button>
+                  <button class="krds-btn krds-btn-sm krds-btn-warning">수정</button>
+                  <button class="krds-btn krds-btn-sm krds-btn-danger">삭제</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="krds-table-pagination">
+        <div class="krds-pagination">
+          <button class="krds-pagination-btn krds-pagination-first" aria-label="첫 페이지">
+            <span aria-hidden="true">«</span>
+          </button>
+          <button class="krds-pagination-btn krds-pagination-prev" aria-label="이전 페이지">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <ul class="krds-pagination-list">
+            <li><a href="#" class="krds-pagination-link krds-pagination-active">1</a></li>
+            <li><a href="#" class="krds-pagination-link">2</a></li>
+            <li><a href="#" class="krds-pagination-link">3</a></li>
+            <li><span class="krds-pagination-ellipsis">…</span></li>
+            <li><a href="#" class="krds-pagination-link">10</a></li>
+          </ul>
+          <button class="krds-pagination-btn krds-pagination-next" aria-label="다음 페이지">
+            <span aria-hidden="true">›</span>
+          </button>
+          <button class="krds-pagination-btn krds-pagination-last" aria-label="마지막 페이지">
+            <span aria-hidden="true">»</span>
+          </button>
+        </div>
+        <div class="krds-table-info">
+          총 100개 항목 중 1-10 표시 중
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="table.js"></script>
+</body>
+</html> 

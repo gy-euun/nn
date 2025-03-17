@@ -1,0 +1,414 @@
+@import "../../../tokens/colors";
+@import "../../../tokens/typography";
+@import "../../../tokens/layout";
+@import "../../../tokens/shape";
+@import "../../../tokens/elevation";
+
+// 테이블 컴포넌트 스타일
+// ======================
+
+// 테이블 컨테이너
+.table-container {
+  margin-bottom: $spacing-lg;
+}
+
+// 기본 테이블 스타일
+.krds-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $spacing-md;
+  border-collapse: collapse;
+  background-color: $color-background-alt;
+  color: $color-text-primary;
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  
+  // 캡션 스타일
+  caption {
+    padding: $spacing-sm;
+    color: $color-text-secondary;
+    text-align: left;
+    caption-side: top;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-xs;
+  }
+  
+  // 테이블 헤더 스타일
+  thead {
+    background-color: $color-background-primary;
+    
+    th {
+      padding: $spacing-md;
+      font-weight: $font-weight-bold;
+      text-align: left;
+      border-bottom: 2px solid $color-border-secondary;
+      color: $color-text-primary;
+      vertical-align: bottom;
+      white-space: nowrap;
+      
+      // 정렬 가능한 헤더
+      &.sortable {
+        cursor: pointer;
+        position: relative;
+        padding-right: $spacing-lg;
+        
+        &:hover {
+          background-color: rgba($color-primary-500, 0.05);
+        }
+        
+        .sort-icon {
+          position: absolute;
+          right: $spacing-xs;
+          top: 50%;
+          transform: translateY(-50%);
+          color: $color-text-secondary;
+          font-size: $font-size-sm;
+        }
+      }
+    }
+  }
+  
+  // 테이블 본문 스타일
+  tbody {
+    tr {
+      td {
+        padding: $spacing-md;
+        border-top: 1px solid $color-border-light;
+        vertical-align: middle;
+        
+        // 테이블 내 액션 버튼 스타일
+        .krds-table-actions {
+          display: flex;
+          justify-content: flex-start;
+          gap: $spacing-xs;
+          
+          .krds-btn {
+            margin: 0;
+          }
+        }
+      }
+      
+      &:last-child {
+        td {
+          border-bottom: 1px solid $color-border-light;
+        }
+      }
+    }
+  }
+  
+  // 테이블 내 체크박스
+  .krds-checkbox {
+    margin: 0;
+  }
+}
+
+// 스트라이프 테이블 스타일
+.krds-table-striped {
+  tbody {
+    tr {
+      &:nth-of-type(odd) {
+        background-color: rgba($color-primary-500, 0.03);
+      }
+    }
+  }
+}
+
+// 테두리 테이블 스타일
+.krds-table-bordered {
+  border: 1px solid $color-border-light;
+  
+  th, td {
+    border: 1px solid $color-border-light;
+  }
+}
+
+// 호버 테이블 스타일
+.krds-table-hover {
+  tbody {
+    tr {
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: rgba($color-primary-500, 0.05);
+      }
+    }
+  }
+}
+
+// 크기 변형
+// 작은 테이블
+.krds-table-sm {
+  th, td {
+    padding: $spacing-sm;
+    font-size: $font-size-sm;
+  }
+}
+
+// 큰 테이블
+.krds-table-lg {
+  th, td {
+    padding: $spacing-lg;
+    font-size: $font-size-lg;
+  }
+}
+
+// 반응형 테이블
+.krds-table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
+  
+  // 스크롤바 스타일
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $color-background-alt;
+    border-radius: $border-radius-sm;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-border-secondary;
+    border-radius: $border-radius-sm;
+    
+    &:hover {
+      background-color: $color-border-primary;
+    }
+  }
+}
+
+// 테이블 툴바 스타일
+.krds-table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md 0;
+  margin-bottom: $spacing-md;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+  
+  // 검색 영역
+  .krds-table-search {
+    display: flex;
+    flex-grow: 1;
+    max-width: 300px;
+    
+    .krds-search-input {
+      flex-grow: 1;
+      padding: $spacing-sm $spacing-md;
+      border: 1px solid $color-border-light;
+      border-radius: $border-radius-sm 0 0 $border-radius-sm;
+      font-size: $font-size-md;
+      height: 38px;
+      outline: none;
+      
+      &:focus {
+        border-color: $color-primary-500;
+        box-shadow: 0 0 0 2px rgba($color-primary-500, 0.2);
+      }
+    }
+    
+    .krds-search-button {
+      padding: $spacing-sm $spacing-md;
+      background-color: $color-primary-500;
+      color: $color-background-alt;
+      border: 1px solid $color-primary-600;
+      border-left: none;
+      border-radius: 0 $border-radius-sm $border-radius-sm 0;
+      cursor: pointer;
+      height: 38px;
+      font-weight: $font-weight-medium;
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: $color-primary-600;
+      }
+    }
+  }
+  
+  // 액션 버튼 영역
+  .krds-table-actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+}
+
+// 테이블 페이지네이션 스타일
+.krds-table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md 0;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  
+  // 테이블 정보 텍스트
+  .krds-table-info {
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+  }
+}
+
+// 테이블 페이지네이션 스타일 (기존 페이지네이션 컴포넌트 확장)
+.krds-pagination {
+  display: flex;
+  align-items: center;
+  
+  .krds-pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    margin: 0 $spacing-xxs;
+    background-color: $color-background-alt;
+    border: 1px solid $color-border-light;
+    border-radius: $border-radius-sm;
+    color: $color-text-primary;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: $color-background-primary;
+      border-color: $color-border-secondary;
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      
+      &:hover {
+        background-color: $color-background-alt;
+        border-color: $color-border-light;
+      }
+    }
+  }
+  
+  .krds-pagination-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      margin: 0 $spacing-xxs;
+    }
+    
+    .krds-pagination-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      background-color: $color-background-alt;
+      border: 1px solid $color-border-light;
+      border-radius: $border-radius-sm;
+      color: $color-text-primary;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: $color-background-primary;
+        border-color: $color-border-secondary;
+      }
+      
+      &.krds-pagination-active {
+        background-color: $color-primary-500;
+        border-color: $color-primary-600;
+        color: $color-background-alt;
+        
+        &:hover {
+          background-color: $color-primary-600;
+        }
+      }
+    }
+    
+    .krds-pagination-ellipsis {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      color: $color-text-secondary;
+    }
+  }
+}
+
+// 반응형 스타일
+@media (max-width: 768px) {
+  .krds-table-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    
+    .krds-table-search {
+      max-width: 100%;
+      width: 100%;
+    }
+    
+    .krds-table-actions {
+      margin-top: $spacing-sm;
+    }
+  }
+  
+  .krds-table-pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    
+    .krds-table-info {
+      margin-top: $spacing-sm;
+    }
+  }
+  
+  .krds-table {
+    th, td {
+      padding: $spacing-sm;
+    }
+  }
+  
+  // 데이터가 많은 테이블의 반응형 처리
+  .krds-table-complex {
+    thead {
+      display: none;
+    }
+    
+    tbody {
+      tr {
+        display: block;
+        border: 1px solid $color-border-light;
+        margin-bottom: $spacing-md;
+        
+        td {
+          display: block;
+          text-align: right;
+          padding-left: 45%;
+          position: relative;
+          border-top: none;
+          border-bottom: 1px solid $color-border-light;
+          
+          &::before {
+            content: attr(data-label);
+            position: absolute;
+            left: $spacing-md;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: left;
+            font-weight: $font-weight-bold;
+          }
+          
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+} 

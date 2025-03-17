@@ -1,0 +1,204 @@
+@import '../../../styles/tokens/color-tokens.scss';
+@import '../../../styles/tokens/typography-tokens.scss';
+@import '../../../styles/tokens/shape-tokens.scss';
+@import '../../../styles/tokens/layout-tokens.scss';
+
+// 체크박스 영역 스타일
+.krds-check-area {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+  
+  // 인라인 변형 (가로 정렬)
+  &.inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-lg;
+  }
+  
+  // 컬럼 변형 (설명이 있는 체크박스용)
+  &.chk-column {
+    gap: $spacing-lg;
+    
+    .krds-form-check {
+      padding: $spacing-md;
+      border: 1px solid $color-border-base;
+      border-radius: $radius-md;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+      
+      &:hover {
+        background-color: $color-gray-5;
+      }
+      
+      // 선택된 상태
+      input[type="checkbox"]:checked + label + .krds-form-check-cnt,
+      input[type="checkbox"]:checked + label {
+        color: $color-primary-70;
+      }
+      
+      input[type="checkbox"]:checked + label::before {
+        border-color: $color-primary-50;
+        background-color: $color-primary-50;
+      }
+      
+      input[type="checkbox"]:checked + label::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// 체크박스 폼 요소 스타일
+.krds-form-check {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  // 기본 크기 (small)
+  --checkbox-size: 16px;
+  
+  // 중간 크기
+  &.medium {
+    --checkbox-size: 20px;
+    
+    label {
+      font-size: $font-size-md;
+      padding-left: calc(var(--checkbox-size) + $spacing-xs);
+    }
+  }
+  
+  // 큰 크기
+  &.large {
+    --checkbox-size: 24px;
+    
+    label {
+      font-size: $font-size-lg;
+      padding-left: calc(var(--checkbox-size) + $spacing-xs);
+      line-height: var(--checkbox-size);
+    }
+  }
+  
+  // 필수 항목
+  &.required {
+    label::after {
+      content: " *";
+      color: $color-danger-50;
+    }
+  }
+  
+  // 오류 상태
+  &.error {
+    label {
+      color: $color-danger-50;
+    }
+    
+    label::before {
+      border-color: $color-danger-50;
+    }
+    
+    .krds-form-feedback {
+      color: $color-danger-50;
+      font-size: $font-size-xs;
+      margin-top: $spacing-xxs;
+      margin-left: calc(var(--checkbox-size) + $spacing-xs);
+    }
+  }
+  
+  // 체크박스 숨기기 (커스텀 스타일링을 위해)
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    
+    // 포커스 스타일
+    &:focus + label::before {
+      box-shadow: 0 0 0 3px rgba($color-primary-50, 0.3);
+    }
+    
+    // 비활성화 스타일
+    &:disabled + label {
+      cursor: not-allowed;
+      color: $color-text-disabled;
+    }
+    
+    &:disabled + label::before {
+      border-color: $color-gray-30;
+      background-color: $color-gray-10;
+    }
+    
+    // 선택된 비활성화 스타일
+    &:disabled:checked + label::before {
+      background-color: $color-gray-30;
+    }
+    
+    &:disabled:checked + label::after {
+      border-color: $color-gray-10;
+    }
+  }
+  
+  // 체크박스 레이블
+  label {
+    position: relative;
+    display: inline-block;
+    padding-left: calc(var(--checkbox-size) + $spacing-xs);
+    line-height: var(--checkbox-size);
+    cursor: pointer;
+    font-size: $font-size-sm;
+    color: $color-text-primary;
+    user-select: none;
+    
+    // 커스텀 체크박스 박스
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: var(--checkbox-size);
+      height: var(--checkbox-size);
+      border: 1px solid $color-gray-50;
+      border-radius: $radius-xs;
+      background-color: $color-background-primary;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    // 체크 표시
+    &::after {
+      content: '';
+      position: absolute;
+      left: calc(var(--checkbox-size) / 5);
+      top: calc(var(--checkbox-size) / 8);
+      width: calc(var(--checkbox-size) / 2);
+      height: calc(var(--checkbox-size) / 3.5);
+      border: solid white;
+      border-width: 0 0 2px 2px;
+      transform: rotate(-45deg);
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+  
+  // 선택된 상태
+  input[type="checkbox"]:checked + label::before {
+    border-color: $color-primary-50;
+    background-color: $color-primary-50;
+  }
+  
+  input[type="checkbox"]:checked + label::after {
+    opacity: 1;
+  }
+  
+  // 부가 설명 스타일
+  .krds-form-check-cnt {
+    margin-top: $spacing-xs;
+    margin-left: calc(var(--checkbox-size) + $spacing-xs);
+    color: $color-text-secondary;
+  }
+  
+  .krds-form-check-p {
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+} 

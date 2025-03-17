@@ -1,0 +1,221 @@
+/* KRDS 디자인 시스템 스타일 */
+
+/* 디자인 토큰 임포트 */
+/* TODO: 디자인 토큰 파일이 준비되면 아래 주석을 해제하세요.
+@import 'tokens/figma_token.json';
+@import 'tokens/transformed_tokens.json';
+*/
+
+/* 기본 스타일 */
+:root {
+  --primary-color: #166dfa;
+  --secondary-color: #445b81;
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --gray-50: #f8f9fa;
+  --gray-100: #e9ecef;
+  --gray-200: #dee2e6;
+  --gray-300: #ced4da;
+  --gray-400: #adb5bd;
+  --gray-500: #8e979e;
+  --gray-600: #606a73;
+  --gray-700: #39434d;
+  --gray-800: #242c34;
+  --gray-900: #191f27;
+
+  --text-color: var(--gray-800);
+  --background-color: var(--white-color);
+  --border-color: var(--gray-300);
+  --success-color: #198754;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #0dcaf0;
+}
+
+/* KRDS 버튼 스타일 */
+.krds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  border: 1px solid transparent;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+  
+  &.primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+  
+  &.secondary {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  &.text {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: transparent;
+  }
+  
+  &.small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  &.medium {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  &.large {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* KRDS 폼 요소 스타일 */
+.krds-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(22, 109, 250, 0.2);
+  }
+  
+  &.error {
+    border-color: var(--danger-color);
+  }
+}
+
+/* 유틸리티 클래스 */
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+/* 로그인 페이지 커스텀 스타일 */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--gray-50);
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  
+  h1 {
+    color: var(--gray-800);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+  }
+}
+
+.auth-form {
+  .form-group {
+    margin-bottom: 1rem;
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+  }
+  
+  .form-check {
+    display: flex;
+    align-items: center;
+    
+    input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+    
+    label {
+      margin-bottom: 0;
+    }
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+.auth-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  .separator {
+    margin: 0 0.5rem;
+    color: var(--gray-400);
+  }
+} 

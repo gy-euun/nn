@@ -1,0 +1,20 @@
+// 그림자 효과를 위한 CSS 변수 정의
+:root {
+  // 그림자 레벨 (KRDS 스타일 가이드 기반)
+  --elevation-1: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --elevation-2: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --elevation-3: 0 6px 12px rgba(0, 0, 0, 0.1);
+  --elevation-4: 0 12px 24px rgba(0, 0, 0, 0.12);
+  --elevation-5: 0 16px 32px rgba(0, 0, 0, 0.15);
+  
+  // 상호작용 요소를 위한 특수 그림자
+  --elevation-focus: 0 0 0 2px var(--color-primary-200);
+  --elevation-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  // 다크모드용 그림자 (필요시 활성화)
+  --elevation-dark-1: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --elevation-dark-2: 0 4px 6px rgba(0, 0, 0, 0.25);
+  --elevation-dark-3: 0 6px 12px rgba(0, 0, 0, 0.3);
+  --elevation-dark-4: 0 12px 24px rgba(0, 0, 0, 0.35);
+  --elevation-dark-5: 0 16px 32px rgba(0, 0, 0, 0.4);
+} 
